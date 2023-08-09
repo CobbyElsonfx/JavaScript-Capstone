@@ -3,22 +3,26 @@
   "version": "1.0.0",
   "description": "<a name=\"readme-top\"></a>",
   "main": "webpack.config.js",
-  "scripts": {"watch": "webpack --watch",
-  "start": "webpack serve --open",
-  "build": "webpack",
-  "test": "jest --coverage"
-  },"jest": {
+  "scripts": {
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "webpack",
+    "test": "jest --coverage"
+  },
+  "jest": {
     "testEnvironment": "jest-environment-jsdom"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.22.9",
+    "@babel/core": "^7.22.10",
     "@babel/plugin-transform-modules-commonjs": "^7.22.5",
-    "@babel/preset-env": "^7.22.9",
+    "@babel/preset-env": "^7.22.10",
+    "@types/bootstrap": "^5.2.6",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^29.6.1",
+    "babel-loader": "^9.1.3",
     "c": "^1.1.1",
     "css-loader": "^6.8.1",
     "eslint": "^7.32.0",

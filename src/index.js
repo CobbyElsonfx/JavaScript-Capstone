@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
 import './style.css';
 // javascript files imports
 import { getMoviesData } from './modules/functionalities.js';
 import { showApiUrl } from './modules/showsAPI.js';
+// modal import
+import modalContent from './modules/reservation.js';
 
 // image files imports
 import './assets/bg-for-page.jpg';
@@ -20,7 +23,6 @@ const renderMovies = async () => {
   data.forEach((movie) => {
     const movieCard = document.createElement('div');
     movieCard.classList.add('col-md-3', 'col-sm-6', 'mb-4'); // Bootstrap classes
-
     movieCard.innerHTML = `
           <div class="card">
             <img src=${movie.image.medium} class="card-img-top" alt="images">
@@ -29,13 +31,19 @@ const renderMovies = async () => {
               <div class="card-text">
                 <p> Comments ${movie.name}</p>
                 <p> Likes</p>
+                <a type="button"  class="btn btn-primary reservationBtn"  id="${movie.id}" data-toggle="modal" data-target="#exampleModal-${movie.id}" >Reservations</a>
               </div>
             </div>
           </div>
         `;
-
     movieContainer.appendChild(movieCard);
   });
+
+  // reservation popup code
+  const reservationPopUp = document.querySelector('.overlayForBody');
+  const modalContainer = document.createElement('div');
+  modalContainer.innerHTML = modalContent(data);
+  reservationPopUp.appendChild(modalContainer);
 };
 
 renderMovies();
