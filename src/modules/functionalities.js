@@ -8,12 +8,9 @@ const getMoviesData = async (url) => {
   }
 };
 
-const postData = async ()=> {
-    // others
-    return "nothing";
-}
+const postData = async () => {};
 
 export {
   getMoviesData,
-  postData
+  postData,
 };

@@ -24,13 +24,16 @@ const renderMovies = async () => {
     const movieCard = document.createElement('div');
     movieCard.classList.add('col-md-3', 'col-sm-6', 'mb-4'); // Bootstrap classes
     movieCard.innerHTML = `
-          <div class="card">
+          <div class="card custom-card ">
             <img src=${movie.image.medium} class="card-img-top" alt="images">
             <div class="card-body">
-              <h5 class="card-title">Title</h5>
+              <div>
+              <span class="card-title">${movie.name}</span>
+              <span  class="likes"> Likes</span>
+              </div>
+              
               <div class="card-text">
-                <p> Comments ${movie.name}</p>
-                <p> Likes</p>
+                <p class="comments"> Comments</p> 
                 <a type="button"  class="btn btn-primary reservationBtn"  id="${movie.id}" data-toggle="modal" data-target="#exampleModal-${movie.id}" >Reservations</a>
               </div>
             </div>

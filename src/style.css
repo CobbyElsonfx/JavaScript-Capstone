@@ -26,12 +26,30 @@
 }
 
 body {
+  background-color: #000;
+  color: var(--primary-color);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+#hero-section {
   color: var(--red-color);
   width: 100vw;
-  background-image: url("./assets/bg-for-page.jpg");
+  height: 80vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9)), url('../dist/images/bg-for-page.jpg');
   background-position: center;
   background-size: cover;
-  overflow-x: hidden;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+}
+
+/* nav stylings */
+.nav-bar-home {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .navbar-brand {
@@ -46,30 +64,21 @@ body {
   font-weight: 800;
 }
 
+.nav-link:hover,
 .navbar-brand:hover {
-  color: var(--red-color);
-}
-
-.nav-link:hover {
   color: var(--primary-color);
-}
-
-header {
-  background-color: rgba(0, 0, 0, 0.3);
-  z-index: 1;
-}
-
-.overlayForBody {
-  /* background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 1));
-  background-size: cover;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  z-index: -1; */
 }
 
 .hero-section .welcomeTitle {
   font-weight: 800;
+}
+
+/* cards stylings */
+.card {
+  border-radius: 10px;
+}
+
+.custom-card {
+  background-color: transparent;
+  border: none;
 }
