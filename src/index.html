@@ -9,42 +9,44 @@
 </head>
 
 <body>
-   <header class="nav-bar-home">
-    <nav class="navbar navbar-expand-lg">
-    <div class="container">
-      <a class="navbar-brand" href="#">MovizHUB</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" href="#">Latest Shows</a>
-          <a class="nav-link" href="#">Top rated</a>
-          <a class="nav-link" href="#">Favorites</a>
-        </div>
-       </div>
+    <header id="hero-section">
+      <div class="nav-bar-home">
+        <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="#">MovizHUB</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#">Latest Shows</a>
+              <a class="nav-link" href="#">Top rated</a>
+              <a class="nav-link" href="#">Favorites</a>
+            </div>
+          </div>
+          </div>
+        </nav>
       </div>
-    </nav>
+      <section >
+      <div class="px-4 py-5 my-5 text-center ">
+        <h1 class="display-5 welcomeTitle fw-bold text-body-emphasis">Welcome to Our <br> Movies Hub</h1>
+        <div class="col-lg-6 mx-auto">
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <input type="text" name="search">
+            <button class="btn" type="submit">Search</button>
+          </div>
+        </div>
+      </div>  
+      </section>
     </header>
-    <section >
-    <div class="px-4 py-5 my-5 text-center hero-section">
-      <h1 class="display-5 welcomeTitle fw-bold text-body-emphasis">Welcome to Our <br> Movies Hub</h1>
-      <div class="col-lg-6 mx-auto">
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-          <input type="text" name="search">
-        </div>
-      </div>
-    </div>  
-    </section>
 
 
     <main>
       <div class="container">
         <div class="row" id="movieContainer">
-          <!-- Movie cards will be dynamically added here -->
+          <!-- Movies cards will be dynamically added here -->
         </div>
     </main>
-    <div class="overlayForBody"></div>
     <footer>
       <div class="footer-container">
         <div>
