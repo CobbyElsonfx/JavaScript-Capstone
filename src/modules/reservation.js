@@ -1,5 +1,5 @@
 import { reservation } from './showsAPI.js';
-import { createReservation, getReservations } from './functionalities.js';
+// import { createReservation, getReservations } from './functionalities.js';
 
 const modalContent = (data) => {
   let modalTemplate = '';

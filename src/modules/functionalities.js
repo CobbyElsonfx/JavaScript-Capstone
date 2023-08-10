@@ -9,10 +9,10 @@ const getMoviesData = async (url) => {
 };
 
 // Function to create a reservation
-const createReservation = async (urls = 'ttps://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dicTRY4wTa5zQfvBUtC7/reservations', username1, dateStart, dateEnd) => {
-  console.log(urls);
+const createReservation = async (url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dicTRY4wTa5zQfvBUtC7/reservations', username1, dateStart, dateEnd) => {
+  console.log(url);
   try {
-    const response = await fetch(urls, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json charset=utf-8',
@@ -36,8 +36,8 @@ const createReservation = async (urls = 'ttps://us-central1-involvement-api.clou
 };
 
 // Function to fetch reservations
-const getReservations = async (url1, item_id) => {
-  const url = `${url1}?item_id=${item_id}`;
+const getReservations = async (url1, item_Id) => {
+  const url = `${url1}?item_id=${item_Id}`;
 
   try {
     const response = await fetch(url);
