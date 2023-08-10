@@ -31,14 +31,22 @@ const renderMovies = async () => {
               </div>
               
               <div class="card-text">
-                <p class="comments"> Comments</p> 
+              <button type="button" 
+              class="btn btn-primary comment-button " 
+              data-bs-toggle="modal" 
+              data-bs-target= "#commentModal-${movie.id}">
+              Comment
+              </button>
               </div>
             </div>
           </div>
         `;
 
     movieContainer.appendChild(movieCard);
+    
   });
 };
+
+
 
 renderMovies();
