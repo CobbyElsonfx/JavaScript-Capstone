@@ -82,3 +82,11 @@ body {
   background-color: transparent;
   border: none;
 }
+
+/* modal styling */
+.modal-title {
+  width: 93%;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 'cursive', sans-serif;
+}
