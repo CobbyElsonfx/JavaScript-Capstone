@@ -87,3 +87,19 @@ body {
   background-color: transparent;
   border:none;
 }
+
+.footer-section {
+  position: relative;
+  z-index: 1000;
+}
+
+.container-div {
+  width: 88.89vw;
+  max-width: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.footer-copyright {
+  margin-bottom: 4.17em;
+}
