@@ -11,7 +11,7 @@ const print = async () => {
 
   try {
     // Fetch comments from the API
-    const response = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/VMZlv63JD79wzgO8qMla/comment/');
+    const response = await fetch('https://us-central1-js-capstone-backend.cloudfunctions.net/api/comments/VMZlv63JD79wzgO8qMla/comments/');
     const data = await response.json();
 
     if (data.result && data.result.length > 0) {
