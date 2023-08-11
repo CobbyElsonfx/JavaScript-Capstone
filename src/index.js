@@ -22,7 +22,7 @@ async function postCommentToAPI(movieId, name, comment) {
 
   // Handle the response status and errors if needed
   if (!response.ok) {
-    console.error('Failed to post comment:', response.status);
+    // console.error('Failed to post comment:', response.status);
   }
 }
 
@@ -31,6 +31,18 @@ async function fetchCommentsFromAPI(movieId) {
   const response = await fetch(`/api/comments/${movieId}`);
   const comments = await response.json();
   return comments;
+}
+
+// Function to fetch and display comments
+async function fetchAndDisplayComments(movieId) {
+  const comments = await fetchCommentsFromAPI(movieId);
+  const commentsSection = document.querySelector(`#commentModal-${movieId} .comments-section`);
+  commentsSection.innerHTML = ''; // Clear previous comments
+  comments.forEach((comment) => {
+    const commentElement = document.createElement('div');
+    commentElement.textContent = `${comment.name}: ${comment.comment}`;
+    commentsSection.appendChild(commentElement);
+  });
 }
 
 const renderMovies = async () => {
@@ -65,45 +77,48 @@ const renderMovies = async () => {
 
     movieContainer.appendChild(movieCard);
 
-    // Create modal and attach listeners inside this loop
+    // Modal and attach listeners
     const modal = document.createElement('div');
     modal.classList.add('modal', 'fade');
     modal.id = `commentModal-${movie.id}`;
     modal.setAttribute('aria-labelledby', `exampleModalCenterTitle-${movie.id}`);
     modal.setAttribute('aria-hidden', 'true');
     modal.innerHTML = `
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <img src=${movie.image.medium} class="" alt="modal images">
-          </div>
-          <div>${movie.summary}</div>
-          <div>
-            <form>
-              <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter your name">
-              </div>
-              <div class="form-group">
-                <label for="comment">Comment</label>
-                <textarea class="form-control" id="comment" rows="3" placeholder="Enter your comment"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src=${movie.image.medium} class="" alt="modal images">
+        </div>
+        <div>${movie.summary}</div>
+        <div class="comments-section"> <!-- Placeholder for comments -->
+          <!-- Comments fetched from API will be added here -->
+        </div>
+        <div>
+          <form id="commentForm-${movie.id}">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your name">
+            </div>
+            <div class="form-group">
+              <label for="comment">Comment</label>
+              <textarea class="form-control" id="comment" rows="3" placeholder="Enter your comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
-    `;
+    </div>
+  `;
 
     document.body.appendChild(modal);
 
