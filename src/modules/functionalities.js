@@ -9,64 +9,65 @@ const getMoviesData = async (url) => {
 };
 
 // Function to create a reservation
-const createReservation = async (url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dicTRY4wTa5zQfvBUtC7/reservations', username1, dateStart, dateEnd) => {
-  console.log(url);
+const createReservation = async (title, username1, dateStart, dateEnd) => {
+  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/XySHXEsIGGBSA40iaBEF/reservations/';
+  console.log(title);
+  console.log(username1, dateStart, dateEnd);
+
+  const requestBody = {
+    // eslint-disable-next-line quotes
+    item_id: title, // Replace with the actual item ID
+    username: username1,
+    date_start: dateStart,
+    date_end: dateEnd,
+  };
   try {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json charset=utf-8',
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        item_id: 'item1',
-        username: username1,
-        date_start: dateStart,
-        date_end: dateEnd,
-      }), // Convert reservationData to JSON
+      body: JSON.stringify(requestBody),
     });
 
     if (response.status === 201) {
-      console.log('Reservation created successfully');
+      // Successful reservation
+      console.log('Reservation successful!');
     } else {
-      console.error('Failed to create reservation');
+      console.error('Reservation failed:', response.status);
     }
   } catch (error) {
-    console.error('Error creating reservation:', error);
+    console.error('Error:', error);
   }
 };
 
 // Function to fetch reservations
-const getReservations = async (url1, item_Id) => {
-  const url = `${url1}?item_id=${item_Id}`;
+const getReservations = async () => {
+  const item_id = 'item1'; // Replace with the actual item ID
+  const app_id = 'XySHXEsIGGBSA40iaBEF'; // Replace with the actual app ID
+  const getUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${app_id}/reservations?item_id=${item_id}`;
 
   try {
-    const response = await fetch(url);
-
+    const response = await fetch(getUrl);
     if (response.ok) {
       const reservations = await response.json();
       console.log('Reservations:', reservations);
-      return reservations;
+      console.log('Reservations:', reservations.length);
+      // Process and display reservations as needed
+      return Array.from(reservations);
     }
-    console.error('Failed to fetch reservations');
   } catch (error) {
-    console.error('Error fetching reservations:', error);
+    console.error('Error:', error);
   }
 };
 
 // Example reservation data
-const reservationData = {
-  item_id: 'item1',
-  username: 'Jane',
-  date_start: '2020-10-15',
-  date_end: '2020-10-16',
-};
-
-// Call the functions with the appropriate app_id and item_id
-const app_id = 'abc234';
-createReservation(app_id, reservationData);
-
-const item_id = 'item1';
-getReservations(app_id, item_id);
+// const reservationData = {
+//   item_id: 'item1',
+//   username: 'Jane',
+//   date_start: '2020-10-15',
+//   date_end: '2020-10-16',
+// };
 
 export {
   getMoviesData,

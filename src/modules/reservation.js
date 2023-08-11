@@ -1,13 +1,8 @@
-import { reservation } from './showsAPI.js';
-// import { createReservation, getReservations } from './functionalities.js';
+import { createReservation, getReservations } from './functionalities.js';
 
+const num = getReservations();
 const modalContent = (data) => {
   let modalTemplate = '';
-  const num = async () => {
-    const num = await getReservations(reservation, 'item1');
-    return num;
-  };
-  console.log(num().length);
   data.forEach((movie) => {
     modalTemplate += `
         <div class="modal fade" id="exampleModal-${movie.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -43,9 +38,11 @@ const modalContent = (data) => {
                 </div>
                 <br>
                 <hr>
-                <h4> Reservations ${num()} </h4> 
+                <h4> Reservations ${2} </h4> 
                 <form class="reservation-form">
-                    <div class="form-group ">
+                <input id="item-name" class="form-control" type="text" value="${movie.name}" aria-label="Disabled input example" disabled readonly>
+
+                <div class="form-group ">
                         <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter name" name = "username">
                         
                     </div>
@@ -77,26 +74,20 @@ const modalContent = (data) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
     console.log('Form submitted!'); // Log to the console to verify it's working
-    // Collect data from form inputs
-    const username = document.getElementById('exampleInputName').value;
-    const dateStart = document.getElementById('startDate').value;
-    const dateEnd = document.getElementById('endDate').value;
-    console.log(username, dateStart, dateEnd);
-    // Create reservation data object
-    // const reservationData = {
-    //   item_id: `item1`, // Set the appropriate item_id
-    //   username: `${username}`, // Set the appropriate username
-    //   date_start: `${dateStart}`, // Set the appropriate date_start
-    //   date_end: `${dateEnd}`, // Set the appropriate date_end
-    // };
+    console.log(event);
+    const modal = event.target.closest('.modal');
+    const username = event.target.querySelector('input[name="username"]').value;
+    const dateStart = event.target.querySelector('input[name="date_start"]').value;
+    const dateEnd = event.target.querySelector('input[name="date_end"]').value;
+    const movieName = modal.querySelector('.modal-title').textContent;
 
+    console.log(movieName, username, dateStart, dateEnd);
     // Call the createReservation function
-    await createReservation(reservation, username, dateStart, dateEnd);
-    alert('Reservation created successfully!'); // Alert the user
+    await createReservation(movieName, username, dateStart, dateEnd);
+    alert('Reservation created successfully!'); // Alert the users
   };
 
   // Attach form submission handler to the form element
-  const form = document.querySelectorAll('form');
   document.addEventListener('submit', (event) => {
     if (event.target && event.target.classList.contains('reservation-form')) {
       handleFormSubmit(event);

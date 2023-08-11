@@ -14,7 +14,6 @@ import 'bootstrap';
 
 const renderMovies = async () => {
   const data = await getMoviesData(showApiUrl);
-
   data.sort(() => 0.5 - Math.random());
   data.length = 20;
   const movieContainer = document.getElementById('movieContainer');
