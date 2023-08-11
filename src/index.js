@@ -3,6 +3,35 @@ import { getMoviesData } from './modules/functionalities.js';
 import { showApiUrl } from './modules/showsAPI.js';
 import 'bootstrap';
 import './assets/bg-for-page.jpg';
+import theForm from './modules/comment.js';
+import print from './modules/print.js';
+
+// Function to send a POST request to store a comment
+async function postCommentToAPI(movieId, name, comment) {
+  const response = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      movieId,
+      name,
+      comment,
+    }),
+  });
+
+  // Handle the response status and errors if needed
+  if (!response.ok) {
+    console.error('Failed to post comment:', response.status);
+  }
+}
+
+// Function to fetch comments from the API
+async function fetchCommentsFromAPI(movieId) {
+  const response = await fetch(`/api/comments/${movieId}`);
+  const comments = await response.json();
+  return comments;
+}
 
 const renderMovies = async () => {
   const data = await getMoviesData(showApiUrl);
@@ -11,7 +40,7 @@ const renderMovies = async () => {
   data.length = 20;
   const movieContainer = document.getElementById('movieContainer');
 
-  data.forEach((movie) => {
+  data.forEach(async (movie) => {
     const movieCard = document.createElement('div');
     movieCard.classList.add('col-md-3', 'col-sm-6', 'mb-4');
     movieCard.innerHTML = `
@@ -36,6 +65,7 @@ const renderMovies = async () => {
 
     movieContainer.appendChild(movieCard);
 
+    // Create modal and attach listeners inside this loop
     const modal = document.createElement('div');
     modal.classList.add('modal', 'fade');
     modal.id = `commentModal-${movie.id}`;
@@ -76,7 +106,37 @@ const renderMovies = async () => {
     `;
 
     document.body.appendChild(modal);
+
+    // Find the comment form and button in the modal
+    const commentForm = modal.querySelector(`#commentForm-${movie.id}`);
+
+    // Add event listener for comment form submission
+    commentForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const nameInput = commentForm.querySelector('#name');
+      const commentInput = commentForm.querySelector('#comment');
+      const name = nameInput.value;
+      const comment = commentInput.value;
+
+      // Send comment to API
+      await postCommentToAPI(movie.id, name, comment);
+
+      // Clear input fields
+      nameInput.value = '';
+      commentInput.value = '';
+
+      // Fetch and display comments
+      await fetchAndDisplayComments(movie.id);
+    });
+
+    // Add event listener for modal opening (to fetch and display comments)
+    modal.addEventListener('shown.bs.modal', async () => {
+      await fetchAndDisplayComments(movie.id);
+    });
   });
 };
 
-renderMovies();
+renderMovies().then(() => {
+  theForm();
+  print();
+});

@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "description": "<a name=\"readme-top\"></a>",
   "main": "webpack.config.js",
-  "scripts": {"watch": "webpack --watch",
-  "start": "webpack serve --open",
-  "build": "webpack",
-  "test": "jest --coverage"
-  },"jest": {
+  "scripts": {
+    "watch": "webpack --watch",
+    "start": "webpack serve --open",
+    "build": "webpack",
+    "test": "jest --coverage"
+  },
+  "jest": {
     "testEnvironment": "jest-environment-jsdom"
   },
   "keywords": [],
@@ -39,6 +41,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "body-parser": "^1.20.2",
     "bootstrap": "^5.3.1",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1"
