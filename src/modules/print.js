@@ -1,10 +1,10 @@
 // This module handles fetching and printing leaderboard scores
 const print = async () => {
-  const wrapper = document.querySelector('.leaders');
+  const wrapper = document.querySelector('.comments-section');
 
   // Create a list item template
   const template = (user, comment) => {
-    const list = document.createElement('li');
+    const list = document.createElement('form-group');
     list.innerText = `${user}: ${comment}`;
     wrapper.appendChild(list);
   };
