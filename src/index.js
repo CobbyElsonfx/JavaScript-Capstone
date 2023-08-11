@@ -1,6 +1,7 @@
 import './style.css';
-import { getMoviesData } from './modules/functionalities.js';
+import { getMoviesData, postLikes } from './modules/functionalities.js';
 import { showApiUrl } from './modules/showsAPI.js';
+import { likeApi } from './modules/involvementAPI.js';
 import 'bootstrap';
 import './assets/bg-for-page.jpg';
 import theForm from './modules/comment.js';
@@ -61,7 +62,10 @@ const renderMovies = async () => {
         <div class="card-body">
           <div>
             <span class="card-title">${movie.name}</span>
-            <span class="likes"> Likes</span>
+            <div>
+            <span class="likeBtn" data-movie-id="${movie.id}">&#9825</span>
+            <span class="likesCount${movie.id}">0</span>
+            </div>
           </div>
           <div class="card-text">
             <button type="button" 
@@ -77,7 +81,34 @@ const renderMovies = async () => {
 
     movieContainer.appendChild(movieCard);
 
-    // Modal and attach listeners
+    //  likes functionality
+    const likeBtn = movieCard.querySelector('.likeBtn'); // Select the like button within the movie card
+    const likesCountContainer = movieCard.querySelector(`.likesCount${movie.id}`);
+
+    let isLiked = false;
+    let likesCount = parseInt(likesCountContainer.textContent);
+
+    likeBtn.addEventListener('click', async () => {
+      if (isLiked) {
+        // If already liked, subtract the like and change the symbol back
+        likesCount -= 1;
+        likeBtn.innerHTML = '&#9825';
+        isLiked = false;
+      } else {
+        // If not liked, add the like and change the symbol to ❤
+        likesCount += 1;
+        likeBtn.innerHTML = '❤️';
+        isLiked = true;
+      }
+
+      likesCountContainer.textContent = likesCount;
+      // Call postLikes to record likes to the API
+      await postLikes(movie.id, likeApi);
+      console.log(`Likes recorded for movie with id ${movie.id}: ${likesCount}`);
+    });
+
+    // modal functionality
+
     const modal = document.createElement('div');
     modal.classList.add('modal', 'fade');
     modal.id = `commentModal-${movie.id}`;
