@@ -12,7 +12,8 @@
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.11.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.11.0/js/bootstrap-datepicker.min.js"></script>
-  <title>Document</title>
+  <title>MovizHUB</title>
+
 <script defer src="main.%20bundle.js"></script></head>
 
 <body>
@@ -53,16 +54,25 @@
         <div class="row" id="movieContainer">
           <!-- Movies cards will be dynamically added here -->
         </div>
-      </div> 
-      <div class="overlayForBody"></div>
+
+        <!-- HTML Structure -->
+        <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!-- Modal content for each movie will be populated dynamically -->
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
-    <footer>
-      <div class="footer-container">
-        <div>
+    <footer class="footer-section">
+      <div class="container-div">
+        <div class="footer-copyright">
           <p class="footer-description">Created by Microverse under CC license</p>
         </div>
       </div> 
     </footer> 
+
 </body>
 
 </html>
