@@ -6,13 +6,14 @@ import { showApiUrl } from './modules/showsAPI.js';
 // modal import
 import modalContent from './modules/reservation.js';
 
-// image files imports
+// api imports
 import { likeApi } from './modules/involvementAPI.js';
 import 'bootstrap';
 
 import './assets/bg-for-page.jpg';
 import theForm from './modules/comment.js';
 import print from './modules/print.js';
+
 
 // Function to send a POST request to store a comment
 async function postCommentToAPI(movieId, name, comment) {
@@ -114,7 +115,6 @@ const renderMovies = async () => {
     });
 
     // modal functionality
-
     const modal = document.createElement('div');
     modal.classList.add('modal', 'fade');
     modal.id = `commentModal-${movie.id}`;
