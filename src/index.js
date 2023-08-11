@@ -1,8 +1,15 @@
+/* eslint-disable max-len */
 import './style.css';
 import { getMoviesData, postLikes } from './modules/functionalities.js';
 import { showApiUrl } from './modules/showsAPI.js';
+
+// modal import
+import modalContent from './modules/reservation.js';
+
+// image files imports
 import { likeApi } from './modules/involvementAPI.js';
 import 'bootstrap';
+
 import './assets/bg-for-page.jpg';
 import theForm from './modules/comment.js';
 import print from './modules/print.js';
@@ -48,7 +55,6 @@ async function fetchAndDisplayComments(movieId) {
 
 const renderMovies = async () => {
   const data = await getMoviesData(showApiUrl);
-
   data.sort(() => 0.5 - Math.random());
   data.length = 20;
   const movieContainer = document.getElementById('movieContainer');
@@ -180,6 +186,12 @@ const renderMovies = async () => {
       await fetchAndDisplayComments(movie.id);
     });
   });
+
+  // reservation popup code
+  const reservationPopUp = document.querySelector('.overlayForBody');
+  const modalContainer = document.createElement('div');
+  modalContainer.innerHTML = modalContent(data);
+  reservationPopUp.appendChild(modalContainer);
 };
 
 renderMovies().then(() => {

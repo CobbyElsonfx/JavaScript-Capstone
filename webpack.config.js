@@ -34,6 +34,17 @@ module.exports = {
         test: /bootstrap\/dist\/js\/umd\//,
         use: 'imports-loader?jQuery=jquery',
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules\/(?!(bootstrap)\/).*/,
+        use: {
+          loader: 'babel-loader', // You can add other loaders if needed
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
     ],
   },
+  devtool: 'source-map',
 };
