@@ -43,8 +43,8 @@ const createReservation = async (title, username1, dateStart, dateEnd) => {
 };
 
 // Function to fetch reservations
-const getReservations = async () => {
-  const item_id = 'item1'; // Replace with the actual item ID
+const getReservations = async (itemId) => {
+  const item_id = itemId; // Replace with the actual item ID
   const app_id = 'XySHXEsIGGBSA40iaBEF'; // Replace with the actual app ID
   const getUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${app_id}/reservations?item_id=${item_id}`;
 
@@ -56,6 +56,9 @@ const getReservations = async () => {
       console.log('Reservations:', reservations.length);
       // Process and display reservations as needed
       return Array.from(reservations);
+    // eslint-disable-next-line no-else-return
+    } else {
+      return console.error('NO Reservations', response.status);
     }
   } catch (error) {
     console.error('Error:', error);
