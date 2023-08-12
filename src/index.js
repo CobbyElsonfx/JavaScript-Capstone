@@ -10,6 +10,9 @@ import modalContent from './modules/reservation.js';
 import { likeApi } from './modules/involvementAPI.js';
 import 'bootstrap';
 
+// Import the function to render movies from latestMovies.js
+import latestMovies from './modules/latestMovies.js';
+
 import './assets/bg-for-page.jpg';
 import theForm from './modules/comment.js';
 import print from './modules/print.js';
@@ -52,6 +55,14 @@ async function fetchAndDisplayComments(movieId) {
     commentsSection.appendChild(commentElement);
   });
 }
+
+// Call the function to render movies from latestMovies.js
+const movieContainer = document.getElementById('movieContainer');
+latestMovies.forEach(() => {
+  const movieCard = document.createElement('div');
+  // ... (populate movie card using movie data)
+  movieContainer.appendChild(movieCard);
+});
 
 const renderMovies = async () => {
   const data = await getMoviesData(showApiUrl);
