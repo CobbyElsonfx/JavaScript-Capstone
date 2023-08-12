@@ -1,8 +1,7 @@
 /* eslint-disable max-len */
 import './style.css';
-import { getMoviesData, postLikes } from './modules/functionalities.js';
+import { getMoviesData, postLikes, getReservations } from './modules/functionalities.js';
 import { showApiUrl } from './modules/showsAPI.js';
-
 // modal import
 import modalContent from './modules/reservation.js';
 
@@ -81,7 +80,7 @@ const renderMovies = async () => {
               Comment
             </button>
             <br>
-            <a type="button"  class="btn btn-primary reservationBtn"  id="${movie.id}" data-toggle="modal" data-target="#exampleModal-${movie.id}" >Reservations</a>
+            <a type="button" class="btn btn-primary reservationBtn"  id="${movie.id}" data-toggle="modal" data-target="#exampleModal-${movie.id}" >Reservations</a>
           </div>
         </div>
       </div>
@@ -123,7 +122,8 @@ const renderMovies = async () => {
     modal.setAttribute('aria-labelledby', `exampleModalCenterTitle-${movie.id}`);
     modal.setAttribute('aria-hidden', 'true');
     modal.innerHTML = `
-    <div class="modal-dialog modal-dialog-centered" role="document">
+
+    <div class="modal-dialog modal-dialog-centered"  role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
@@ -139,7 +139,7 @@ const renderMovies = async () => {
           <!-- Comments fetched from API will be added here -->
         </div>
         <div>
-          <form id="commentForm-${movie.id}">
+          <form class="commentForm" id="commentForm-${movie.id}">
             <div class="form-group">
               <label for="name">Name</label>
               <input type="text" class="form-control" id="name" placeholder="Enter your name">
@@ -157,6 +157,7 @@ const renderMovies = async () => {
         </div>
       </div>
     </div>
+
   `;
 
     document.body.appendChild(modal);
@@ -190,12 +191,11 @@ const renderMovies = async () => {
   });
 
   // reservation popup code
-  // const reservationPopUp = document.querySelector('#overlayForBody');
-  console.log(movieContainer);
+  const reservationPopUp = document.getElementById('overlayForBody');
   const modalContainer = document.createElement('div');
   modalContainer.innerHTML = await modalContent(data);
-  // console.log(modalContainer);
-  movieContainer.appendChild(modalContainer);
+  console.log(modalContainer);
+  reservationPopUp.appendChild(modalContainer);
 };
 
 renderMovies().then(() => {

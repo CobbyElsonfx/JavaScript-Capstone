@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const getMoviesData = async (url) => {
   try {
     const fetchedData = await fetch(url);
@@ -7,7 +8,6 @@ const getMoviesData = async (url) => {
     throw new Error(error);
   }
 };
-
 
 // Function to create a reservation
 const createReservation = async (title, username1, dateStart, dateEnd) => {
@@ -43,6 +43,7 @@ const createReservation = async (title, username1, dateStart, dateEnd) => {
 };
 
 // Function to fetch reservations
+// eslint-disable-next-line consistent-return
 const getReservations = async (itemId) => {
   const item_id = itemId; // Replace with the actual item ID
   const app_id = 'XySHXEsIGGBSA40iaBEF'; // Replace with the actual app ID
@@ -53,22 +54,19 @@ const getReservations = async (itemId) => {
     if (response.ok) {
       const reservations = await response.json();
       console.log('Reservations:', reservations);
-      console.log('Reservations:', reservations.length);
+      console.log('the last one', reservations.length);
       // Process and display reservations as needed
       return Array.from(reservations);
     // eslint-disable-next-line no-else-return
     } else {
-      return console.error('NO Reservations', response.status);
+      // return console.error('NO Reservations', response.status);
     }
   } catch (error) {
     console.error('Error:', error);
   }
 };
 
-
-
-
-  const postLikes = async (movieId, api) => {
+const postLikes = async (movieId, api) => {
   try {
     const data = {
       item_id: movieId,

@@ -1,11 +1,13 @@
+/* eslint-disable consistent-return */
 import { createReservation, getReservations } from './functionalities.js';
 
 // const num = getReservations();
-const modalContent = (data) => {
+const modalContent = async (data) => {
   let modalTemplate = '';
+
+  // let num = await getReservations(movie.id);
   data.forEach((movie) => {
-    // const num = getReservations(movie.name);
-    // console.log(num);
+    // console.log('num is undefined');
     modalTemplate += `
         <div class="modal fade" id="exampleModal-${movie.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -16,7 +18,7 @@ const modalContent = (data) => {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body">s
                 <!-- Your modal content here -->
                 <div class="card" style="width: auto;">
                 <img class="card-img-top text-dark" style="height: 23rem;" src="${movie.image.medium}" alt="Card image cap">
@@ -40,7 +42,7 @@ const modalContent = (data) => {
                 </div>
                 <br>
                 <hr>
-                <h4> Reservations ${2} </h4> 
+                <h4> Reservations 0 </h4> 
                 <form class="reservation-form">
                 <label for="movieName">Series Name:</label>
                 <input id="item-name" name="movieName" class="form-control" type="text" value="${movie.name}" aria-label="Disabled input example" disabled readonly>
