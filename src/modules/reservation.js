@@ -1,12 +1,12 @@
+/* eslint-disable no-console */
+/* eslint-disable dot-notation */
 /* eslint-disable consistent-return */
 import { createReservation, getReservations } from './functionalities.js';
 
 const modalContent = async (data) => {
   let modalTemplate = '';
-  // let num = await getReservations(movie.id);
-  console.log(data);
+
   data.forEach((movie) => {
-    // console.log('num is undefined');
     modalTemplate += `
         <div class="modal fade" id="exampleModal-${movie.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -17,7 +17,7 @@ const modalContent = async (data) => {
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">s
+              <div class="modal-body">
                 <!-- Your modal content here -->
                 <div class="card" style="width: auto;">
                 <img class="card-img-top text-dark" style="height: 23rem;" src="${movie.image.medium}" alt="Card image cap">
@@ -41,16 +41,28 @@ const modalContent = async (data) => {
                 </div>
                 <br>
                 <hr>
-                <h4> Reservations 0 </h4> 
-                <div class="row">
-                 <div class="col text-dark" id = "Customer"></div>
+                // reservation section
+                <div class="reservation-section">
+                  <h4> Reservations 0 </h4> 
+                  <div class="row">
+                  <div class="col text-dark" id="customer-${movie.id}">
+                  Customer:
+                  </div>
+                  </div>
+                  <div class="row">
+                  <div class="col text-dark "
+                  id="start-date-${movie.id}"
+                  >Start Date:</div>
+                  </div>
+                  <div class="row">
+                  <div class="col text-dark end-date"
+                  id="end-date-${movie.id}"
+                  >
+                  End Date:
+                  </div>
+                  </div>
                 </div>
-                <div class="row">
-                 <div class="col text-dark" id = "start-date"></div>
-                </div>
-                <div class="row">
-                 <div class="col text-dark" id = "end-date"></div>
-                </div>
+
                 <form class="reservation-form">
                 <label for="movieName">Series Name:</label>
                 <input id="item-name" name="movieId" class="form-control" type="text" value="${movie.id}" aria-label="Disabled input example" disabled readonly>
@@ -63,7 +75,7 @@ const modalContent = async (data) => {
                     <div class="form-group">
                       <label for="startDate">Start Date</label>
                       <input type="text" class="form-control datepicker" id="startDate" placeholder="Select start date" name="date_start">
-                      <small id="emailHelp" class="form-text text-muted">Note : The format should be like this only "YEAR-MONTH-DAY" </small>
+                      <small id="emailHelp" class="form-text text-muted">Note : The format should be like this only "yyyy-mm-dd" </small>
                     </div>
                     <div class="form-group">
                       <label for="endDate">End Date</label>
@@ -83,49 +95,31 @@ const modalContent = async (data) => {
           </div>
         </div>
       `;
-
-   
-   
   });
 
-
-  const setReservationInfo = () => {
-    const Customer2 = document.getElementById('Customer');
-    const startdate2 = document.getElementById('start-date');
-    const enddate2 = document.getElementById('end-date');
-    console.log(Customer2);
-    data.forEach(async (resFetch) => {
-      const num = await getReservations(resFetch.id);
-      console.log(resFetch.id);
-      if (num !== undefined) {
-        console.log(num);
-        console.log(num[0]["date_start"]);
-        console.log(num[0]["date_end"]);
-        console.log(num[0]["username"]);
-        Customer2.innerHTML = `Customer : ${num[0]["username"]}`;
-        startdate2.innerHTML = `Start Date : ${num[0]["date_start"]}`;
-        enddate2.innerHTML = `End Date : ${num[0]["date_end"]}`;
-      }
-    });
+  const idArray = data.map((movie) => movie.id);
+  const loadReservation = async (reservationId) => {
+    const reservationDetails = await getReservations(reservationId);
+    if (reservationDetails !== undefined && reservationDetails.length > 0) {
+      console.log(`Customer : ${reservationDetails[0]['username']} , Start Date : ${reservationDetails[0]['date_start']} , End Date : ${reservationDetails[0]['date_end']}`);
+    } else {
+      // Do something else with the invalid reservation details
+    }
   };
-  
-  setReservationInfo();
-  
-  // Function to handle form submission
+
+  // eslint-disable-next-line no-restricted-syntax
+  for await (const reservationId of idArray) {
+    loadReservation(reservationId);
+  }
+
   const handleFormSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-    console.log('Form submitted!'); // Log to the console to verify it's working
-    console.log(event);
-    const modal = event.target.closest('.modal');
     const username = event.target.querySelector('input[name="username"]').value;
     const dateStart = event.target.querySelector('input[name="date_start"]').value;
     const dateEnd = event.target.querySelector('input[name="date_end"]').value;
     const movieName = event.target.querySelector('input[name="movieId"]').value;
-
-    console.log(movieName, username, dateStart, dateEnd);
     // Call the createReservation function
     await createReservation(movieName, username, dateStart, dateEnd);
-    alert('Reservation created successfully!'); // Alert the users
   };
 
   // Attach form submission handler to the form element

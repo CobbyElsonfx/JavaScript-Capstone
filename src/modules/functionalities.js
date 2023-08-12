@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-alert */
 /* eslint-disable camelcase */
 const getMoviesData = async (url) => {
   try {
@@ -12,8 +14,6 @@ const getMoviesData = async (url) => {
 // Function to create a reservation
 const createReservation = async (title, username1, dateStart, dateEnd) => {
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/XySHXEsIGGBSA40iaBEF/reservations/';
-  console.log(title);
-  console.log(username1, dateStart, dateEnd);
 
   const requestBody = {
     // eslint-disable-next-line quotes
@@ -33,7 +33,7 @@ const createReservation = async (title, username1, dateStart, dateEnd) => {
 
     if (response.status === 201) {
       // Successful reservation
-      console.log('Reservation successful!');
+      alert('Reservation successful!');
     } else {
       console.error('Reservation failed:', response.status);
     }
@@ -53,16 +53,14 @@ const getReservations = async (itemId) => {
     const response = await fetch(getUrl);
     if (response.ok) {
       const reservations = await response.json();
-      console.log('Reservations:', reservations);
-      console.log('the last one', reservations.length);
-      // Process and display reservations as needed
+
       return Array.from(reservations);
     // eslint-disable-next-line no-else-return
     } else {
       // return console.error('NO Reservations', response.status);
     }
   } catch (error) {
-    console.error('Error:', error);
+    // eslint-disable-next-line no-console
   }
 };
 

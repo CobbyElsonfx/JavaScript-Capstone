@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import './style.css';
-import { getMoviesData, postLikes, getReservations } from './modules/functionalities.js';
+import { getMoviesData, postLikes } from './modules/functionalities.js';
 import { showApiUrl } from './modules/showsAPI.js';
 // modal import
 import modalContent from './modules/reservation.js';
@@ -93,6 +93,7 @@ const renderMovies = async () => {
     const likesCountContainer = movieCard.querySelector(`.likesCount${movie.id}`);
 
     let isLiked = false;
+    // eslint-disable-next-line radix
     let likesCount = parseInt(likesCountContainer.textContent);
 
     likeBtn.addEventListener('click', async () => {
@@ -111,7 +112,6 @@ const renderMovies = async () => {
       likesCountContainer.textContent = likesCount;
       // Call postLikes to record likes to the API
       await postLikes(movie.id, likeApi);
-      console.log(`Likes recorded for movie with id ${movie.id}: ${likesCount}`);
     });
 
     // modal functionality
@@ -194,12 +194,10 @@ const renderMovies = async () => {
   const reservationPopUp = document.getElementById('overlayForBody');
   const modalContainer = document.createElement('div');
   modalContainer.innerHTML = await modalContent(data);
-  console.log(modalContainer);
   reservationPopUp.appendChild(modalContainer);
 };
 
 renderMovies().then(() => {
-  console.log('Movies rendered');
   theForm();
   print();
 });
