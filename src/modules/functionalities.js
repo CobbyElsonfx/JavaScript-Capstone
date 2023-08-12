@@ -8,7 +8,6 @@ const getMoviesData = async (url) => {
   }
 };
 
-
 // Function to create a reservation
 const createReservation = async (title, username1, dateStart, dateEnd) => {
   const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/XySHXEsIGGBSA40iaBEF/reservations/';
@@ -65,10 +64,7 @@ const getReservations = async (itemId) => {
   }
 };
 
-
-
-
-  const postLikes = async (movieId, api) => {
+const postLikes = async (movieId, api) => {
   try {
     const data = {
       item_id: movieId,

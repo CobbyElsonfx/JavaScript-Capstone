@@ -66,7 +66,7 @@ const renderMovies = async () => {
       <div class="card custom-card">
         <img src=${movie.image.medium} class="card-img-top" alt="images">
         <div class="card-body">
-          <div>
+          <div id="latest-shows">
             <span class="card-title">${movie.name}</span>
             <div>
             <span class="likeBtn" data-movie-id="${movie.id}">&#9825</span>
