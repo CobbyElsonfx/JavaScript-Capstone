@@ -83,13 +83,13 @@ body {
   border: none;
 }
 
-
 /* modal styling */
 .modal-title {
   width: 93%;
   font-weight: bold;
   font-size: 40px;
   font-family: 'cursive', sans-serif;
+}
 
 .modal-content {
   background-color: transparent;
@@ -110,5 +110,4 @@ body {
 
 .footer-copyright {
   margin-bottom: 3.17em;
-
 }

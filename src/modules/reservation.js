@@ -1,9 +1,11 @@
 import { createReservation, getReservations } from './functionalities.js';
 
-const num = getReservations();
+// const num = getReservations();
 const modalContent = (data) => {
   let modalTemplate = '';
   data.forEach((movie) => {
+    // const num = getReservations(movie.name);
+    // console.log(num);
     modalTemplate += `
         <div class="modal fade" id="exampleModal-${movie.id}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -40,11 +42,13 @@ const modalContent = (data) => {
                 <hr>
                 <h4> Reservations ${2} </h4> 
                 <form class="reservation-form">
-                <input id="item-name" class="form-control" type="text" value="${movie.name}" aria-label="Disabled input example" disabled readonly>
+                <label for="movieName">Series Name:</label>
+                <input id="item-name" name="movieName" class="form-control" type="text" value="${movie.name}" aria-label="Disabled input example" disabled readonly>
 
                 <div class="form-group ">
+                <br>
+                  <label for="username">Your Name:</label>
                         <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter name" name = "username">
-                        
                     </div>
                     <div class="form-group">
                       <label for="startDate">Start Date</label>
