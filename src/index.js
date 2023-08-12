@@ -1,6 +1,11 @@
 /* eslint-disable max-len */
 import './style.css';
-import { getMoviesData, postLikes,postComment ,getLikesForUnclick,fetchCommentsFromApi,renderComments,getLikes } from './modules/functionalities.js';
+import { getMoviesData,
+   postLikes,postComment ,
+   getLikesForUnclick,
+   fetchCommentsFromApi,
+   renderComments,
+   getLikes } from './modules/functionalities.js';
 import { showApiUrl } from './modules/showsAPI.js';
 
 // modal import
@@ -9,6 +14,10 @@ import modalContent from './modules/reservation.js';
 // api imports
 import { likeApi , commentApi } from './modules/involvementAPI.js';
 import 'bootstrap';
+
+// testing
+import {countComments} from './modules/counter.js';
+
 
 import './assets/bg-for-page.jpg';
 import './assets/button-menu.png';
@@ -47,7 +56,10 @@ const renderMovies = async () => {
               Comment
             </button>
 
-            <button type="button"  class="btn  reservationBtn"  id="${movie.id}" data-toggle="modal" data-target="#exampleModal-${movie.id}" >Reservations</button>
+            <button type="button"  
+                    class="btn  reservationBtn"  
+                    id="${movie.id}" data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal-${movie.id}" >Reservations</button>
           </div>
         </div>
       </div>
@@ -110,7 +122,10 @@ const renderMovies = async () => {
          </div>
          <div class="commentArea">
 
+
          </div>
+         <div><span class="commentsCounter"></span></div>
+
          <div>
            <form  class="form">
            <h1>Comment</h1>
@@ -144,8 +159,7 @@ const renderMovies = async () => {
     const username = modal.querySelector(`#username-${movie.id}`).value;
     const comment = modal.querySelector(`#comment-${movie.id}`).value;
     
-    // Call your postComment function to send the comment to the API
-    console.log(movie.id,username,comment)
+  
     await postComment(commentApi, movie.id, username, comment);
 
     // Clear the form inputs
@@ -153,8 +167,10 @@ const renderMovies = async () => {
     modal.querySelector(`#comment-${movie.id}`).value = '';
                               
     const comments = await fetchCommentsFromApi(movie.id);
-    console.log(comments) 
     renderComments(modal, comments); 
+    const commentsCounter = modal.querySelector('.commentsCounter');
+    const numComments = countComments(movie.id, comments);
+    commentsCounter.textContent = `Comments: ${numComments}`
   });
   
 

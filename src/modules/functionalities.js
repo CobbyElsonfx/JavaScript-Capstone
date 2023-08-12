@@ -169,7 +169,7 @@ const  renderComments = (modal, comments) => {
   // Render the comments in the modal
   comments.forEach((comment) => {
     const commentDiv = document.createElement('div');
-    commentDiv.textContent = `${comment.username}: ${comment.comment}`;
+    commentDiv.textContent = `${comment.creation_date}:${comment.username}: ${comment.comment}`;
     commentArea.appendChild(commentDiv);
   });
 }
