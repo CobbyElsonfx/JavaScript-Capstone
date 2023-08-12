@@ -80,6 +80,8 @@ const renderMovies = async () => {
                     data-bs-target="#commentModal-${movie.id}">
               Comment
             </button>
+            <br>
+            <a type="button"  class="btn btn-primary reservationBtn"  id="${movie.id}" data-toggle="modal" data-target="#exampleModal-${movie.id}" >Reservations</a>
           </div>
         </div>
       </div>
@@ -188,13 +190,16 @@ const renderMovies = async () => {
   });
 
   // reservation popup code
-  const reservationPopUp = document.querySelector('.overlayForBody');
+  // const reservationPopUp = document.querySelector('#overlayForBody');
+  console.log(movieContainer);
   const modalContainer = document.createElement('div');
-  modalContainer.innerHTML = modalContent(data);
-  reservationPopUp.appendChild(modalContainer);
+  modalContainer.innerHTML = await modalContent(data);
+  // console.log(modalContainer);
+  movieContainer.appendChild(modalContainer);
 };
 
 renderMovies().then(() => {
+  console.log('Movies rendered');
   theForm();
   print();
 });
