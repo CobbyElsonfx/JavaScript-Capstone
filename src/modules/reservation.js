@@ -1,11 +1,10 @@
 /* eslint-disable consistent-return */
 import { createReservation, getReservations } from './functionalities.js';
 
-// const num = getReservations();
 const modalContent = async (data) => {
   let modalTemplate = '';
-
   // let num = await getReservations(movie.id);
+  console.log(data);
   data.forEach((movie) => {
     // console.log('num is undefined');
     modalTemplate += `
@@ -13,7 +12,7 @@ const modalContent = async (data) => {
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title text-center p-3 mb-2 w text-dark" id="exampleModalLabel">${movie.name}</h5>
+                <h5 class="modal-title text-center p-3 mb-2 w " id="exampleModalLabel">${movie.name}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -43,9 +42,18 @@ const modalContent = async (data) => {
                 <br>
                 <hr>
                 <h4> Reservations 0 </h4> 
+                <div class="row">
+                 <div class="col text-dark" id = "Customer"></div>
+                </div>
+                <div class="row">
+                 <div class="col text-dark" id = "start-date"></div>
+                </div>
+                <div class="row">
+                 <div class="col text-dark" id = "end-date"></div>
+                </div>
                 <form class="reservation-form">
                 <label for="movieName">Series Name:</label>
-                <input id="item-name" name="movieName" class="form-control" type="text" value="${movie.name}" aria-label="Disabled input example" disabled readonly>
+                <input id="item-name" name="movieId" class="form-control" type="text" value="${movie.id}" aria-label="Disabled input example" disabled readonly>
 
                 <div class="form-group ">
                 <br>
@@ -75,7 +83,34 @@ const modalContent = async (data) => {
           </div>
         </div>
       `;
+
+   
+   
   });
+
+
+  const setReservationInfo = () => {
+    const Customer2 = document.getElementById('Customer');
+    const startdate2 = document.getElementById('start-date');
+    const enddate2 = document.getElementById('end-date');
+    console.log(Customer2);
+    data.forEach(async (resFetch) => {
+      const num = await getReservations(resFetch.id);
+      console.log(resFetch.id);
+      if (num !== undefined) {
+        console.log(num);
+        console.log(num[0]["date_start"]);
+        console.log(num[0]["date_end"]);
+        console.log(num[0]["username"]);
+        Customer2.innerHTML = `Customer : ${num[0]["username"]}`;
+        startdate2.innerHTML = `Start Date : ${num[0]["date_start"]}`;
+        enddate2.innerHTML = `End Date : ${num[0]["date_end"]}`;
+      }
+    });
+  };
+  
+  setReservationInfo();
+  
   // Function to handle form submission
   const handleFormSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
@@ -85,7 +120,7 @@ const modalContent = async (data) => {
     const username = event.target.querySelector('input[name="username"]').value;
     const dateStart = event.target.querySelector('input[name="date_start"]').value;
     const dateEnd = event.target.querySelector('input[name="date_end"]').value;
-    const movieName = modal.querySelector('.modal-title').textContent;
+    const movieName = event.target.querySelector('input[name="movieId"]').value;
 
     console.log(movieName, username, dateStart, dateEnd);
     // Call the createReservation function
