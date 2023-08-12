@@ -102,12 +102,24 @@ body {
 }
 
 .container-div {
-  width: 88.89vw;
+  background-color: rgba(43, 40, 40, 0.6);
+  /* width: 88.89vw; */
   max-width: none;
-  margin-right: auto;
-  margin-left: auto;
+  /* margin-right: auto;
+  margin-left: auto; */
+  margin: 0;
+  padding: 1.5rem;
 }
 
 .footer-copyright {
-  margin-bottom: 3.17em;
+  display: flex;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  align-items: center;
+}
+
+.footer-description {
+  font-size: 22px;
+  font-weight: 400;
+  color: #f00;
 }
