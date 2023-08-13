@@ -14,17 +14,19 @@ import { likeApi, commentApi } from './modules/involvementAPI.js';
 import 'bootstrap';
 
 // testing
-import { countComments } from './modules/counter.js';
+import { countComments, moviesCount } from './modules/counter.js';
 
 import './assets/bg-for-page.jpg';
 import './assets/button-menu.png';
 import './assets/close-icon.svg';
-import modalContent from './modules/reservation';
+import modalContent from './modules/reservation.js';
 
 const renderMovies = async () => {
   const data = await getMoviesData(showApiUrl);
   data.sort(() => 0.5 - Math.random());
   data.length = 20;
+  const countsMovie = document.getElementById('countsMovie');
+  countsMovie.textContent = moviesCount(data);
   const movieContainer = document.getElementById('movieContainer');
 
   data.forEach(async (movie) => {
