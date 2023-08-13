@@ -46,5 +46,5 @@ test('moviesCount should count movies correctly', () => {
     },
   ];
 
-  expect(moviesCount(1, movies)).toBe(5);
+  expect(moviesCount(movies)).toBe(5);
 });
