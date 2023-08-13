@@ -1,5 +1,5 @@
 // commentCounter.test.js
-import { countComments } from '../modules/counter';
+import { countComments ,moviesCount} from '../modules/counter';
 
 // Example test cases
 test('countComments should count comments correctly', () => {

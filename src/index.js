@@ -58,8 +58,7 @@ const renderMovies = async () => {
 
             <button type="button"  
                     class="btn  reservationBtn"  
-                    id="${movie.id}" data-bs-toggle="modal" 
-                    data-bs-target="#exampleModal-${movie.id}" >Reservations</button>
+                    id="${movie.id}" data-toggle="modal" data-target="#exampleModal-${movie.id}" >Reservations</button>
           </div>
         </div>
       </div>
