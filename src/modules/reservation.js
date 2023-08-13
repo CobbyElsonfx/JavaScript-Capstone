@@ -1,4 +1,4 @@
-import { createReservation, getReservations } from './functionalities.js';
+import { createReservation } from './functionalities.js';
 
 // const num = getReservations();
 const modalContent = (data) => {
@@ -77,18 +77,13 @@ const modalContent = (data) => {
   // Function to handle form submission
   const handleFormSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
-    console.log('Form submitted!'); // Log to the console to verify it's working
-    console.log(event);
     const modal = event.target.closest('.modal');
     const username = event.target.querySelector('input[name="username"]').value;
     const dateStart = event.target.querySelector('input[name="date_start"]').value;
     const dateEnd = event.target.querySelector('input[name="date_end"]').value;
     const movieName = modal.querySelector('.modal-title').textContent;
-
-    console.log(movieName, username, dateStart, dateEnd);
     // Call the createReservation function
     await createReservation(movieName, username, dateStart, dateEnd);
-    alert('Reservation created successfully!'); // Alert the users
   };
 
   // Attach form submission handler to the form element

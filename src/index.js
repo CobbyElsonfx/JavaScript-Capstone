@@ -1,30 +1,25 @@
 /* eslint-disable max-len */
 import './style.css';
-import { getMoviesData,
-   postLikes,postComment ,
-   getLikesForUnclick,
-   fetchCommentsFromApi,
-   renderComments,
-   getLikes } from './modules/functionalities.js';
+import {
+  getMoviesData,
+  postLikes, postComment,
+  getLikesForUnclick,
+  fetchCommentsFromApi,
+  renderComments,
+  getLikes,
+} from './modules/functionalities.js';
 import { showApiUrl } from './modules/showsAPI.js';
 
-// modal import
-import modalContent from './modules/reservation.js';
-
 // api imports
-import { likeApi , commentApi } from './modules/involvementAPI.js';
+import { likeApi, commentApi } from './modules/involvementAPI.js';
 import 'bootstrap';
 
 // testing
-import {countComments} from './modules/counter.js';
-
+import { countComments } from './modules/counter.js';
 
 import './assets/bg-for-page.jpg';
 import './assets/button-menu.png';
 import './assets/close-icon.svg';
-
-
-
 
 const renderMovies = async () => {
   const data = await getMoviesData(showApiUrl);
@@ -68,10 +63,8 @@ const renderMovies = async () => {
 
     //  likes functionality
     const likeBtn = movieCard.querySelector('.likeBtn'); // Select the like button within the movie card
-    const likesCountContainer = movieCard.querySelector(`.likesCount${movie.id}`);
- 
+
     let isLiked = false;
-    let likesCount = parseInt(likesCountContainer.textContent);
 
     likeBtn.addEventListener('click', async () => {
       if (isLiked) {
@@ -86,13 +79,9 @@ const renderMovies = async () => {
         await postLikes(movie.id, likeApi);
         await getLikes(movie.id);
       }
-    
-
-      console.log(`Likes recorded for movie with id ${movie.id}: ${likesCount}`);
     });
     // update UI on page load
     await getLikes(movie.id);
-    
 
     // modal functionality
     const modal = document.createElement('div');
@@ -101,7 +90,6 @@ const renderMovies = async () => {
     modal.setAttribute('aria-labelledby', `exampleModalCenterTitle-${movie.id}`);
     modal.setAttribute('aria-hidden', 'true');
 
-   
     modal.innerHTML = `
     <div class="modal-dialog">
     <div class="modal-content">
@@ -150,35 +138,29 @@ const renderMovies = async () => {
   
   `;
 
-   // Add event listener to the comment form
-  const commentForm = modal.querySelector(`#commentFormBtn-${movie.id}`);
-  commentForm.addEventListener('click', async (event) => {
-    event.preventDefault();
-    
-    const username = modal.querySelector(`#username-${movie.id}`).value;
-    const comment = modal.querySelector(`#comment-${movie.id}`).value;
-    
-  
-    await postComment(commentApi, movie.id, username, comment);
+    // Add event listener to the comment form
+    const commentForm = modal.querySelector(`#commentFormBtn-${movie.id}`);
+    commentForm.addEventListener('click', async (event) => {
+      event.preventDefault();
 
-    // Clear the form inputs
-    modal.querySelector(`#username-${movie.id}`).value = '';
-    modal.querySelector(`#comment-${movie.id}`).value = '';
-                              
-    const comments = await fetchCommentsFromApi(movie.id);
-    renderComments(modal, comments); 
-    const commentsCounter = modal.querySelector('.commentsCounter');
-    const numComments = countComments(movie.id, comments);
-    commentsCounter.textContent = `Comments: ${numComments}`
-  });
-  
+      const username = modal.querySelector(`#username-${movie.id}`).value;
+      const comment = modal.querySelector(`#comment-${movie.id}`).value;
+
+      await postComment(commentApi, movie.id, username, comment);
+
+      // Clear the form inputs
+      modal.querySelector(`#username-${movie.id}`).value = '';
+      modal.querySelector(`#comment-${movie.id}`).value = '';
+
+      const comments = await fetchCommentsFromApi(movie.id);
+      renderComments(modal, comments);
+      const commentsCounter = modal.querySelector('.commentsCounter');
+      const numComments = countComments(movie.id, comments);
+      commentsCounter.textContent = `Comments: ${numComments}`;
+    });
 
     document.body.appendChild(modal);
-
-
-});
-}
-
+  });
+};
 
 renderMovies();
-
