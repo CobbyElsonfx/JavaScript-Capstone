@@ -82,10 +82,6 @@ const modalContent = (data) => {
 
     // Call the createReservation function
     await createReservation(movieName, username, dateStart, dateEnd);
-    username.value = '';
-    dateStart.value = '';
-    dateEnd.value = '';
-    movieName.value = '';
   };
 
   // Attach form submission handler to the form element

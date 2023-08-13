@@ -19,6 +19,7 @@ import { countComments } from './modules/counter.js';
 import './assets/bg-for-page.jpg';
 import './assets/button-menu.png';
 import './assets/close-icon.svg';
+import modalContent from './modules/reservation';
 
 const renderMovies = async () => {
   const data = await getMoviesData(showApiUrl);
@@ -158,6 +159,10 @@ const renderMovies = async () => {
 
     document.body.appendChild(modal);
   });
+  const reservationPopUp = document.getElementById('overlayForBody');
+  const modalContainer = document.createElement('div');
+  modalContainer.innerHTML = await modalContent(data);
+  reservationPopUp.appendChild(modalContainer);
 };
 
 renderMovies();
