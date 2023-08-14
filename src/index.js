@@ -90,6 +90,7 @@ const renderMovies = async () => {
     modal.setAttribute('aria-labelledby', `exampleModalCenterTitle-${movie.id}`);
     modal.setAttribute('aria-hidden', 'true');
 
+
     modal.innerHTML = `
     <div class="modal-dialog">
     <div class="modal-content">
