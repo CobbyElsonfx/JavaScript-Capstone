@@ -368,6 +368,12 @@ fieldset {
     color: white;
     font-weight: 600;
   }
+
+  .card {
+    width: 70%;     
+    margin:auto;  
+  }
+  
 }
 
 .movieImg {
