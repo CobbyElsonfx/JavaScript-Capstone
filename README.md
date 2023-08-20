@@ -58,6 +58,9 @@ Link to our deployed project (project is not deployed yet).
 
 - https:///
 
+🚀Live Preview
+![Screenshot for preview](movie.JPG)
+
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
