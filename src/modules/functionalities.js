@@ -7,41 +7,6 @@ const getMoviesData = async (url) => {
     throw new Error(error);
   }
 };
-
-// Function to create a reservation
-const createReservation = async (title, username1, dateStart, dateEnd) => {
-  const url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/XySHXEsIGGBSA40iaBEF/reservations/';
-
-  const requestBody = {
-    // eslint-disable-next-line quotes
-    item_id: title, // Replace with the actual item ID
-    username: username1,
-    date_start: dateStart,
-    date_end: dateEnd,
-  };
-};
-
-// Function to fetch reservations
-const getReservations = async (itemId) => {
-  const item_id = itemId; // Replace with the actual item ID
-  const app_id = 'XySHXEsIGGBSA40iaBEF'; // Replace with the actual app ID
-  const getUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${app_id}/reservations?item_id=${item_id}`;
-
-  try {
-    const response = await fetch(getUrl);
-    if (response.ok) {
-      const reservations = await response.json();
-      // Process and display reservations as needed
-      return Array.from(reservations);
-    // eslint-disable-next-line no-else-return
-    } else {
-      throw new Error('NO Reservations', response.status);
-    }
-  } catch (error) {
-    throw new Error('Error:', error);
-  }
-};
-
 const postLikes = async (movieId, api) => {
   try {
     const data = {
@@ -63,7 +28,6 @@ const postLikes = async (movieId, api) => {
     throw new Error(error);
   }
 };
-
 const getLikes = async (movieId) => {
   const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1lQTFOEu5O5KmM8n2meG/likes');
   if (!response) {
@@ -78,7 +42,6 @@ const getLikes = async (movieId) => {
   });
 };
 
-// unlike
 const getLikesForUnclick = async (movieId) => {
   const response = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1lQTFOEu5O5KmM8n2meG/likes');
   if (!response) {
@@ -93,7 +56,6 @@ const getLikesForUnclick = async (movieId) => {
   });
 };
 
-// comments
 const postComment = async (api, movieId, username, comment) => {
   try {
     const data = {
@@ -132,7 +94,6 @@ const renderComments = (modal, comments) => {
   const commentArea = modal.querySelector('.commentArea');
   commentArea.innerHTML = '';
 
-  // Render the comments in the modal
   comments.forEach((comment) => {
     const commentDiv = document.createElement('div');
     commentDiv.textContent = `${comment.creation_date}:${comment.username}: ${comment.comment}`;
@@ -140,13 +101,62 @@ const renderComments = (modal, comments) => {
   });
 };
 
+const renderReservations = (modalReservations, reservations) => {
+  const reservationArea = modalReservations.querySelector('.reservationtArea');
+  reservationArea.innerHTML = '';
+
+  // Render the comments in the modal
+  reservations.forEach((reservation) => {
+    const reservationsDiv = document.createElement('div');
+    reservationsDiv.textContent = `${reservation.username}:  ${reservation.date_start} - ${reservation.date_end}`;
+    reservationArea.appendChild(reservationsDiv);
+  });
+};
+
+// Function to create a reservation
+const postReservations = async (api, movieId, username, dateStart, dateEnd) => {
+  try {
+    const data = {
+      item_id: movieId,
+      username,
+      date_start: dateStart,
+      date_end: dateEnd,
+    };
+
+    const response = await fetch(api, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to post reservation');
+    }
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const fetchReservations = async (itemId) => {
+  try {
+    const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1lQTFOEu5O5KmM8n2meG/reservations?item_id=${itemId}`);
+    const reservations = await response.json();
+    return reservations;
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export {
   getMoviesData,
   postLikes,
   getLikes,
-  createReservation,
-  getReservations,
   postComment,
+  fetchReservations,
+  renderReservations,
+  postReservations,
   fetchCommentsFromApi,
   renderComments,
   getLikesForUnclick,
