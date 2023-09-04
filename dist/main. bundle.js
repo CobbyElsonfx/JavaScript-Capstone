@@ -8415,6 +8415,1718 @@ module.exports = function (item) {
 
 /***/ }),
 
+/***/ "./node_modules/is-dom-node-list/dist/is-dom-node-list.es.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/is-dom-node-list/dist/is-dom-node-list.es.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var is_dom_node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is-dom-node */ "./node_modules/is-dom-node/dist/is-dom-node.es.js");
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+/*! @license is-dom-node-list v1.2.1
+
+	Copyright 2018 Fisssion LLC.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+*/
+
+function isDomNodeList(x) {
+  var prototypeToString = Object.prototype.toString.call(x);
+  var regex = /^\[object (HTMLCollection|NodeList|Object)\]$/;
+  return _typeof(window.NodeList) === 'object' ? x instanceof window.NodeList : x !== null && _typeof(x) === 'object' && typeof x.length === 'number' && regex.test(prototypeToString) && (x.length === 0 || (0,is_dom_node__WEBPACK_IMPORTED_MODULE_0__["default"])(x[0]));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isDomNodeList);
+
+/***/ }),
+
+/***/ "./node_modules/is-dom-node/dist/is-dom-node.es.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/is-dom-node/dist/is-dom-node.es.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+/*! @license is-dom-node v1.0.4
+
+	Copyright 2018 Fisssion LLC.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+*/
+function isDomNode(x) {
+  return _typeof(window.Node) === 'object' ? x instanceof window.Node : x !== null && _typeof(x) === 'object' && typeof x.nodeType === 'number' && typeof x.nodeName === 'string';
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (isDomNode);
+
+/***/ }),
+
+/***/ "./node_modules/miniraf/dist/miniraf.es.js":
+/*!*************************************************!*\
+  !*** ./node_modules/miniraf/dist/miniraf.es.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*! @license miniraf v1.0.0
+
+	Copyright 2018 Fisssion LLC.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+*/
+var polyfill = function () {
+  var clock = Date.now();
+  return function (callback) {
+    var currentTime = Date.now();
+    if (currentTime - clock > 16) {
+      clock = currentTime;
+      callback(currentTime);
+    } else {
+      setTimeout(function () {
+        return polyfill(callback);
+      }, 0);
+    }
+  };
+}();
+var index = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || polyfill;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
+
+/***/ }),
+
+/***/ "./node_modules/rematrix/dist/rematrix.es.js":
+/*!***************************************************!*\
+  !*** ./node_modules/rematrix/dist/rematrix.es.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   format: () => (/* binding */ format),
+/* harmony export */   identity: () => (/* binding */ identity),
+/* harmony export */   inverse: () => (/* binding */ inverse),
+/* harmony export */   multiply: () => (/* binding */ multiply),
+/* harmony export */   parse: () => (/* binding */ parse),
+/* harmony export */   rotate: () => (/* binding */ rotate),
+/* harmony export */   rotateX: () => (/* binding */ rotateX),
+/* harmony export */   rotateY: () => (/* binding */ rotateY),
+/* harmony export */   rotateZ: () => (/* binding */ rotateZ),
+/* harmony export */   scale: () => (/* binding */ scale),
+/* harmony export */   scaleX: () => (/* binding */ scaleX),
+/* harmony export */   scaleY: () => (/* binding */ scaleY),
+/* harmony export */   scaleZ: () => (/* binding */ scaleZ),
+/* harmony export */   skew: () => (/* binding */ skew),
+/* harmony export */   skewX: () => (/* binding */ skewX),
+/* harmony export */   skewY: () => (/* binding */ skewY),
+/* harmony export */   toString: () => (/* binding */ toString),
+/* harmony export */   translate: () => (/* binding */ translate),
+/* harmony export */   translateX: () => (/* binding */ translateX),
+/* harmony export */   translateY: () => (/* binding */ translateY),
+/* harmony export */   translateZ: () => (/* binding */ translateZ)
+/* harmony export */ });
+/*! @license Rematrix v0.3.0
+
+	Copyright 2018 Julian Lloyd.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+	THE SOFTWARE.
+*/
+/**
+ * @module Rematrix
+ */
+
+/**
+ * Transformation matrices in the browser come in two flavors:
+ *
+ *  - `matrix` using 6 values (short)
+ *  - `matrix3d` using 16 values (long)
+ *
+ * This utility follows this [conversion guide](https://goo.gl/EJlUQ1)
+ * to expand short form matrices to their equivalent long form.
+ *
+ * @param  {array} source - Accepts both short and long form matrices.
+ * @return {array}
+ */
+function format(source) {
+  if (source.constructor !== Array) {
+    throw new TypeError('Expected array.');
+  }
+  if (source.length === 16) {
+    return source;
+  }
+  if (source.length === 6) {
+    var matrix = identity();
+    matrix[0] = source[0];
+    matrix[1] = source[1];
+    matrix[4] = source[2];
+    matrix[5] = source[3];
+    matrix[12] = source[4];
+    matrix[13] = source[5];
+    return matrix;
+  }
+  throw new RangeError('Expected array with either 6 or 16 values.');
+}
+
+/**
+ * Returns a matrix representing no transformation. The product of any matrix
+ * multiplied by the identity matrix will be the original matrix.
+ *
+ * > **Tip:** Similar to how `5 * 1 === 5`, where `1` is the identity.
+ *
+ * @return {array}
+ */
+function identity() {
+  var matrix = [];
+  for (var i = 0; i < 16; i++) {
+    i % 5 == 0 ? matrix.push(1) : matrix.push(0);
+  }
+  return matrix;
+}
+
+/**
+ * Returns a matrix describing the inverse transformation of the source
+ * matrix. The product of any matrix multiplied by its inverse will be the
+ * identity matrix.
+ *
+ * > **Tip:** Similar to how `5 * (1/5) === 1`, where `1/5` is the inverse.
+ *
+ * @param  {array} source - Accepts both short and long form matrices.
+ * @return {array}
+ */
+function inverse(source) {
+  var m = format(source);
+  var s0 = m[0] * m[5] - m[4] * m[1];
+  var s1 = m[0] * m[6] - m[4] * m[2];
+  var s2 = m[0] * m[7] - m[4] * m[3];
+  var s3 = m[1] * m[6] - m[5] * m[2];
+  var s4 = m[1] * m[7] - m[5] * m[3];
+  var s5 = m[2] * m[7] - m[6] * m[3];
+  var c5 = m[10] * m[15] - m[14] * m[11];
+  var c4 = m[9] * m[15] - m[13] * m[11];
+  var c3 = m[9] * m[14] - m[13] * m[10];
+  var c2 = m[8] * m[15] - m[12] * m[11];
+  var c1 = m[8] * m[14] - m[12] * m[10];
+  var c0 = m[8] * m[13] - m[12] * m[9];
+  var determinant = 1 / (s0 * c5 - s1 * c4 + s2 * c3 + s3 * c2 - s4 * c1 + s5 * c0);
+  if (isNaN(determinant) || determinant === Infinity) {
+    throw new Error('Inverse determinant attempted to divide by zero.');
+  }
+  return [(m[5] * c5 - m[6] * c4 + m[7] * c3) * determinant, (-m[1] * c5 + m[2] * c4 - m[3] * c3) * determinant, (m[13] * s5 - m[14] * s4 + m[15] * s3) * determinant, (-m[9] * s5 + m[10] * s4 - m[11] * s3) * determinant, (-m[4] * c5 + m[6] * c2 - m[7] * c1) * determinant, (m[0] * c5 - m[2] * c2 + m[3] * c1) * determinant, (-m[12] * s5 + m[14] * s2 - m[15] * s1) * determinant, (m[8] * s5 - m[10] * s2 + m[11] * s1) * determinant, (m[4] * c4 - m[5] * c2 + m[7] * c0) * determinant, (-m[0] * c4 + m[1] * c2 - m[3] * c0) * determinant, (m[12] * s4 - m[13] * s2 + m[15] * s0) * determinant, (-m[8] * s4 + m[9] * s2 - m[11] * s0) * determinant, (-m[4] * c3 + m[5] * c1 - m[6] * c0) * determinant, (m[0] * c3 - m[1] * c1 + m[2] * c0) * determinant, (-m[12] * s3 + m[13] * s1 - m[14] * s0) * determinant, (m[8] * s3 - m[9] * s1 + m[10] * s0) * determinant];
+}
+
+/**
+ * Returns a 4x4 matrix describing the combined transformations
+ * of both arguments.
+ *
+ * > **Note:** Order is very important. For example, rotating 45°
+ * along the Z-axis, followed by translating 500 pixels along the
+ * Y-axis... is not the same as translating 500 pixels along the
+ * Y-axis, followed by rotating 45° along on the Z-axis.
+ *
+ * @param  {array} m - Accepts both short and long form matrices.
+ * @param  {array} x - Accepts both short and long form matrices.
+ * @return {array}
+ */
+function multiply(m, x) {
+  var fm = format(m);
+  var fx = format(x);
+  var product = [];
+  for (var i = 0; i < 4; i++) {
+    var row = [fm[i], fm[i + 4], fm[i + 8], fm[i + 12]];
+    for (var j = 0; j < 4; j++) {
+      var k = j * 4;
+      var col = [fx[k], fx[k + 1], fx[k + 2], fx[k + 3]];
+      var result = row[0] * col[0] + row[1] * col[1] + row[2] * col[2] + row[3] * col[3];
+      product[i + k] = result;
+    }
+  }
+  return product;
+}
+
+/**
+ * Attempts to return a 4x4 matrix describing the CSS transform
+ * matrix passed in, but will return the identity matrix as a
+ * fallback.
+ *
+ * > **Tip:** This method is used to convert a CSS matrix (retrieved as a
+ * `string` from computed styles) to its equivalent array format.
+ *
+ * @param  {string} source - `matrix` or `matrix3d` CSS Transform value.
+ * @return {array}
+ */
+function parse(source) {
+  if (typeof source === 'string') {
+    var match = source.match(/matrix(3d)?\(([^)]+)\)/);
+    if (match) {
+      var raw = match[2].split(', ').map(parseFloat);
+      return format(raw);
+    }
+  }
+  return identity();
+}
+
+/**
+ * Returns a 4x4 matrix describing Z-axis rotation.
+ *
+ * > **Tip:** This is just an alias for `Rematrix.rotateZ` for parity with CSS
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function rotate(angle) {
+  return rotateZ(angle);
+}
+
+/**
+ * Returns a 4x4 matrix describing X-axis rotation.
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function rotateX(angle) {
+  var theta = Math.PI / 180 * angle;
+  var matrix = identity();
+  matrix[5] = matrix[10] = Math.cos(theta);
+  matrix[6] = matrix[9] = Math.sin(theta);
+  matrix[9] *= -1;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing Y-axis rotation.
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function rotateY(angle) {
+  var theta = Math.PI / 180 * angle;
+  var matrix = identity();
+  matrix[0] = matrix[10] = Math.cos(theta);
+  matrix[2] = matrix[8] = Math.sin(theta);
+  matrix[2] *= -1;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing Z-axis rotation.
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function rotateZ(angle) {
+  var theta = Math.PI / 180 * angle;
+  var matrix = identity();
+  matrix[0] = matrix[5] = Math.cos(theta);
+  matrix[1] = matrix[4] = Math.sin(theta);
+  matrix[4] *= -1;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing 2D scaling. The first argument
+ * is used for both X and Y-axis scaling, unless an optional
+ * second argument is provided to explicitly define Y-axis scaling.
+ *
+ * @param  {number} scalar    - Decimal multiplier.
+ * @param  {number} [scalarY] - Decimal multiplier.
+ * @return {array}
+ */
+function scale(scalar, scalarY) {
+  var matrix = identity();
+  matrix[0] = scalar;
+  matrix[5] = typeof scalarY === 'number' ? scalarY : scalar;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing X-axis scaling.
+ *
+ * @param  {number} scalar - Decimal multiplier.
+ * @return {array}
+ */
+function scaleX(scalar) {
+  var matrix = identity();
+  matrix[0] = scalar;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing Y-axis scaling.
+ *
+ * @param  {number} scalar - Decimal multiplier.
+ * @return {array}
+ */
+function scaleY(scalar) {
+  var matrix = identity();
+  matrix[5] = scalar;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing Z-axis scaling.
+ *
+ * @param  {number} scalar - Decimal multiplier.
+ * @return {array}
+ */
+function scaleZ(scalar) {
+  var matrix = identity();
+  matrix[10] = scalar;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing shear. The first argument
+ * defines X-axis shearing, and an optional second argument
+ * defines Y-axis shearing.
+ *
+ * @param  {number} angleX   - Measured in degrees.
+ * @param  {number} [angleY] - Measured in degrees.
+ * @return {array}
+ */
+function skew(angleX, angleY) {
+  var thetaX = Math.PI / 180 * angleX;
+  var matrix = identity();
+  matrix[4] = Math.tan(thetaX);
+  if (angleY) {
+    var thetaY = Math.PI / 180 * angleY;
+    matrix[1] = Math.tan(thetaY);
+  }
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing X-axis shear.
+ *
+ * @param  {number} angle - Measured in degrees.
+ * @return {array}
+ */
+function skewX(angle) {
+  var theta = Math.PI / 180 * angle;
+  var matrix = identity();
+  matrix[4] = Math.tan(theta);
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing Y-axis shear.
+ *
+ * @param  {number} angle - Measured in degrees
+ * @return {array}
+ */
+function skewY(angle) {
+  var theta = Math.PI / 180 * angle;
+  var matrix = identity();
+  matrix[1] = Math.tan(theta);
+  return matrix;
+}
+
+/**
+ * Returns a CSS Transform property value equivalent to the source matrix.
+ *
+ * @param  {array} source - Accepts both short and long form matrices.
+ * @return {string}
+ */
+function toString(source) {
+  return "matrix3d(" + format(source).join(', ') + ")";
+}
+
+/**
+ * Returns a 4x4 matrix describing 2D translation. The first
+ * argument defines X-axis translation, and an optional second
+ * argument defines Y-axis translation.
+ *
+ * @param  {number} distanceX   - Measured in pixels.
+ * @param  {number} [distanceY] - Measured in pixels.
+ * @return {array}
+ */
+function translate(distanceX, distanceY) {
+  var matrix = identity();
+  matrix[12] = distanceX;
+  if (distanceY) {
+    matrix[13] = distanceY;
+  }
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing X-axis translation.
+ *
+ * @param  {number} distance - Measured in pixels.
+ * @return {array}
+ */
+function translateX(distance) {
+  var matrix = identity();
+  matrix[12] = distance;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing Y-axis translation.
+ *
+ * @param  {number} distance - Measured in pixels.
+ * @return {array}
+ */
+function translateY(distance) {
+  var matrix = identity();
+  matrix[13] = distance;
+  return matrix;
+}
+
+/**
+ * Returns a 4x4 matrix describing Z-axis translation.
+ *
+ * @param  {number} distance - Measured in pixels.
+ * @return {array}
+ */
+function translateZ(distance) {
+  var matrix = identity();
+  matrix[14] = distance;
+  return matrix;
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/scrollreveal/dist/scrollreveal.es.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/scrollreveal/dist/scrollreveal.es.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var tealight__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tealight */ "./node_modules/tealight/dist/tealight.es.js");
+/* harmony import */ var rematrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rematrix */ "./node_modules/rematrix/dist/rematrix.es.js");
+/* harmony import */ var miniraf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! miniraf */ "./node_modules/miniraf/dist/miniraf.es.js");
+/*! @license ScrollReveal v4.0.9
+
+	Copyright 2021 Fisssion LLC.
+
+	Licensed under the GNU General Public License 3.0 for
+	compatible open source projects and non-commercial use.
+
+	For commercial sites, themes, projects, and applications,
+	keep your source code private/proprietary by purchasing
+	a commercial license from https://scrollrevealjs.org/
+*/
+
+
+
+var defaults = {
+  delay: 0,
+  distance: '0',
+  duration: 600,
+  easing: 'cubic-bezier(0.5, 0, 0, 1)',
+  interval: 0,
+  opacity: 0,
+  origin: 'bottom',
+  rotate: {
+    x: 0,
+    y: 0,
+    z: 0
+  },
+  scale: 1,
+  cleanup: false,
+  container: document.documentElement,
+  desktop: true,
+  mobile: true,
+  reset: false,
+  useDelay: 'always',
+  viewFactor: 0.0,
+  viewOffset: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0
+  },
+  afterReset: function afterReset() {},
+  afterReveal: function afterReveal() {},
+  beforeReset: function beforeReset() {},
+  beforeReveal: function beforeReveal() {}
+};
+function failure() {
+  document.documentElement.classList.remove('sr');
+  return {
+    clean: function clean() {},
+    destroy: function destroy() {},
+    reveal: function reveal() {},
+    sync: function sync() {},
+    get noop() {
+      return true;
+    }
+  };
+}
+function success() {
+  document.documentElement.classList.add('sr');
+  if (document.body) {
+    document.body.style.height = '100%';
+  } else {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.body.style.height = '100%';
+    });
+  }
+}
+var mount = {
+  success: success,
+  failure: failure
+};
+function isObject(x) {
+  return x !== null && x instanceof Object && (x.constructor === Object || Object.prototype.toString.call(x) === '[object Object]');
+}
+function each(collection, callback) {
+  if (isObject(collection)) {
+    var keys = Object.keys(collection);
+    return keys.forEach(function (key) {
+      return callback(collection[key], key, collection);
+    });
+  }
+  if (collection instanceof Array) {
+    return collection.forEach(function (item, i) {
+      return callback(item, i, collection);
+    });
+  }
+  throw new TypeError('Expected either an array or object literal.');
+}
+function logger(message) {
+  var details = [],
+    len = arguments.length - 1;
+  while (len-- > 0) details[len] = arguments[len + 1];
+  if (this.constructor.debug && console) {
+    var report = "%cScrollReveal: " + message;
+    details.forEach(function (detail) {
+      return report += "\n — " + detail;
+    });
+    console.log(report, 'color: #ea654b;'); // eslint-disable-line no-console
+  }
+}
+
+function rinse() {
+  var this$1 = this;
+  var struct = function struct() {
+    return {
+      active: [],
+      stale: []
+    };
+  };
+  var elementIds = struct();
+  var sequenceIds = struct();
+  var containerIds = struct();
+
+  /**
+   * Take stock of active element IDs.
+   */
+  try {
+    each((0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])('[data-sr-id]'), function (node) {
+      var id = parseInt(node.getAttribute('data-sr-id'));
+      elementIds.active.push(id);
+    });
+  } catch (e) {
+    throw e;
+  }
+  /**
+   * Destroy stale elements.
+   */
+  each(this.store.elements, function (element) {
+    if (elementIds.active.indexOf(element.id) === -1) {
+      elementIds.stale.push(element.id);
+    }
+  });
+  each(elementIds.stale, function (staleId) {
+    return delete this$1.store.elements[staleId];
+  });
+
+  /**
+   * Take stock of active container and sequence IDs.
+   */
+  each(this.store.elements, function (element) {
+    if (containerIds.active.indexOf(element.containerId) === -1) {
+      containerIds.active.push(element.containerId);
+    }
+    if (element.hasOwnProperty('sequence')) {
+      if (sequenceIds.active.indexOf(element.sequence.id) === -1) {
+        sequenceIds.active.push(element.sequence.id);
+      }
+    }
+  });
+
+  /**
+   * Destroy stale containers.
+   */
+  each(this.store.containers, function (container) {
+    if (containerIds.active.indexOf(container.id) === -1) {
+      containerIds.stale.push(container.id);
+    }
+  });
+  each(containerIds.stale, function (staleId) {
+    var stale = this$1.store.containers[staleId].node;
+    stale.removeEventListener('scroll', this$1.delegate);
+    stale.removeEventListener('resize', this$1.delegate);
+    delete this$1.store.containers[staleId];
+  });
+
+  /**
+   * Destroy stale sequences.
+   */
+  each(this.store.sequences, function (sequence) {
+    if (sequenceIds.active.indexOf(sequence.id) === -1) {
+      sequenceIds.stale.push(sequence.id);
+    }
+  });
+  each(sequenceIds.stale, function (staleId) {
+    return delete this$1.store.sequences[staleId];
+  });
+}
+var getPrefixedCssProp = function () {
+  var properties = {};
+  var style = document.documentElement.style;
+  function getPrefixedCssProperty(name, source) {
+    if (source === void 0) source = style;
+    if (name && typeof name === 'string') {
+      if (properties[name]) {
+        return properties[name];
+      }
+      if (typeof source[name] === 'string') {
+        return properties[name] = name;
+      }
+      if (typeof source["-webkit-" + name] === 'string') {
+        return properties[name] = "-webkit-" + name;
+      }
+      throw new RangeError("Unable to find \"" + name + "\" style property.");
+    }
+    throw new TypeError('Expected a string.');
+  }
+  getPrefixedCssProperty.clearCache = function () {
+    return properties = {};
+  };
+  return getPrefixedCssProperty;
+}();
+function style(element) {
+  var computed = window.getComputedStyle(element.node);
+  var position = computed.position;
+  var config = element.config;
+
+  /**
+   * Generate inline styles
+   */
+  var inline = {};
+  var inlineStyle = element.node.getAttribute('style') || '';
+  var inlineMatch = inlineStyle.match(/[\w-]+\s*:\s*[^;]+\s*/gi) || [];
+  inline.computed = inlineMatch ? inlineMatch.map(function (m) {
+    return m.trim();
+  }).join('; ') + ';' : '';
+  inline.generated = inlineMatch.some(function (m) {
+    return m.match(/visibility\s?:\s?visible/i);
+  }) ? inline.computed : inlineMatch.concat(['visibility: visible']).map(function (m) {
+    return m.trim();
+  }).join('; ') + ';';
+
+  /**
+   * Generate opacity styles
+   */
+  var computedOpacity = parseFloat(computed.opacity);
+  var configOpacity = !isNaN(parseFloat(config.opacity)) ? parseFloat(config.opacity) : parseFloat(computed.opacity);
+  var opacity = {
+    computed: computedOpacity !== configOpacity ? "opacity: " + computedOpacity + ";" : '',
+    generated: computedOpacity !== configOpacity ? "opacity: " + configOpacity + ";" : ''
+  };
+
+  /**
+   * Generate transformation styles
+   */
+  var transformations = [];
+  if (parseFloat(config.distance)) {
+    var axis = config.origin === 'top' || config.origin === 'bottom' ? 'Y' : 'X';
+
+    /**
+     * Let’s make sure our our pixel distances are negative for top and left.
+     * e.g. { origin: 'top', distance: '25px' } starts at `top: -25px` in CSS.
+     */
+    var distance = config.distance;
+    if (config.origin === 'top' || config.origin === 'left') {
+      distance = /^-/.test(distance) ? distance.substr(1) : "-" + distance;
+    }
+    var ref = distance.match(/(^-?\d+\.?\d?)|(em$|px$|%$)/g);
+    var value = ref[0];
+    var unit = ref[1];
+    switch (unit) {
+      case 'em':
+        distance = parseInt(computed.fontSize) * value;
+        break;
+      case 'px':
+        distance = value;
+        break;
+      case '%':
+        /**
+         * Here we use `getBoundingClientRect` instead of
+         * the existing data attached to `element.geometry`
+         * because only the former includes any transformations
+         * current applied to the element.
+         *
+         * If that behavior ends up being unintuitive, this
+         * logic could instead utilize `element.geometry.height`
+         * and `element.geoemetry.width` for the distance calculation
+         */
+        distance = axis === 'Y' ? element.node.getBoundingClientRect().height * value / 100 : element.node.getBoundingClientRect().width * value / 100;
+        break;
+      default:
+        throw new RangeError('Unrecognized or missing distance unit.');
+    }
+    if (axis === 'Y') {
+      transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.translateY)(distance));
+    } else {
+      transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.translateX)(distance));
+    }
+  }
+  if (config.rotate.x) {
+    transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.rotateX)(config.rotate.x));
+  }
+  if (config.rotate.y) {
+    transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.rotateY)(config.rotate.y));
+  }
+  if (config.rotate.z) {
+    transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.rotateZ)(config.rotate.z));
+  }
+  if (config.scale !== 1) {
+    if (config.scale === 0) {
+      /**
+       * The CSS Transforms matrix interpolation specification
+       * basically disallows transitions of non-invertible
+       * matrixes, which means browsers won't transition
+       * elements with zero scale.
+       *
+       * That’s inconvenient for the API and developer
+       * experience, so we simply nudge their value
+       * slightly above zero; this allows browsers
+       * to transition our element as expected.
+       *
+       * `0.0002` was the smallest number
+       * that performed across browsers.
+       */
+      transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.scale)(0.0002));
+    } else {
+      transformations.push((0,rematrix__WEBPACK_IMPORTED_MODULE_1__.scale)(config.scale));
+    }
+  }
+  var transform = {};
+  if (transformations.length) {
+    transform.property = getPrefixedCssProp('transform');
+    /**
+     * The default computed transform value should be one of:
+     * undefined || 'none' || 'matrix()' || 'matrix3d()'
+     */
+    transform.computed = {
+      raw: computed[transform.property],
+      matrix: (0,rematrix__WEBPACK_IMPORTED_MODULE_1__.parse)(computed[transform.property])
+    };
+    transformations.unshift(transform.computed.matrix);
+    var product = transformations.reduce(rematrix__WEBPACK_IMPORTED_MODULE_1__.multiply);
+    transform.generated = {
+      initial: transform.property + ": matrix3d(" + product.join(', ') + ");",
+      "final": transform.property + ": matrix3d(" + transform.computed.matrix.join(', ') + ");"
+    };
+  } else {
+    transform.generated = {
+      initial: '',
+      "final": ''
+    };
+  }
+
+  /**
+   * Generate transition styles
+   */
+  var transition = {};
+  if (opacity.generated || transform.generated.initial) {
+    transition.property = getPrefixedCssProp('transition');
+    transition.computed = computed[transition.property];
+    transition.fragments = [];
+    var delay = config.delay;
+    var duration = config.duration;
+    var easing = config.easing;
+    if (opacity.generated) {
+      transition.fragments.push({
+        delayed: "opacity " + duration / 1000 + "s " + easing + " " + delay / 1000 + "s",
+        instant: "opacity " + duration / 1000 + "s " + easing + " 0s"
+      });
+    }
+    if (transform.generated.initial) {
+      transition.fragments.push({
+        delayed: transform.property + " " + duration / 1000 + "s " + easing + " " + delay / 1000 + "s",
+        instant: transform.property + " " + duration / 1000 + "s " + easing + " 0s"
+      });
+    }
+
+    /**
+     * The default computed transition property should be undefined, or one of:
+     * '' || 'none 0s ease 0s' || 'all 0s ease 0s' || 'all 0s 0s cubic-bezier()'
+     */
+    var hasCustomTransition = transition.computed && !transition.computed.match(/all 0s|none 0s/);
+    if (hasCustomTransition) {
+      transition.fragments.unshift({
+        delayed: transition.computed,
+        instant: transition.computed
+      });
+    }
+    var composed = transition.fragments.reduce(function (composition, fragment, i) {
+      composition.delayed += i === 0 ? fragment.delayed : ", " + fragment.delayed;
+      composition.instant += i === 0 ? fragment.instant : ", " + fragment.instant;
+      return composition;
+    }, {
+      delayed: '',
+      instant: ''
+    });
+    transition.generated = {
+      delayed: transition.property + ": " + composed.delayed + ";",
+      instant: transition.property + ": " + composed.instant + ";"
+    };
+  } else {
+    transition.generated = {
+      delayed: '',
+      instant: ''
+    };
+  }
+  return {
+    inline: inline,
+    opacity: opacity,
+    position: position,
+    transform: transform,
+    transition: transition
+  };
+}
+
+/**
+ * apply a CSS string to an element using the CSSOM (element.style) rather
+ * than setAttribute, which may violate the content security policy.
+ *
+ * @param {Node}   [el]  Element to receive styles.
+ * @param {string} [declaration] Styles to apply.
+ */
+function applyStyle(el, declaration) {
+  declaration.split(';').forEach(function (pair) {
+    var ref = pair.split(':');
+    var property = ref[0];
+    var value = ref.slice(1);
+    if (property && value) {
+      el.style[property.trim()] = value.join(':');
+    }
+  });
+}
+function clean(target) {
+  var this$1 = this;
+  var dirty;
+  try {
+    each((0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])(target), function (node) {
+      var id = node.getAttribute('data-sr-id');
+      if (id !== null) {
+        dirty = true;
+        var element = this$1.store.elements[id];
+        if (element.callbackTimer) {
+          window.clearTimeout(element.callbackTimer.clock);
+        }
+        applyStyle(element.node, element.styles.inline.generated);
+        node.removeAttribute('data-sr-id');
+        delete this$1.store.elements[id];
+      }
+    });
+  } catch (e) {
+    return logger.call(this, 'Clean failed.', e.message);
+  }
+  if (dirty) {
+    try {
+      rinse.call(this);
+    } catch (e) {
+      return logger.call(this, 'Clean failed.', e.message);
+    }
+  }
+}
+function destroy() {
+  var this$1 = this;
+
+  /**
+   * Remove all generated styles and element ids
+   */
+  each(this.store.elements, function (element) {
+    applyStyle(element.node, element.styles.inline.generated);
+    element.node.removeAttribute('data-sr-id');
+  });
+
+  /**
+   * Remove all event listeners.
+   */
+  each(this.store.containers, function (container) {
+    var target = container.node === document.documentElement ? window : container.node;
+    target.removeEventListener('scroll', this$1.delegate);
+    target.removeEventListener('resize', this$1.delegate);
+  });
+
+  /**
+   * Clear all data from the store
+   */
+  this.store = {
+    containers: {},
+    elements: {},
+    history: [],
+    sequences: {}
+  };
+}
+function deepAssign(target) {
+  var sources = [],
+    len = arguments.length - 1;
+  while (len-- > 0) sources[len] = arguments[len + 1];
+  if (isObject(target)) {
+    each(sources, function (source) {
+      each(source, function (data, key) {
+        if (isObject(data)) {
+          if (!target[key] || !isObject(target[key])) {
+            target[key] = {};
+          }
+          deepAssign(target[key], data);
+        } else {
+          target[key] = data;
+        }
+      });
+    });
+    return target;
+  } else {
+    throw new TypeError('Target must be an object literal.');
+  }
+}
+function isMobile(agent) {
+  if (agent === void 0) agent = navigator.userAgent;
+  return /Android|iPhone|iPad|iPod/i.test(agent);
+}
+var nextUniqueId = function () {
+  var uid = 0;
+  return function () {
+    return uid++;
+  };
+}();
+function initialize() {
+  var this$1 = this;
+  rinse.call(this);
+  each(this.store.elements, function (element) {
+    var styles = [element.styles.inline.generated];
+    if (element.visible) {
+      styles.push(element.styles.opacity.computed);
+      styles.push(element.styles.transform.generated["final"]);
+      element.revealed = true;
+    } else {
+      styles.push(element.styles.opacity.generated);
+      styles.push(element.styles.transform.generated.initial);
+      element.revealed = false;
+    }
+    applyStyle(element.node, styles.filter(function (s) {
+      return s !== '';
+    }).join(' '));
+  });
+  each(this.store.containers, function (container) {
+    var target = container.node === document.documentElement ? window : container.node;
+    target.addEventListener('scroll', this$1.delegate);
+    target.addEventListener('resize', this$1.delegate);
+  });
+
+  /**
+   * Manually invoke delegate once to capture
+   * element and container dimensions, container
+   * scroll position, and trigger any valid reveals
+   */
+  this.delegate();
+
+  /**
+   * Wipe any existing `setTimeout` now
+   * that initialization has completed.
+   */
+  this.initTimeout = null;
+}
+function animate(element, force) {
+  if (force === void 0) force = {};
+  var pristine = force.pristine || this.pristine;
+  var delayed = element.config.useDelay === 'always' || element.config.useDelay === 'onload' && pristine || element.config.useDelay === 'once' && !element.seen;
+  var shouldReveal = element.visible && !element.revealed;
+  var shouldReset = !element.visible && element.revealed && element.config.reset;
+  if (force.reveal || shouldReveal) {
+    return triggerReveal.call(this, element, delayed);
+  }
+  if (force.reset || shouldReset) {
+    return triggerReset.call(this, element);
+  }
+}
+function triggerReveal(element, delayed) {
+  var styles = [element.styles.inline.generated, element.styles.opacity.computed, element.styles.transform.generated["final"]];
+  if (delayed) {
+    styles.push(element.styles.transition.generated.delayed);
+  } else {
+    styles.push(element.styles.transition.generated.instant);
+  }
+  element.revealed = element.seen = true;
+  applyStyle(element.node, styles.filter(function (s) {
+    return s !== '';
+  }).join(' '));
+  registerCallbacks.call(this, element, delayed);
+}
+function triggerReset(element) {
+  var styles = [element.styles.inline.generated, element.styles.opacity.generated, element.styles.transform.generated.initial, element.styles.transition.generated.instant];
+  element.revealed = false;
+  applyStyle(element.node, styles.filter(function (s) {
+    return s !== '';
+  }).join(' '));
+  registerCallbacks.call(this, element);
+}
+function registerCallbacks(element, isDelayed) {
+  var this$1 = this;
+  var duration = isDelayed ? element.config.duration + element.config.delay : element.config.duration;
+  var beforeCallback = element.revealed ? element.config.beforeReveal : element.config.beforeReset;
+  var afterCallback = element.revealed ? element.config.afterReveal : element.config.afterReset;
+  var elapsed = 0;
+  if (element.callbackTimer) {
+    elapsed = Date.now() - element.callbackTimer.start;
+    window.clearTimeout(element.callbackTimer.clock);
+  }
+  beforeCallback(element.node);
+  element.callbackTimer = {
+    start: Date.now(),
+    clock: window.setTimeout(function () {
+      afterCallback(element.node);
+      element.callbackTimer = null;
+      if (element.revealed && !element.config.reset && element.config.cleanup) {
+        clean.call(this$1, element.node);
+      }
+    }, duration - elapsed)
+  };
+}
+function sequence(element, pristine) {
+  if (pristine === void 0) pristine = this.pristine;
+
+  /**
+   * We first check if the element should reset.
+   */
+  if (!element.visible && element.revealed && element.config.reset) {
+    return animate.call(this, element, {
+      reset: true
+    });
+  }
+  var seq = this.store.sequences[element.sequence.id];
+  var i = element.sequence.index;
+  if (seq) {
+    var visible = new SequenceModel(seq, 'visible', this.store);
+    var revealed = new SequenceModel(seq, 'revealed', this.store);
+    seq.models = {
+      visible: visible,
+      revealed: revealed
+    };
+
+    /**
+     * If the sequence has no revealed members,
+     * then we reveal the first visible element
+     * within that sequence.
+     *
+     * The sequence then cues a recursive call
+     * in both directions.
+     */
+    if (!revealed.body.length) {
+      var nextId = seq.members[visible.body[0]];
+      var nextElement = this.store.elements[nextId];
+      if (nextElement) {
+        cue.call(this, seq, visible.body[0], -1, pristine);
+        cue.call(this, seq, visible.body[0], +1, pristine);
+        return animate.call(this, nextElement, {
+          reveal: true,
+          pristine: pristine
+        });
+      }
+    }
+
+    /**
+     * If our element isn’t resetting, we check the
+     * element sequence index against the head, and
+     * then the foot of the sequence.
+     */
+    if (!seq.blocked.head && i === [].concat(revealed.head).pop() && i >= [].concat(visible.body).shift()) {
+      cue.call(this, seq, i, -1, pristine);
+      return animate.call(this, element, {
+        reveal: true,
+        pristine: pristine
+      });
+    }
+    if (!seq.blocked.foot && i === [].concat(revealed.foot).shift() && i <= [].concat(visible.body).pop()) {
+      cue.call(this, seq, i, +1, pristine);
+      return animate.call(this, element, {
+        reveal: true,
+        pristine: pristine
+      });
+    }
+  }
+}
+function Sequence(interval) {
+  var i = Math.abs(interval);
+  if (!isNaN(i)) {
+    this.id = nextUniqueId();
+    this.interval = Math.max(i, 16);
+    this.members = [];
+    this.models = {};
+    this.blocked = {
+      head: false,
+      foot: false
+    };
+  } else {
+    throw new RangeError('Invalid sequence interval.');
+  }
+}
+function SequenceModel(seq, prop, store) {
+  var this$1 = this;
+  this.head = [];
+  this.body = [];
+  this.foot = [];
+  each(seq.members, function (id, index) {
+    var element = store.elements[id];
+    if (element && element[prop]) {
+      this$1.body.push(index);
+    }
+  });
+  if (this.body.length) {
+    each(seq.members, function (id, index) {
+      var element = store.elements[id];
+      if (element && !element[prop]) {
+        if (index < this$1.body[0]) {
+          this$1.head.push(index);
+        } else {
+          this$1.foot.push(index);
+        }
+      }
+    });
+  }
+}
+function cue(seq, i, direction, pristine) {
+  var this$1 = this;
+  var blocked = ['head', null, 'foot'][1 + direction];
+  var nextId = seq.members[i + direction];
+  var nextElement = this.store.elements[nextId];
+  seq.blocked[blocked] = true;
+  setTimeout(function () {
+    seq.blocked[blocked] = false;
+    if (nextElement) {
+      sequence.call(this$1, nextElement, pristine);
+    }
+  }, seq.interval);
+}
+function reveal(target, options, syncing) {
+  var this$1 = this;
+  if (options === void 0) options = {};
+  if (syncing === void 0) syncing = false;
+  var containerBuffer = [];
+  var sequence$$1;
+  var interval = options.interval || defaults.interval;
+  try {
+    if (interval) {
+      sequence$$1 = new Sequence(interval);
+    }
+    var nodes = (0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])(target);
+    if (!nodes.length) {
+      throw new Error('Invalid reveal target.');
+    }
+    var elements = nodes.reduce(function (elementBuffer, elementNode) {
+      var element = {};
+      var existingId = elementNode.getAttribute('data-sr-id');
+      if (existingId) {
+        deepAssign(element, this$1.store.elements[existingId]);
+
+        /**
+         * In order to prevent previously generated styles
+         * from throwing off the new styles, the style tag
+         * has to be reverted to its pre-reveal state.
+         */
+        applyStyle(element.node, element.styles.inline.computed);
+      } else {
+        element.id = nextUniqueId();
+        element.node = elementNode;
+        element.seen = false;
+        element.revealed = false;
+        element.visible = false;
+      }
+      var config = deepAssign({}, element.config || this$1.defaults, options);
+      if (!config.mobile && isMobile() || !config.desktop && !isMobile()) {
+        if (existingId) {
+          clean.call(this$1, element);
+        }
+        return elementBuffer; // skip elements that are disabled
+      }
+
+      var containerNode = (0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])(config.container)[0];
+      if (!containerNode) {
+        throw new Error('Invalid container.');
+      }
+      if (!containerNode.contains(elementNode)) {
+        return elementBuffer; // skip elements found outside the container
+      }
+
+      var containerId;
+      {
+        containerId = getContainerId(containerNode, containerBuffer, this$1.store.containers);
+        if (containerId === null) {
+          containerId = nextUniqueId();
+          containerBuffer.push({
+            id: containerId,
+            node: containerNode
+          });
+        }
+      }
+      element.config = config;
+      element.containerId = containerId;
+      element.styles = style(element);
+      if (sequence$$1) {
+        element.sequence = {
+          id: sequence$$1.id,
+          index: sequence$$1.members.length
+        };
+        sequence$$1.members.push(element.id);
+      }
+      elementBuffer.push(element);
+      return elementBuffer;
+    }, []);
+
+    /**
+     * Modifying the DOM via setAttribute needs to be handled
+     * separately from reading computed styles in the map above
+     * for the browser to batch DOM changes (limiting reflows)
+     */
+    each(elements, function (element) {
+      this$1.store.elements[element.id] = element;
+      element.node.setAttribute('data-sr-id', element.id);
+    });
+  } catch (e) {
+    return logger.call(this, 'Reveal failed.', e.message);
+  }
+
+  /**
+   * Now that element set-up is complete...
+   * Let’s commit any container and sequence data we have to the store.
+   */
+  each(containerBuffer, function (container) {
+    this$1.store.containers[container.id] = {
+      id: container.id,
+      node: container.node
+    };
+  });
+  if (sequence$$1) {
+    this.store.sequences[sequence$$1.id] = sequence$$1;
+  }
+
+  /**
+   * If reveal wasn't invoked by sync, we want to
+   * make sure to add this call to the history.
+   */
+  if (syncing !== true) {
+    this.store.history.push({
+      target: target,
+      options: options
+    });
+
+    /**
+     * Push initialization to the event queue, giving
+     * multiple reveal calls time to be interpreted.
+     */
+    if (this.initTimeout) {
+      window.clearTimeout(this.initTimeout);
+    }
+    this.initTimeout = window.setTimeout(initialize.bind(this), 0);
+  }
+}
+function getContainerId(node) {
+  var collections = [],
+    len = arguments.length - 1;
+  while (len-- > 0) collections[len] = arguments[len + 1];
+  var id = null;
+  each(collections, function (collection) {
+    each(collection, function (container) {
+      if (id === null && container.node === node) {
+        id = container.id;
+      }
+    });
+  });
+  return id;
+}
+
+/**
+ * Re-runs the reveal method for each record stored in history,
+ * for capturing new content asynchronously loaded into the DOM.
+ */
+function sync() {
+  var this$1 = this;
+  each(this.store.history, function (record) {
+    reveal.call(this$1, record.target, record.options, true);
+  });
+  initialize.call(this);
+}
+var polyfill = function polyfill(x) {
+  return (x > 0) - (x < 0) || +x;
+};
+var mathSign = Math.sign || polyfill;
+function getGeometry(target, isContainer) {
+  /**
+   * We want to ignore padding and scrollbars for container elements.
+   * More information here: https://goo.gl/vOZpbz
+   */
+  var height = isContainer ? target.node.clientHeight : target.node.offsetHeight;
+  var width = isContainer ? target.node.clientWidth : target.node.offsetWidth;
+  var offsetTop = 0;
+  var offsetLeft = 0;
+  var node = target.node;
+  do {
+    if (!isNaN(node.offsetTop)) {
+      offsetTop += node.offsetTop;
+    }
+    if (!isNaN(node.offsetLeft)) {
+      offsetLeft += node.offsetLeft;
+    }
+    node = node.offsetParent;
+  } while (node);
+  return {
+    bounds: {
+      top: offsetTop,
+      right: offsetLeft + width,
+      bottom: offsetTop + height,
+      left: offsetLeft
+    },
+    height: height,
+    width: width
+  };
+}
+function getScrolled(container) {
+  var top, left;
+  if (container.node === document.documentElement) {
+    top = window.pageYOffset;
+    left = window.pageXOffset;
+  } else {
+    top = container.node.scrollTop;
+    left = container.node.scrollLeft;
+  }
+  return {
+    top: top,
+    left: left
+  };
+}
+function isElementVisible(element) {
+  if (element === void 0) element = {};
+  var container = this.store.containers[element.containerId];
+  if (!container) {
+    return;
+  }
+  var viewFactor = Math.max(0, Math.min(1, element.config.viewFactor));
+  var viewOffset = element.config.viewOffset;
+  var elementBounds = {
+    top: element.geometry.bounds.top + element.geometry.height * viewFactor,
+    right: element.geometry.bounds.right - element.geometry.width * viewFactor,
+    bottom: element.geometry.bounds.bottom - element.geometry.height * viewFactor,
+    left: element.geometry.bounds.left + element.geometry.width * viewFactor
+  };
+  var containerBounds = {
+    top: container.geometry.bounds.top + container.scroll.top + viewOffset.top,
+    right: container.geometry.bounds.right + container.scroll.left - viewOffset.right,
+    bottom: container.geometry.bounds.bottom + container.scroll.top - viewOffset.bottom,
+    left: container.geometry.bounds.left + container.scroll.left + viewOffset.left
+  };
+  return elementBounds.top < containerBounds.bottom && elementBounds.right > containerBounds.left && elementBounds.bottom > containerBounds.top && elementBounds.left < containerBounds.right || element.styles.position === 'fixed';
+}
+function delegate(event, elements) {
+  var this$1 = this;
+  if (event === void 0) event = {
+    type: 'init'
+  };
+  if (elements === void 0) elements = this.store.elements;
+  (0,miniraf__WEBPACK_IMPORTED_MODULE_2__["default"])(function () {
+    var stale = event.type === 'init' || event.type === 'resize';
+    each(this$1.store.containers, function (container) {
+      if (stale) {
+        container.geometry = getGeometry.call(this$1, container, true);
+      }
+      var scroll = getScrolled.call(this$1, container);
+      if (container.scroll) {
+        container.direction = {
+          x: mathSign(scroll.left - container.scroll.left),
+          y: mathSign(scroll.top - container.scroll.top)
+        };
+      }
+      container.scroll = scroll;
+    });
+
+    /**
+     * Due to how the sequencer is implemented, it’s
+     * important that we update the state of all
+     * elements, before any animation logic is
+     * evaluated (in the second loop below).
+     */
+    each(elements, function (element) {
+      if (stale || element.geometry === undefined) {
+        element.geometry = getGeometry.call(this$1, element);
+      }
+      element.visible = isElementVisible.call(this$1, element);
+    });
+    each(elements, function (element) {
+      if (element.sequence) {
+        sequence.call(this$1, element);
+      } else {
+        animate.call(this$1, element);
+      }
+    });
+    this$1.pristine = false;
+  });
+}
+function isTransformSupported() {
+  var style = document.documentElement.style;
+  return 'transform' in style || 'WebkitTransform' in style;
+}
+function isTransitionSupported() {
+  var style = document.documentElement.style;
+  return 'transition' in style || 'WebkitTransition' in style;
+}
+var version = "4.0.9";
+var boundDelegate;
+var boundDestroy;
+var boundReveal;
+var boundClean;
+var boundSync;
+var config;
+var debug;
+var instance;
+function ScrollReveal(options) {
+  if (options === void 0) options = {};
+  var invokedWithoutNew = typeof this === 'undefined' || Object.getPrototypeOf(this) !== ScrollReveal.prototype;
+  if (invokedWithoutNew) {
+    return new ScrollReveal(options);
+  }
+  if (!ScrollReveal.isSupported()) {
+    logger.call(this, 'Instantiation failed.', 'This browser is not supported.');
+    return mount.failure();
+  }
+  var buffer;
+  try {
+    buffer = config ? deepAssign({}, config, options) : deepAssign({}, defaults, options);
+  } catch (e) {
+    logger.call(this, 'Invalid configuration.', e.message);
+    return mount.failure();
+  }
+  try {
+    var container = (0,tealight__WEBPACK_IMPORTED_MODULE_0__["default"])(buffer.container)[0];
+    if (!container) {
+      throw new Error('Invalid container.');
+    }
+  } catch (e) {
+    logger.call(this, e.message);
+    return mount.failure();
+  }
+  config = buffer;
+  if (!config.mobile && isMobile() || !config.desktop && !isMobile()) {
+    logger.call(this, 'This device is disabled.', "desktop: " + config.desktop, "mobile: " + config.mobile);
+    return mount.failure();
+  }
+  mount.success();
+  this.store = {
+    containers: {},
+    elements: {},
+    history: [],
+    sequences: {}
+  };
+  this.pristine = true;
+  boundDelegate = boundDelegate || delegate.bind(this);
+  boundDestroy = boundDestroy || destroy.bind(this);
+  boundReveal = boundReveal || reveal.bind(this);
+  boundClean = boundClean || clean.bind(this);
+  boundSync = boundSync || sync.bind(this);
+  Object.defineProperty(this, 'delegate', {
+    get: function get() {
+      return boundDelegate;
+    }
+  });
+  Object.defineProperty(this, 'destroy', {
+    get: function get() {
+      return boundDestroy;
+    }
+  });
+  Object.defineProperty(this, 'reveal', {
+    get: function get() {
+      return boundReveal;
+    }
+  });
+  Object.defineProperty(this, 'clean', {
+    get: function get() {
+      return boundClean;
+    }
+  });
+  Object.defineProperty(this, 'sync', {
+    get: function get() {
+      return boundSync;
+    }
+  });
+  Object.defineProperty(this, 'defaults', {
+    get: function get() {
+      return config;
+    }
+  });
+  Object.defineProperty(this, 'version', {
+    get: function get() {
+      return version;
+    }
+  });
+  Object.defineProperty(this, 'noop', {
+    get: function get() {
+      return false;
+    }
+  });
+  return instance ? instance : instance = this;
+}
+ScrollReveal.isSupported = function () {
+  return isTransformSupported() && isTransitionSupported();
+};
+Object.defineProperty(ScrollReveal, 'debug', {
+  get: function get() {
+    return debug || false;
+  },
+  set: function set(value) {
+    return debug = typeof value === 'boolean' ? value : debug;
+  }
+});
+ScrollReveal();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ScrollReveal);
+
+/***/ }),
+
+/***/ "./node_modules/tealight/dist/tealight.es.js":
+/*!***************************************************!*\
+  !*** ./node_modules/tealight/dist/tealight.es.js ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var is_dom_node__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! is-dom-node */ "./node_modules/is-dom-node/dist/is-dom-node.es.js");
+/* harmony import */ var is_dom_node_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! is-dom-node-list */ "./node_modules/is-dom-node-list/dist/is-dom-node-list.es.js");
+/*! @license Tealight v0.3.6
+
+	Copyright 2018 Fisssion LLC.
+
+	Permission is hereby granted, free of charge, to any person obtaining a copy
+	of this software and associated documentation files (the "Software"), to deal
+	in the Software without restriction, including without limitation the rights
+	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	copies of the Software, and to permit persons to whom the Software is
+	furnished to do so, subject to the following conditions:
+
+	The above copyright notice and this permission notice shall be included in all
+	copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	SOFTWARE.
+
+*/
+
+
+function tealight(target, context) {
+  if (context === void 0) context = document;
+  if (target instanceof Array) {
+    return target.filter(is_dom_node__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  }
+  if ((0,is_dom_node__WEBPACK_IMPORTED_MODULE_0__["default"])(target)) {
+    return [target];
+  }
+  if ((0,is_dom_node_list__WEBPACK_IMPORTED_MODULE_1__["default"])(target)) {
+    return Array.prototype.slice.call(target);
+  }
+  if (typeof target === "string") {
+    try {
+      var query = context.querySelectorAll(target);
+      return Array.prototype.slice.call(query);
+    } catch (err) {
+      return [];
+    }
+  }
+  return [];
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (tealight);
+
+/***/ }),
+
 /***/ "./node_modules/typeit/dist/index.es.js":
 /*!**********************************************!*\
   !*** ./node_modules/typeit/dist/index.es.js ***!
@@ -9904,20 +11616,26 @@ var fetchCommentsFromApi = /*#__PURE__*/function () {
           return fetch("https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1lQTFOEu5O5KmM8n2meG/comments?item_id=".concat(movieId));
         case 3:
           response = _context6.sent;
-          _context6.next = 6;
-          return response.json();
+          if (!(response.status === '400')) {
+            _context6.next = 6;
+            break;
+          }
+          return _context6.abrupt("return", []);
         case 6:
+          _context6.next = 8;
+          return response.json();
+        case 8:
           comments = _context6.sent;
           return _context6.abrupt("return", comments);
-        case 10:
-          _context6.prev = 10;
+        case 12:
+          _context6.prev = 12;
           _context6.t0 = _context6["catch"](0);
-          throw new Error(_context6.t0);
-        case 13:
+          throw new Error('Something went wrong');
+        case 15:
         case "end":
           return _context6.stop();
       }
-    }, _callee6, null, [[0, 10]]);
+    }, _callee6, null, [[0, 12]]);
   }));
   return function fetchCommentsFromApi(_x10) {
     return _ref6.apply(this, arguments);
@@ -10001,20 +11719,26 @@ var fetchReservations = /*#__PURE__*/function () {
           return fetch("https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1lQTFOEu5O5KmM8n2meG/reservations?item_id=".concat(itemId));
         case 3:
           response = _context8.sent;
-          _context8.next = 6;
-          return response.json();
+          if (!(response.status === '400')) {
+            _context8.next = 6;
+            break;
+          }
+          return _context8.abrupt("return", []);
         case 6:
+          _context8.next = 8;
+          return response.json();
+        case 8:
           reservations = _context8.sent;
           return _context8.abrupt("return", reservations);
-        case 10:
-          _context8.prev = 10;
+        case 12:
+          _context8.prev = 12;
           _context8.t0 = _context8["catch"](0);
-          throw new Error(_context8.t0);
-        case 13:
+          throw new Error('Something went wrong');
+        case 15:
         case "end":
           return _context8.stop();
       }
-    }, _callee8, null, [[0, 10]]);
+    }, _callee8, null, [[0, 12]]);
   }));
   return function fetchReservations(_x16) {
     return _ref8.apply(this, arguments);
@@ -10064,7 +11788,7 @@ var navbarHamburgerToggler = function navbarHamburgerToggler() {
   function changeButtonIcon(path) {
     buttonImage.src = path;
   }
-  var navigationIcons = ['./images/button-menu.png', './images/close-icon.svg'];
+  var navigationIcons = ['./images/button-menu.svg', './images/close-icon.svg'];
   navigationLinks.forEach(function (element) {
     element.addEventListener('click', function () {
       toggleNavigation();
@@ -10155,7 +11879,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 li {
@@ -10171,6 +11895,12 @@ h4 {
 
 span {
   color: white;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
 }
 
 body {
@@ -10195,11 +11925,12 @@ body {
   background-color: #000;
 }
 
-/* nav stylings */
-.nav-bar-home {
-  background-color: rgba(0, 0, 0, 0.5);
+#movieContainer {
+  min-height: 60vh;
+  margin: auto;
 }
 
+/* nav stylings */
 .navbar-brand {
   font-size: 20px;
   font-weight: 800;
@@ -10247,7 +11978,8 @@ body {
 
 /* cards stylings */
 .card {
-  border-radius: 10px;
+  border-radius: 14px;
+   width: 80%;   
 }
 
 .card img:hover {
@@ -10260,14 +11992,19 @@ body {
 .custom-card {
   background-color: transparent;
   border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-button {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 7px;
   align-items: center;
 }
+
 
 .btn {
   background-color: var(--red-color);
@@ -10277,6 +12014,7 @@ body {
   font-weight: 600;
   font-style: normal;
 }
+
 
 .btn:hover {
   background-color: white;
@@ -10304,6 +12042,9 @@ body {
   display: flex;
 }
 
+.like {
+  font-size:10px;
+}
 /* modal styling */
 
 .modal {
@@ -10377,6 +12118,11 @@ fieldset {
   align-items: center;
 }
 
+.reservation input {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
 @media screen and (min-width: 480px) {
   form {
     max-width: 480px;
@@ -10404,14 +12150,31 @@ fieldset {
     gap: 15px;
   }
 
+  .nav-bar-home {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
   .navbar .hamburger-btn {
     display: none;
   }
+
+.movieImg {
+  max-width: 20rem;
+  height: 100%;
+}
+
+.card-button .btn {
+  max-width: 5rem;
+  font-size: 10px;
+}
 
   /* nav end  */
 }
 
 @media (width <= 765px) {
+  .nav-bar-home {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
   .welcomeTitle {
     font-weight: 800;
     font-size: 15px;
@@ -10434,7 +12197,7 @@ fieldset {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: flex-end;
-    gap: 20%;
+    gap: 30%;
   }
 
   .nav-items {
@@ -10453,10 +12216,11 @@ fieldset {
     visibility: hidden;
     overflow: hidden;
     align-content: flex-start;
+    transition: all 0.4s ease-in-out;
   }
 
   #latestShowsLink {
-    padding-top: 7vh;
+    padding-top: 9vh;
   }
 
   .nav-items li a {
@@ -10474,6 +12238,7 @@ fieldset {
   .hamburger-btn {
     background: none;
     border: none;
+    outline: none;
     border-style: none;
     padding: 1rem;
     padding-right: 6%;
@@ -10481,6 +12246,7 @@ fieldset {
     z-index: 1001;
     display: block;
     display: flex;
+    margin: auto;
     align-self: center;
     color: white;
   }
@@ -10501,12 +12267,24 @@ fieldset {
     color: white;
     font-weight: 600;
   }
+
+  .card {
+    width: 70%;     
+    margin:auto;  
+  }
+
+  .custom-card {
+    max-width: 9rem;
+    height: 100%;
+  }
+
+  .card-button .btn {
+    max-width: 4rem;
+    font-size: 6px;
+  }
+  
 }
 
-.movieImg {
-  max-width: 20rem;
-  height: 100%;
-}
 
 .footer-copyright {
   background-color: var(--red-color);
@@ -10516,8 +12294,81 @@ fieldset {
   text-align: center;
   padding: 1rem;
   margin-top: 1rem;
+  position: static;
+  bottom: 0;
 }
-`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["\r\n:root {\r\n  --header-height: 4rem;\r\n  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\r\n  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);\r\n  --primary-color: #fff;\r\n  --secondary-color: #cf7c0f;\r\n  --dark-color: #181717;\r\n  --light-color: #f4f4f4;\r\n  --red-color: rgb(216, 0, 0);\r\n  --green-color: #0f0;\r\n  --orange-color: #ffa500;\r\n  --pink-color: #ffc0cb;\r\n  --brown-color: #a52a2a;\r\n  --black-color: #000;\r\n  --gray-color: #808080;\r\n  --light-gray-color: #d3d3d3;\r\n  --dark-gray-color: #a9a9a9;\r\n}\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: 'Poppins', sans-serif;\r\n}\r\n\r\nli {\r\n  list-style: none;\r\n}\r\n\r\nh4 {\r\n  font-size: 13px;\r\n  font-weight: 800;\r\n  color: rgb(250, 17, 17);\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nspan {\r\n  color: white;\r\n}\r\n\r\nbody {\r\n  background-color: #000;\r\n  color: var(--primary-color);\r\n  overflow-x: hidden;\r\n  margin: 0;\r\n  padding: 0;\r\n  position: relative;\r\n}\r\n\r\n#hero-section {\r\n  color: var(--red-color);\r\n  width: 100vw;\r\n  height: 60vh;\r\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)), url('../dist/images/bg-for-page.jpg');\r\n  background-position: center;\r\n  background-size: cover;\r\n  background-repeat: no-repeat;\r\n  margin: 0;\r\n  padding: 0;\r\n  background-color: #000;\r\n}\r\n\r\n/* nav stylings */\r\n.nav-bar-home {\r\n  background-color: rgba(0, 0, 0, 0.5);\r\n}\r\n\r\n.navbar-brand {\r\n  font-size: 20px;\r\n  font-weight: 800;\r\n  color: var(--red-color);\r\n  text-shadow: #000 1px 1px 1px;\r\n}\r\n\r\n.nav-link {\r\n  color: var(--primary-color);\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  transition: all 0.4s ease-in-out;\r\n}\r\n\r\n.nav-link:hover,\r\n.navbar-brand:hover {\r\n  color: var(--red-color);\r\n}\r\n\r\n.welcomeTitle {\r\n  font-weight: 800;\r\n  font-size: 18px;\r\n  color: white;\r\n}\r\n\r\n.our {\r\n  color: var(--red-color);\r\n}\r\n\r\n.welcomeTitleWelc {\r\n  color: white;\r\n  font-size: 24px;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.searchBtn {\r\n  background-color: var(--red-color);\r\n  border: none;\r\n  color: white;\r\n  font-weight: 800;\r\n  font-size: 14px;\r\n  transition: all 0.4s ease-in-out;\r\n  outline: var(--red-color);\r\n}\r\n\r\n/* cards stylings */\r\n.card {\r\n  border-radius: 10px;\r\n}\r\n\r\n.card img:hover {\r\n  box-shadow: 6px 6px 6px 0.5px rgba(255, 7, 7, 0.5);\r\n  transform: scale(1.06);\r\n  transition: all 0.3s ease-in-out;\r\n  background-color: white;\r\n}\r\n\r\n.custom-card {\r\n  background-color: transparent;\r\n  border: none;\r\n}\r\n\r\n.card-button {\r\n  display: flex;\r\n  flex-direction: column;\r\n  gap: 7px;\r\n  align-items: center;\r\n}\r\n\r\n.btn {\r\n  background-color: var(--red-color);\r\n  border: none;\r\n  transition: all 0.4s ease-in-out;\r\n  color: rgb(255, 255, 255);\r\n  font-weight: 600;\r\n  font-style: normal;\r\n}\r\n\r\n.btn:hover {\r\n  background-color: white;\r\n  color: var(--red-color);\r\n}\r\n\r\n.commentFormBtn {\r\n  color: white;\r\n  padding: 0.4rem;\r\n  border-radius: 5px;\r\n  background-color: red;\r\n}\r\n\r\n.commentFormBtn:hover {\r\n  color: red;\r\n  background-color: white;\r\n}\r\n\r\n.name-like-button {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\n.likeBtnContainer {\r\n  display: flex;\r\n}\r\n\r\n/* modal styling */\r\n\r\n.modal {\r\n  width: 95vw;\r\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));\r\n}\r\n\r\n.modal-body {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.modal-title {\r\n  width: 93%;\r\n  font-weight: bold;\r\n  font-size: 40px;\r\n  font-family: 'cursive', sans-serif;\r\n}\r\n\r\n.modal-content {\r\n  background-color: transparent;\r\n  border: none;\r\n}\r\n\r\n.afterSummary {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-evenly;\r\n  gap: 10px;\r\n}\r\n\r\n/* forms */\r\nform {\r\n  max-width: 300px;\r\n  margin: 10px auto;\r\n  padding: 5px 10px;\r\n  background: transparent;\r\n  border-radius: 8px;\r\n}\r\n\r\nh1 {\r\n  margin: 0 0 20px 0;\r\n  font-size: 20px;\r\n  font-weight: 800;\r\n  text-align: center;\r\n}\r\n\r\n.modal input,\r\ntextarea {\r\n  border: 1px solid black;\r\n  font-size: 13px;\r\n  height: auto;\r\n  margin: 0;\r\n  outline: 0;\r\n  padding: 5px;\r\n  width: 100%;\r\n  background: #fff;\r\n  color: #000305;\r\n  margin-bottom: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\nfieldset {\r\n  margin-bottom: 30px;\r\n  border: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n@media screen and (min-width: 480px) {\r\n  form {\r\n    max-width: 480px;\r\n  }\r\n}\r\n\r\n@media (width > 765px) {\r\n  /* nav  start */\r\n  .navbar {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    align-self: stretch;\r\n    flex-shrink: 0;\r\n    height: 75px;\r\n    z-index: 1000;\r\n  }\r\n\r\n  .navbar .nav-items {\r\n    display: block;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 15px;\r\n  }\r\n\r\n  .navbar .hamburger-btn {\r\n    display: none;\r\n  }\r\n\r\n  /* nav end  */\r\n}\r\n\r\n@media (width <= 765px) {\r\n  .welcomeTitle {\r\n    font-weight: 800;\r\n    font-size: 15px;\r\n  }\r\n\r\n  .welcomeTitleWelc {\r\n    color: white;\r\n    font-size: 19px;\r\n    text-transform: capitalize;\r\n  }\r\n\r\n  .navbar-brand {\r\n    display: none;\r\n  }\r\n\r\n  .navbar {\r\n    padding-left: 10px;\r\n    height: 100%;\r\n    display: flex;\r\n    flex-direction: row-reverse;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    gap: 20%;\r\n  }\r\n\r\n  .nav-items {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    position: fixed;\r\n    background: rgba(8, 0, 0, 0.415);\r\n    backdrop-filter: blur(10px);\r\n    z-index: 1000;\r\n    height: 100vh;\r\n    visibility: hidden;\r\n    overflow: hidden;\r\n    align-content: flex-start;\r\n  }\r\n\r\n  #latestShowsLink {\r\n    padding-top: 7vh;\r\n  }\r\n\r\n  .nav-items li a {\r\n    padding-top: 0.5rem;\r\n    font-size: 30px;\r\n    font-weight: 700;\r\n    align-self: center;\r\n    text-align: center;\r\n  }\r\n\r\n  .header-nav-active {\r\n    visibility: visible;\r\n  }\r\n\r\n  .hamburger-btn {\r\n    background: none;\r\n    border: none;\r\n    border-style: none;\r\n    padding: 1rem;\r\n    padding-right: 6%;\r\n    cursor: pointer;\r\n    z-index: 1001;\r\n    display: block;\r\n    display: flex;\r\n    align-self: center;\r\n    color: white;\r\n  }\r\n\r\n  .header-toggle {\r\n    width: 31px;\r\n    height: 23px;\r\n  }\r\n\r\n  .header-list {\r\n    padding: 32px 16px;\r\n    display: grid;\r\n    gap: 14px;\r\n  }\r\n\r\n  .header-list-item {\r\n    font-size: 32px;\r\n    color: white;\r\n    font-weight: 600;\r\n  }\r\n}\r\n\r\n.movieImg {\r\n  max-width: 20rem;\r\n  height: 100%;\r\n}\r\n\r\n.footer-copyright {\r\n  background-color: var(--red-color);\r\n  color: var(--primary-color);\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  text-align: center;\r\n  padding: 1rem;\r\n  margin-top: 1rem;\r\n}\r\n"],"sourceRoot":""}]);
+html {
+  height: 100%;
+}
+
+.loader {
+  position: absolute;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  perspective: 800px;
+
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;  
+}
+
+.inner.one {
+  left: 0%;
+  top: 0%;
+  animation: rotate-one 1s linear infinite;
+  border-bottom: 3px solid #EFEFFA;
+}
+
+.inner.two {
+  right: 0%;
+  top: 0%;
+  animation: rotate-two 1s linear infinite;
+  border-right: 3px solid #EFEFFA;
+}
+
+.inner.three {
+  right: 0%;
+  bottom: 0%;
+  animation: rotate-three 1s linear infinite;
+  border-top: 3px solid #EFEFFA;
+}
+
+@keyframes rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["\r\n:root {\r\n  --header-height: 4rem;\r\n  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\r\n  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);\r\n  --primary-color: #fff;\r\n  --secondary-color: #cf7c0f;\r\n  --dark-color: #181717;\r\n  --light-color: #f4f4f4;\r\n  --red-color: rgb(216, 0, 0);\r\n  --green-color: #0f0;\r\n  --orange-color: #ffa500;\r\n  --pink-color: #ffc0cb;\r\n  --brown-color: #a52a2a;\r\n  --black-color: #000;\r\n  --gray-color: #808080;\r\n  --light-gray-color: #d3d3d3;\r\n  --dark-gray-color: #a9a9a9;\r\n}\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;\r\n}\r\n\r\nli {\r\n  list-style: none;\r\n}\r\n\r\nh4 {\r\n  font-size: 13px;\r\n  font-weight: 800;\r\n  color: rgb(250, 17, 17);\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nspan {\r\n  color: white;\r\n}\r\n\r\nbutton {\r\n  cursor: pointer;\r\n  outline: none;\r\n  border: none;\r\n}\r\n\r\nbody {\r\n  background-color: #000;\r\n  color: var(--primary-color);\r\n  overflow-x: hidden;\r\n  margin: 0;\r\n  padding: 0;\r\n  position: relative;\r\n}\r\n\r\n#hero-section {\r\n  color: var(--red-color);\r\n  width: 100vw;\r\n  height: 60vh;\r\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)), url('../dist/images/bg-for-page.jpg');\r\n  background-position: center;\r\n  background-size: cover;\r\n  background-repeat: no-repeat;\r\n  margin: 0;\r\n  padding: 0;\r\n  background-color: #000;\r\n}\r\n\r\n#movieContainer {\r\n  min-height: 60vh;\r\n  margin: auto;\r\n}\r\n\r\n/* nav stylings */\r\n.navbar-brand {\r\n  font-size: 20px;\r\n  font-weight: 800;\r\n  color: var(--red-color);\r\n  text-shadow: #000 1px 1px 1px;\r\n}\r\n\r\n.nav-link {\r\n  color: var(--primary-color);\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  transition: all 0.4s ease-in-out;\r\n}\r\n\r\n.nav-link:hover,\r\n.navbar-brand:hover {\r\n  color: var(--red-color);\r\n}\r\n\r\n.welcomeTitle {\r\n  font-weight: 800;\r\n  font-size: 18px;\r\n  color: white;\r\n}\r\n\r\n.our {\r\n  color: var(--red-color);\r\n}\r\n\r\n.welcomeTitleWelc {\r\n  color: white;\r\n  font-size: 24px;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.searchBtn {\r\n  background-color: var(--red-color);\r\n  border: none;\r\n  color: white;\r\n  font-weight: 800;\r\n  font-size: 14px;\r\n  transition: all 0.4s ease-in-out;\r\n  outline: var(--red-color);\r\n}\r\n\r\n/* cards stylings */\r\n.card {\r\n  border-radius: 14px;\r\n   width: 80%;   \r\n}\r\n\r\n.card img:hover {\r\n  box-shadow: 6px 6px 6px 0.5px rgba(255, 7, 7, 0.5);\r\n  transform: scale(1.06);\r\n  transition: all 0.3s ease-in-out;\r\n  background-color: white;\r\n}\r\n\r\n.custom-card {\r\n  background-color: transparent;\r\n  border: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.card-button {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 7px;\r\n  align-items: center;\r\n}\r\n\r\n\r\n.btn {\r\n  background-color: var(--red-color);\r\n  border: none;\r\n  transition: all 0.4s ease-in-out;\r\n  color: rgb(255, 255, 255);\r\n  font-weight: 600;\r\n  font-style: normal;\r\n}\r\n\r\n\r\n.btn:hover {\r\n  background-color: white;\r\n  color: var(--red-color);\r\n}\r\n\r\n.commentFormBtn {\r\n  color: white;\r\n  padding: 0.4rem;\r\n  border-radius: 5px;\r\n  background-color: red;\r\n}\r\n\r\n.commentFormBtn:hover {\r\n  color: red;\r\n  background-color: white;\r\n}\r\n\r\n.name-like-button {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\n.likeBtnContainer {\r\n  display: flex;\r\n}\r\n\r\n.like {\r\n  font-size:10px;\r\n}\r\n/* modal styling */\r\n\r\n.modal {\r\n  width: 95vw;\r\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));\r\n}\r\n\r\n.modal-body {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.modal-title {\r\n  width: 93%;\r\n  font-weight: bold;\r\n  font-size: 40px;\r\n  font-family: 'cursive', sans-serif;\r\n}\r\n\r\n.modal-content {\r\n  background-color: transparent;\r\n  border: none;\r\n}\r\n\r\n.afterSummary {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-evenly;\r\n  gap: 10px;\r\n}\r\n\r\n/* forms */\r\nform {\r\n  max-width: 300px;\r\n  margin: 10px auto;\r\n  padding: 5px 10px;\r\n  background: transparent;\r\n  border-radius: 8px;\r\n}\r\n\r\nh1 {\r\n  margin: 0 0 20px 0;\r\n  font-size: 20px;\r\n  font-weight: 800;\r\n  text-align: center;\r\n}\r\n\r\n.modal input,\r\ntextarea {\r\n  border: 1px solid black;\r\n  font-size: 13px;\r\n  height: auto;\r\n  margin: 0;\r\n  outline: 0;\r\n  padding: 5px;\r\n  width: 100%;\r\n  background: #fff;\r\n  color: #000305;\r\n  margin-bottom: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\nfieldset {\r\n  margin-bottom: 30px;\r\n  border: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.reservation input {\r\n  width: 100%;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n@media screen and (min-width: 480px) {\r\n  form {\r\n    max-width: 480px;\r\n  }\r\n}\r\n\r\n@media (width > 765px) {\r\n  /* nav  start */\r\n  .navbar {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    align-self: stretch;\r\n    flex-shrink: 0;\r\n    height: 75px;\r\n    z-index: 1000;\r\n  }\r\n\r\n  .navbar .nav-items {\r\n    display: block;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 15px;\r\n  }\r\n\r\n  .nav-bar-home {\r\n    background-color: rgba(0, 0, 0, 0.7);\r\n  }\r\n\r\n  .navbar .hamburger-btn {\r\n    display: none;\r\n  }\r\n\r\n.movieImg {\r\n  max-width: 20rem;\r\n  height: 100%;\r\n}\r\n\r\n.card-button .btn {\r\n  max-width: 5rem;\r\n  font-size: 10px;\r\n}\r\n\r\n  /* nav end  */\r\n}\r\n\r\n@media (width <= 765px) {\r\n  .nav-bar-home {\r\n    background-color: rgba(0, 0, 0, 0.9);\r\n  }\r\n  .welcomeTitle {\r\n    font-weight: 800;\r\n    font-size: 15px;\r\n  }\r\n\r\n  .welcomeTitleWelc {\r\n    color: white;\r\n    font-size: 19px;\r\n    text-transform: capitalize;\r\n  }\r\n\r\n  .navbar-brand {\r\n    display: none;\r\n  }\r\n\r\n  .navbar {\r\n    padding-left: 10px;\r\n    height: 100%;\r\n    display: flex;\r\n    flex-direction: row-reverse;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    gap: 30%;\r\n  }\r\n\r\n  .nav-items {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    position: fixed;\r\n    background: rgba(8, 0, 0, 0.415);\r\n    backdrop-filter: blur(10px);\r\n    z-index: 1000;\r\n    height: 100vh;\r\n    visibility: hidden;\r\n    overflow: hidden;\r\n    align-content: flex-start;\r\n    transition: all 0.4s ease-in-out;\r\n  }\r\n\r\n  #latestShowsLink {\r\n    padding-top: 9vh;\r\n  }\r\n\r\n  .nav-items li a {\r\n    padding-top: 0.5rem;\r\n    font-size: 30px;\r\n    font-weight: 700;\r\n    align-self: center;\r\n    text-align: center;\r\n  }\r\n\r\n  .header-nav-active {\r\n    visibility: visible;\r\n  }\r\n\r\n  .hamburger-btn {\r\n    background: none;\r\n    border: none;\r\n    outline: none;\r\n    border-style: none;\r\n    padding: 1rem;\r\n    padding-right: 6%;\r\n    cursor: pointer;\r\n    z-index: 1001;\r\n    display: block;\r\n    display: flex;\r\n    margin: auto;\r\n    align-self: center;\r\n    color: white;\r\n  }\r\n\r\n  .header-toggle {\r\n    width: 31px;\r\n    height: 23px;\r\n  }\r\n\r\n  .header-list {\r\n    padding: 32px 16px;\r\n    display: grid;\r\n    gap: 14px;\r\n  }\r\n\r\n  .header-list-item {\r\n    font-size: 32px;\r\n    color: white;\r\n    font-weight: 600;\r\n  }\r\n\r\n  .card {\r\n    width: 70%;     \r\n    margin:auto;  \r\n  }\r\n\r\n  .custom-card {\r\n    max-width: 9rem;\r\n    height: 100%;\r\n  }\r\n\r\n  .card-button .btn {\r\n    max-width: 4rem;\r\n    font-size: 6px;\r\n  }\r\n  \r\n}\r\n\r\n\r\n.footer-copyright {\r\n  background-color: var(--red-color);\r\n  color: var(--primary-color);\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  text-align: center;\r\n  padding: 1rem;\r\n  margin-top: 1rem;\r\n  position: static;\r\n  bottom: 0;\r\n}\r\nhtml {\r\n  height: 100%;\r\n}\r\n\r\n.loader {\r\n  position: absolute;\r\n  top: calc(50% - 32px);\r\n  left: calc(50% - 32px);\r\n  width: 64px;\r\n  height: 64px;\r\n  border-radius: 50%;\r\n  perspective: 800px;\r\n\r\n}\r\n\r\n.inner {\r\n  position: absolute;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 50%;  \r\n}\r\n\r\n.inner.one {\r\n  left: 0%;\r\n  top: 0%;\r\n  animation: rotate-one 1s linear infinite;\r\n  border-bottom: 3px solid #EFEFFA;\r\n}\r\n\r\n.inner.two {\r\n  right: 0%;\r\n  top: 0%;\r\n  animation: rotate-two 1s linear infinite;\r\n  border-right: 3px solid #EFEFFA;\r\n}\r\n\r\n.inner.three {\r\n  right: 0%;\r\n  bottom: 0%;\r\n  animation: rotate-three 1s linear infinite;\r\n  border-top: 3px solid #EFEFFA;\r\n}\r\n\r\n@keyframes rotate-one {\r\n  0% {\r\n    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);\r\n  }\r\n  100% {\r\n    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);\r\n  }\r\n}\r\n\r\n@keyframes rotate-two {\r\n  0% {\r\n    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);\r\n  }\r\n  100% {\r\n    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);\r\n  }\r\n}\r\n\r\n@keyframes rotate-three {\r\n  0% {\r\n    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);\r\n  }\r\n  100% {\r\n    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);\r\n  }\r\n}\r\n\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -10865,13 +12716,13 @@ module.exports = __webpack_require__.p + "images/bg-for-page.jpg";
 
 /***/ }),
 
-/***/ "./src/assets/button-menu.png":
+/***/ "./src/assets/button-menu.svg":
 /*!************************************!*\
-  !*** ./src/assets/button-menu.png ***!
+  !*** ./src/assets/button-menu.svg ***!
   \************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-module.exports = __webpack_require__.p + "images/button-menu.png";
+module.exports = __webpack_require__.p + "images/button-menu.svg";
 
 /***/ }),
 
@@ -11031,15 +12882,16 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ "./src/style.css");
 /* harmony import */ var typeit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! typeit */ "./node_modules/typeit/dist/index.es.js");
-/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
-/* harmony import */ var _modules_showsAPI_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/showsAPI.js */ "./src/modules/showsAPI.js");
-/* harmony import */ var _modules_navbar_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/navbar.js */ "./src/modules/navbar.js");
-/* harmony import */ var _modules_involvementAPI_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/involvementAPI.js */ "./src/modules/involvementAPI.js");
-/* harmony import */ var _assets_bg_for_page_jpg__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./assets/bg-for-page.jpg */ "./src/assets/bg-for-page.jpg");
-/* harmony import */ var _assets_button_menu_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/button-menu.png */ "./src/assets/button-menu.png");
-/* harmony import */ var _assets_close_icon_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/close-icon.svg */ "./src/assets/close-icon.svg");
-/* harmony import */ var _modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/functionalities.js */ "./src/modules/functionalities.js");
-/* harmony import */ var _modules_counter_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/counter.js */ "./src/modules/counter.js");
+/* harmony import */ var scrollreveal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! scrollreveal */ "./node_modules/scrollreveal/dist/scrollreveal.es.js");
+/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+/* harmony import */ var _modules_showsAPI_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/showsAPI.js */ "./src/modules/showsAPI.js");
+/* harmony import */ var _modules_navbar_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/navbar.js */ "./src/modules/navbar.js");
+/* harmony import */ var _modules_involvementAPI_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/involvementAPI.js */ "./src/modules/involvementAPI.js");
+/* harmony import */ var _assets_bg_for_page_jpg__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./assets/bg-for-page.jpg */ "./src/assets/bg-for-page.jpg");
+/* harmony import */ var _assets_button_menu_svg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./assets/button-menu.svg */ "./src/assets/button-menu.svg");
+/* harmony import */ var _assets_close_icon_svg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./assets/close-icon.svg */ "./src/assets/close-icon.svg");
+/* harmony import */ var _modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/functionalities.js */ "./src/modules/functionalities.js");
+/* harmony import */ var _modules_counter_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/counter.js */ "./src/modules/counter.js");
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return { value: void 0, done: !0 }; } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable || "" === iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } throw new TypeError(_typeof(iterable) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, "catch": function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -11055,16 +12907,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 var renderMovies = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
-    var data, numberOfLatestShows, latestShowsLink, movieContainer;
-    return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-      while (1) switch (_context5.prev = _context5.next) {
+  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(data) {
+    var numberOfLatestShows, latestShowsLink, movieContainer;
+    return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+      while (1) switch (_context7.prev = _context7.next) {
         case 0:
-          _context5.next = 2;
-          return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.getMoviesData)(_modules_showsAPI_js__WEBPACK_IMPORTED_MODULE_3__.showApiUrl);
-        case 2:
-          data = _context5.sent;
           data.sort(function () {
             return 0.5 - Math.random();
           });
@@ -11074,14 +12923,14 @@ var renderMovies = /*#__PURE__*/function () {
           latestShowsLink.innerHTML = "Latest Shows <span class=\"badge\">(".concat(numberOfLatestShows, ")</span>");
           movieContainer = document.getElementById('movieContainer');
           data.forEach( /*#__PURE__*/function () {
-            var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(movie) {
-              var movieCard, modal, comments, commentsCounter, numComments, commentForm, modalReservations, reservations, reservationsCounter, numReservations, reservationForm, likeBtn, isLiked;
-              return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-                while (1) switch (_context4.prev = _context4.next) {
+            var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(movie) {
+              var movieCard, modal, commentsButton, commentForm, modalReservations, reservationsButton, reservationForm, likeBtn, isLiked;
+              return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+                while (1) switch (_context6.prev = _context6.next) {
                   case 0:
                     movieCard = document.createElement('div');
-                    movieCard.classList.add('col-md-3', 'col-sm-6', 'mb-4');
-                    movieCard.innerHTML = "\n        <div class=\"card custom-card\">\n          <img src=".concat(movie.image.medium, " class=\"card-img-top\" alt=\"images\">\n          <div class=\"card-body\">\n            <div  class=\"name-like-button\">\n               <div>\n                <span class=\"card-title\">").concat(movie.name, "</span>\n               </div>\n              <div  class=\"likeBtnContainer\">\n                <span class=\"likesCount").concat(movie.id, "\">0</span>\n                <span class=\"likeBtn\" data-movie-id=\"").concat(movie.id, "\">&nbsp;&#9825</span>\n              </div>\n            </div>\n            <div class=\"card-button\">\n              <button type=\"button\" \n                      class=\"btn   btn-small comment-button \" \n                      data-bs-toggle=\"modal\" \n                      data-bs-target=\"#commentModal-").concat(movie.id, "\">\n                Comment\n              </button>\n \n              <button type=\"button\" \n                    class=\"btn   btn-small reservation-button \" \n                    data-bs-toggle=\"modal\" \n                    data-bs-target=\"#reservationsModal-").concat(movie.id, "\">\n              Reservations\n              </button>\n            </div>\n          </div>\n        </div>\n      ");
+                    movieCard.classList.add('col-md-3', 'col-sm-4', 'col-6', 'mb-3');
+                    movieCard.innerHTML = "\n        <div class=\"card custom-card\" >\n        <a href=\"".concat(movie.officialSite, "\" target=\"_blank\">\n        <img src=").concat(movie.image.medium, " class=\"card-img-top\" alt=\"images\">\n        </a>\n         \n          <div class=\"card-body\">\n            <div  class=\"name-like-button\">\n               <div>\n                <span class=\"card-title\">").concat(movie.name, "</span>\n               </div>\n              <div  class=\"likeBtnContainer\">\n                <span class=\"likesCount").concat(movie.id, " like\">0</span>\n                <span class=\"likeBtn\" data-movie-id=\"").concat(movie.id, "\">&nbsp;&#9825</span>\n              </div>\n            </div>\n            <div class=\"card-button\">\n              <button type=\"button\" \n                      class=\"btn   btn-small comment-button-").concat(movie.id, " \" \n                      data-bs-toggle=\"modal\" \n                      data-bs-target=\"#commentModal-").concat(movie.id, "\">\n                Comment\n              </button>\n \n              <button type=\"button\" \n                    class=\"btn   btn-small reservation-button-").concat(movie.id, " \" \n                    data-bs-toggle=\"modal\" \n                    data-bs-target=\"#reservationsModal-").concat(movie.id, "\">\n              Reservations\n              </button>\n            </div>\n          </div>\n        </div>\n      ");
                     modal = document.createElement('div');
                     modal.classList.add('modal');
                     modal.id = "commentModal-".concat(movie.id);
@@ -11092,47 +12941,58 @@ var renderMovies = /*#__PURE__*/function () {
                     document.body.appendChild(modal);
 
                     // Adding previous comments the first time
-                    _context4.next = 13;
-                    return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.fetchCommentsFromApi)(movie.id);
-                  case 13:
-                    comments = _context4.sent;
-                    if (comments.length > 0) {
-                      (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.renderComments)(modal, comments);
-                      commentsCounter = modal.querySelector('.commentsCounter');
-                      numComments = (0,_modules_counter_js__WEBPACK_IMPORTED_MODULE_10__.countComments)(movie.id, comments);
-                      commentsCounter.textContent = "Comments: ".concat(numComments);
-                    }
+                    commentsButton = document.querySelector(".comment-button-".concat(movie.id));
+                    commentsButton.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+                      var comments, commentsCounter, numComments;
+                      return _regeneratorRuntime().wrap(function _callee$(_context) {
+                        while (1) switch (_context.prev = _context.next) {
+                          case 0:
+                            _context.next = 2;
+                            return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.fetchCommentsFromApi)(movie.id);
+                          case 2:
+                            comments = _context.sent;
+                            console.log(comments);
+                            (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.renderComments)(modal, comments);
+                            commentsCounter = modal.querySelector('.commentsCounter');
+                            numComments = (0,_modules_counter_js__WEBPACK_IMPORTED_MODULE_11__.countComments)(movie.id, comments);
+                            commentsCounter.textContent = "Comments: ".concat(numComments);
+                          case 8:
+                          case "end":
+                            return _context.stop();
+                        }
+                      }, _callee);
+                    })));
                     commentForm = modal.querySelector("#commentFormBtn-".concat(movie.id));
                     commentForm.addEventListener('click', /*#__PURE__*/function () {
-                      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+                      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
                         var username, comment, comments, commentsCounter, numComments;
-                        return _regeneratorRuntime().wrap(function _callee$(_context) {
-                          while (1) switch (_context.prev = _context.next) {
+                        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+                          while (1) switch (_context2.prev = _context2.next) {
                             case 0:
                               event.preventDefault();
                               username = modal.querySelector("#username-".concat(movie.id)).value;
                               comment = modal.querySelector("#comment-".concat(movie.id)).value;
-                              _context.next = 5;
-                              return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.postComment)(_modules_involvementAPI_js__WEBPACK_IMPORTED_MODULE_5__.commentApi, movie.id, username, comment);
+                              _context2.next = 5;
+                              return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.postComment)(_modules_involvementAPI_js__WEBPACK_IMPORTED_MODULE_6__.commentApi, movie.id, username, comment);
                             case 5:
                               modal.querySelector("#username-".concat(movie.id)).value = '';
                               modal.querySelector("#comment-".concat(movie.id)).value = '';
-                              _context.next = 9;
-                              return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.fetchCommentsFromApi)(movie.id);
+                              _context2.next = 9;
+                              return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.fetchCommentsFromApi)(movie.id);
                             case 9:
-                              comments = _context.sent;
-                              (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.renderComments)(modal, comments);
+                              comments = _context2.sent;
+                              (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.renderComments)(modal, comments);
                               commentsCounter = modal.querySelector('.commentsCounter');
-                              numComments = (0,_modules_counter_js__WEBPACK_IMPORTED_MODULE_10__.countComments)(movie.id, comments);
+                              numComments = (0,_modules_counter_js__WEBPACK_IMPORTED_MODULE_11__.countComments)(movie.id, comments);
                               commentsCounter.textContent = "Comments: ".concat(numComments);
                             case 14:
                             case "end":
-                              return _context.stop();
+                              return _context2.stop();
                           }
-                        }, _callee);
+                        }, _callee2);
                       }));
-                      return function (_x2) {
-                        return _ref3.apply(this, arguments);
+                      return function (_x3) {
+                        return _ref4.apply(this, arguments);
                       };
                     }());
                     document.body.appendChild(modal);
@@ -11143,120 +13003,190 @@ var renderMovies = /*#__PURE__*/function () {
                     modalReservations.id = "reservationsModal-".concat(movie.id);
                     modalReservations.setAttribute('aria-labelledby', "exampleModalCenterTitle-".concat(movie.id));
                     modalReservations.setAttribute('aria-hidden', 'true');
-                    modalReservations.innerHTML = "\n    <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\n      </div>\n      <div class=\"modal-body\">\n         <div>\n           <img src=".concat(movie.image.medium, " class=\" image-fluid\" alt=\"popup image\">\n         </div>\n         <div><h3>").concat(movie.name, "</h3></div>\n         <div  class=\"movieSummary\">").concat(movie.summary, "</div>\n         <div  class=\"afterSummary\">\n         <div><h4>Geners: <span>").concat(movie.genres.join(', '), "</span></h4> </div>\n         <div><h4>Ratings:<span> ").concat(movie.rating.average, "</span></h4></div>\n         <div><h4>Premiered: <span>").concat(movie.premiered, "</span></h4></div>\n         </div>\n         <div class=\"reservationtArea\">\n         </div>\n         <div><span class=\"reservationsCounter\"></span></div>\n         <div>\n           <form  class=\"form\">\n           <h1>Reservations</h1>\n           <fieldset>\n            <div>\n                <label for=\"username\"></label>\n              <input type=\"text\"  placeholder=\"name\" id=\"username-").concat(movie.id, "\" name=\"username\" required>\n            </div>\n            <div>\n              <label for=\"date_start\"></label>\n              <input type=\"date\" id=\"date_start-").concat(movie.id, "\" name=\"date_start\"  required>\n           </div>\n           <div>\n           <input type=\"date\" id=\"date_end-").concat(movie.id, "\" name=\"date_end\"  required>\n           <label for=\"date_end\"></label>\n           </div>\n           </fieldset> \n            <button id=\"reserveFormBtn-").concat(movie.id, "\"  class=\" reserveFormBtn-").concat(movie.id, "   btn\" type=\"submit\">Reserve</button>\n           </form>\n         </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Close</button>\n      </div>\n    </div>\n  </div>\n  ");
+                    modalReservations.innerHTML = "\n    <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>\n      </div>\n      <div class=\"modal-body\">\n         <div>\n           <img src=".concat(movie.image.medium, " class=\" image-fluid\" alt=\"popup image\">\n         </div>\n         <div><h3>").concat(movie.name, "</h3></div>\n         <div  class=\"movieSummary\">").concat(movie.summary, "</div>\n         <div  class=\"afterSummary\">\n         <div><h4>Geners: <span>").concat(movie.genres.join(', '), "</span></h4> </div>\n         <div><h4>Ratings:<span> ").concat(movie.rating.average, "</span></h4></div>\n         <div><h4>Premiered: <span>").concat(movie.premiered, "</span></h4></div>\n         </div>\n         <div class=\"reservationtArea\">\n         </div>\n         <div><span class=\"reservationsCounter\"></span></div>\n         <div>m\n           <form  class=\"for reservation\">\n           <h1>Reservations</h1>\n           <fieldset>\n            <div>\n                <label for=\"username\"></label>\n              <input type=\"text\"  placeholder=\"name\" id=\"username-").concat(movie.id, "\" name=\"username\" required>\n            </div>\n            <div>\n              <label for=\"date_start\"></label>\n              <input type=\"date\" id=\"date_start-").concat(movie.id, "\" name=\"date_start\"  required>\n           </div>\n           <div>\n           <input type=\"date\" id=\"date_end-").concat(movie.id, "\" name=\"date_end\"  required>\n           <label for=\"date_end\"></label>\n           </div>\n           </fieldset> \n            <button id=\"reserveFormBtn-").concat(movie.id, "\"  class=\" reserveFormBtn-").concat(movie.id, "   btn\" type=\"submit\">Reserve</button>\n           </form>\n         </div>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-bs-dismiss=\"modal\">Close</button>\n      </div>\n    </div>\n  </div>\n  ");
 
                     // Adding previous reservations te first time
                     document.body.appendChild(modalReservations);
-                    _context4.next = 27;
-                    return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.fetchReservations)(movie.id);
-                  case 27:
-                    reservations = _context4.sent;
-                    if (reservations.length > 0) {
-                      (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.renderReservations)(modalReservations, reservations);
-                      reservationsCounter = modalReservations.querySelector('.reservationsCounter');
-                      numReservations = (0,_modules_counter_js__WEBPACK_IMPORTED_MODULE_10__.countReservations)(movie.id, reservations);
-                      reservationsCounter.textContent = "Reservation: ".concat(numReservations);
-                    }
-
-                    // Add event listener to revervations form
-                    reservationForm = modalReservations.querySelector("#reserveFormBtn-".concat(movie.id));
-                    reservationForm.addEventListener('click', /*#__PURE__*/function () {
-                      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event) {
-                        var username, dateStart, dateEnd, reservations, reservationsCounter, numReservations;
-                        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-                          while (1) switch (_context2.prev = _context2.next) {
-                            case 0:
-                              event.preventDefault();
-                              username = modalReservations.querySelector("#username-".concat(movie.id)).value;
-                              dateStart = modalReservations.querySelector("#date_start-".concat(movie.id)).value;
-                              dateEnd = modalReservations.querySelector("#date_end-".concat(movie.id)).value;
-                              _context2.next = 6;
-                              return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.postReservations)(_modules_involvementAPI_js__WEBPACK_IMPORTED_MODULE_5__.reservationApi, movie.id, username, dateStart, dateEnd);
-                            case 6:
-                              // Clear the form inputs
-                              modalReservations.querySelector("#username-".concat(movie.id)).value = '';
-                              modalReservations.querySelector("#date_start-".concat(movie.id)).value = '';
-                              modalReservations.querySelector("#date_end-".concat(movie.id)).value = '';
-                              _context2.next = 11;
-                              return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.fetchReservations)(movie.id);
-                            case 11:
-                              reservations = _context2.sent;
-                              (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.renderReservations)(modalReservations, reservations);
-                              reservationsCounter = modalReservations.querySelector('.reservationsCounter');
-                              numReservations = (0,_modules_counter_js__WEBPACK_IMPORTED_MODULE_10__.countReservations)(movie.id, reservations);
-                              reservationsCounter.textContent = "Reservation: ".concat(numReservations);
-                            case 16:
-                            case "end":
-                              return _context2.stop();
-                          }
-                        }, _callee2);
-                      }));
-                      return function (_x3) {
-                        return _ref4.apply(this, arguments);
-                      };
-                    }());
-                    document.body.appendChild(modalReservations);
-                    likeBtn = movieCard.querySelector('.likeBtn');
-                    isLiked = false;
-                    likeBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+                    reservationsButton = document.querySelector(".reservation-button-".concat(movie.id));
+                    reservationsButton.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3() {
+                      var reservations, reservationsCounter, numReservations;
                       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
                         while (1) switch (_context3.prev = _context3.next) {
                           case 0:
-                            if (!isLiked) {
-                              _context3.next = 7;
-                              break;
-                            }
-                            likeBtn.innerHTML = '&#9825';
-                            isLiked = false;
-                            _context3.next = 5;
-                            return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.getLikesForUnclick)(movie.id);
-                          case 5:
-                            _context3.next = 13;
-                            break;
+                            _context3.next = 2;
+                            return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.fetchReservations)(movie.id);
+                          case 2:
+                            reservations = _context3.sent;
+                            (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.renderReservations)(modalReservations, reservations);
+                            reservationsCounter = modalReservations.querySelector('.reservationsCounter');
+                            numReservations = (0,_modules_counter_js__WEBPACK_IMPORTED_MODULE_11__.countReservations)(movie.id, reservations);
+                            reservationsCounter.textContent = "Reservation: ".concat(numReservations);
                           case 7:
-                            likeBtn.innerHTML = '❤️';
-                            isLiked = true;
-                            _context3.next = 11;
-                            return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.postLikes)(movie.id, _modules_involvementAPI_js__WEBPACK_IMPORTED_MODULE_5__.likeApi);
-                          case 11:
-                            _context3.next = 13;
-                            return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.getLikes)(movie.id);
-                          case 13:
                           case "end":
                             return _context3.stop();
                         }
                       }, _callee3);
                     })));
-                    _context4.next = 37;
-                    return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_9__.getLikes)(movie.id);
-                  case 37:
+
+                    // Add event listener to revervations form
+                    reservationForm = modalReservations.querySelector("#reserveFormBtn-".concat(movie.id));
+                    reservationForm.addEventListener('click', /*#__PURE__*/function () {
+                      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(event) {
+                        var username, dateStart, dateEnd, reservations, reservationsCounter, numReservations;
+                        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+                          while (1) switch (_context4.prev = _context4.next) {
+                            case 0:
+                              event.preventDefault();
+                              username = modalReservations.querySelector("#username-".concat(movie.id)).value;
+                              dateStart = modalReservations.querySelector("#date_start-".concat(movie.id)).value;
+                              dateEnd = modalReservations.querySelector("#date_end-".concat(movie.id)).value;
+                              _context4.next = 6;
+                              return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.postReservations)(_modules_involvementAPI_js__WEBPACK_IMPORTED_MODULE_6__.reservationApi, movie.id, username, dateStart, dateEnd);
+                            case 6:
+                              // Clear the form inputs
+                              modalReservations.querySelector("#username-".concat(movie.id)).value = '';
+                              modalReservations.querySelector("#date_start-".concat(movie.id)).value = '';
+                              modalReservations.querySelector("#date_end-".concat(movie.id)).value = '';
+                              _context4.next = 11;
+                              return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.fetchReservations)(movie.id);
+                            case 11:
+                              reservations = _context4.sent;
+                              (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.renderReservations)(modalReservations, reservations);
+                              reservationsCounter = modalReservations.querySelector('.reservationsCounter');
+                              numReservations = (0,_modules_counter_js__WEBPACK_IMPORTED_MODULE_11__.countReservations)(movie.id, reservations);
+                              reservationsCounter.textContent = "Reservation: ".concat(numReservations);
+                            case 16:
+                            case "end":
+                              return _context4.stop();
+                          }
+                        }, _callee4);
+                      }));
+                      return function (_x4) {
+                        return _ref6.apply(this, arguments);
+                      };
+                    }());
+                    document.body.appendChild(modalReservations);
+                    likeBtn = movieCard.querySelector('.likeBtn');
+                    isLiked = false;
+                    likeBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+                      return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+                        while (1) switch (_context5.prev = _context5.next) {
+                          case 0:
+                            if (!isLiked) {
+                              _context5.next = 7;
+                              break;
+                            }
+                            likeBtn.innerHTML = '&#9825';
+                            isLiked = false;
+                            _context5.next = 5;
+                            return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.getLikesForUnclick)(movie.id);
+                          case 5:
+                            _context5.next = 13;
+                            break;
+                          case 7:
+                            likeBtn.innerHTML = '❤️';
+                            isLiked = true;
+                            _context5.next = 11;
+                            return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.postLikes)(movie.id, _modules_involvementAPI_js__WEBPACK_IMPORTED_MODULE_6__.likeApi);
+                          case 11:
+                            _context5.next = 13;
+                            return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.getLikes)(movie.id);
+                          case 13:
+                          case "end":
+                            return _context5.stop();
+                        }
+                      }, _callee5);
+                    })));
+                    _context6.next = 33;
+                    return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.getLikes)(movie.id);
+                  case 33:
                   case "end":
-                    return _context4.stop();
+                    return _context6.stop();
                 }
-              }, _callee4);
+              }, _callee6);
             }));
-            return function (_x) {
+            return function (_x2) {
               return _ref2.apply(this, arguments);
             };
           }());
-        case 10:
+        case 7:
         case "end":
-          return _context5.stop();
+          return _context7.stop();
       }
-    }, _callee5);
+    }, _callee7);
   }));
-  return function renderMovies() {
+  return function renderMovies(_x) {
     return _ref.apply(this, arguments);
   };
 }();
 var myTypeItInstance = new typeit__WEBPACK_IMPORTED_MODULE_1__["default"]('.type-effect', {
   strings: 'Enjoy!'
 });
-document.addEventListener('DOMContentLoaded', function () {
-  myTypeItInstance.go();
-  renderMovies();
-  (0,_modules_navbar_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
-});
+var searchBtn = document.querySelector('.searchBtn');
+searchBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8() {
+  var searchInput, movieContainer, movies, searchRegex, filteredMovies, _movieContainer, noResult;
+  return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+    while (1) switch (_context8.prev = _context8.next) {
+      case 0:
+        searchInput = document.querySelector('.searchInput').value.toLowerCase();
+        movieContainer = document.getElementById('movieContainer');
+        movieContainer.innerHTML = '';
+        _context8.next = 5;
+        return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.getMoviesData)(_modules_showsAPI_js__WEBPACK_IMPORTED_MODULE_4__.showApiUrl);
+      case 5:
+        movies = _context8.sent;
+        searchRegex = new RegExp(".{2,4}".concat(searchInput, ".{2,4}"), 'i'); // 'i' flag makes it case-insensitive
+        filteredMovies = movies.filter(function (movie) {
+          return searchRegex.test(movie.name) || searchRegex.test(movie.genres.join(', '));
+        });
+        if (filteredMovies.length === 0) {
+          console.log('search not found');
+          _movieContainer = document.getElementById('movieContainer');
+          noResult = document.createElement('div');
+          noResult.style.color = 'white';
+          noResult.style.textAlign = 'center';
+          noResult.style.margin = 'auto';
+          noResult.classList.add('noResult');
+          noResult.innerHTML = "Search not found, try again!";
+          _movieContainer.appendChild(noResult);
+        }
+        renderMovies(filteredMovies);
+      case 10:
+      case "end":
+        return _context8.stop();
+    }
+  }, _callee8);
+})));
+var loader = function loader() {
+  var load = document.getElementById('loader');
+  var body = document.querySelector('.screenOverlay');
+  body.style.backgroundImage = 'radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%)';
+  load.style.display = 'block';
+};
+setTimeout( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
+  var moviesFromAPI, load;
+  return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+    while (1) switch (_context9.prev = _context9.next) {
+      case 0:
+        myTypeItInstance.go();
+        (0,scrollreveal__WEBPACK_IMPORTED_MODULE_2__["default"])().reveal('.custom-card', {
+          delay: 700
+        });
+        _context9.next = 4;
+        return (0,_modules_functionalities_js__WEBPACK_IMPORTED_MODULE_10__.getMoviesData)(_modules_showsAPI_js__WEBPACK_IMPORTED_MODULE_4__.showApiUrl);
+      case 4:
+        moviesFromAPI = _context9.sent;
+        renderMovies(moviesFromAPI);
+        (0,_modules_navbar_js__WEBPACK_IMPORTED_MODULE_5__["default"])();
+        load = document.getElementById('loader');
+        load.style.display = 'none';
+      case 9:
+      case "end":
+        return _context9.stop();
+    }
+  }, _callee9);
+})), 7000);
+loader();
 })();
 
 /******/ })()

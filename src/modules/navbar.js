@@ -12,7 +12,7 @@ const navbarHamburgerToggler = () => {
   function changeButtonIcon(path) {
     buttonImage.src = path;
   }
-  const navigationIcons = ['./images/button-menu.png', './images/close-icon.svg'];
+  const navigationIcons = ['./images/button-menu.svg', './images/close-icon.svg'];
   navigationLinks.forEach((element) => {
     element.addEventListener('click', () => {
       toggleNavigation();
