@@ -83,10 +83,13 @@ const postComment = async (api, movieId, username, comment) => {
 const fetchCommentsFromApi = async (movieId) => {
   try {
     const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1lQTFOEu5O5KmM8n2meG/comments?item_id=${movieId}`);
+    if (response.status === '400') {
+      return [];
+    }
     const comments = await response.json();
     return comments;
   } catch (error) {
-    throw new Error(error);
+    throw new Error('Something went wrong');
   }
 };
 
@@ -142,10 +145,13 @@ const postReservations = async (api, movieId, username, dateStart, dateEnd) => {
 const fetchReservations = async (itemId) => {
   try {
     const response = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/1lQTFOEu5O5KmM8n2meG/reservations?item_id=${itemId}`);
+    if (response.status === '400') {
+      return [];
+    }
     const reservations = await response.json();
     return reservations;
   } catch (error) {
-    throw new Error(error);
+    throw new Error('Something went wrong');
   }
 };
 

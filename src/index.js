@@ -1,11 +1,12 @@
 import './style.css';
 import TypeIt from 'typeit';
+import ScrollReveal from 'scrollreveal';
 import 'bootstrap';
 import { showApiUrl } from './modules/showsAPI.js';
 import navbarHamburgerToggler from './modules/navbar.js';
 import { likeApi, commentApi, reservationApi } from './modules/involvementAPI.js';
 import './assets/bg-for-page.jpg';
-import './assets/button-menu.png';
+import './assets/button-menu.svg';
 import './assets/close-icon.svg';
 import {
   getMoviesData,
@@ -21,8 +22,7 @@ import {
 
 import { countComments, countReservations } from './modules/counter.js';
 
-const renderMovies = async () => {
-  const data = await getMoviesData(showApiUrl);
+const renderMovies = async (data) => {
   data.sort(() => 0.5 - Math.random());
   data.length = 20;
   const numberOfLatestShows = data.length;
@@ -32,30 +32,34 @@ const renderMovies = async () => {
   const movieContainer = document.getElementById('movieContainer');
   data.forEach(async (movie) => {
     const movieCard = document.createElement('div');
-    movieCard.classList.add('col-md-3', 'col-sm-6', 'mb-4');
+    movieCard.classList.add('col-md-3', 'col-sm-4', 'col-6', 'mb-3');
     movieCard.innerHTML = `
-        <div class="card custom-card">
-          <img src=${movie.image.medium} class="card-img-top" alt="images">
+        <div class="card custom-card" >
+        <a href="${movie.officialSite
+}" target="_blank">
+        <img src=${movie.image.medium} class="card-img-top" alt="images">
+        </a>
+         
           <div class="card-body">
             <div  class="name-like-button">
                <div>
                 <span class="card-title">${movie.name}</span>
                </div>
               <div  class="likeBtnContainer">
-                <span class="likesCount${movie.id}">0</span>
+                <span class="likesCount${movie.id} like">0</span>
                 <span class="likeBtn" data-movie-id="${movie.id}">&nbsp;&#9825</span>
               </div>
             </div>
             <div class="card-button">
               <button type="button" 
-                      class="btn   btn-small comment-button " 
+                      class="btn   btn-small comment-button-${movie.id} " 
                       data-bs-toggle="modal" 
                       data-bs-target="#commentModal-${movie.id}">
                 Comment
               </button>
  
               <button type="button" 
-                    class="btn   btn-small reservation-button " 
+                    class="btn   btn-small reservation-button-${movie.id} " 
                     data-bs-toggle="modal" 
                     data-bs-target="#reservationsModal-${movie.id}">
               Reservations
@@ -132,13 +136,15 @@ const renderMovies = async () => {
     document.body.appendChild(modal);
 
     // Adding previous comments the first time
-    const comments = await fetchCommentsFromApi(movie.id);
-    if (comments.length > 0) {
+    const commentsButton = document.querySelector(`.comment-button-${movie.id}`);
+    commentsButton.addEventListener('click', async () => {
+      const comments = await fetchCommentsFromApi(movie.id);
+      console.log(comments);
       renderComments(modal, comments);
       const commentsCounter = modal.querySelector('.commentsCounter');
       const numComments = countComments(movie.id, comments);
       commentsCounter.textContent = `Comments: ${numComments}`;
-    }
+    });
 
     const commentForm = modal.querySelector(`#commentFormBtn-${movie.id}`);
     commentForm.addEventListener('click', async (event) => {
@@ -188,8 +194,8 @@ const renderMovies = async () => {
          <div class="reservationtArea">
          </div>
          <div><span class="reservationsCounter"></span></div>
-         <div>
-           <form  class="form">
+         <div>m
+           <form  class="for reservation">
            <h1>Reservations</h1>
            <fieldset>
             <div>
@@ -218,13 +224,14 @@ const renderMovies = async () => {
 
     // Adding previous reservations te first time
     document.body.appendChild(modalReservations);
-    const reservations = await fetchReservations(movie.id);
-    if (reservations.length > 0) {
+    const reservationsButton = document.querySelector(`.reservation-button-${movie.id}`);
+    reservationsButton.addEventListener('click', async () => {
+      const reservations = await fetchReservations(movie.id);
       renderReservations(modalReservations, reservations);
       const reservationsCounter = modalReservations.querySelector('.reservationsCounter');
       const numReservations = countReservations(movie.id, reservations);
       reservationsCounter.textContent = `Reservation: ${numReservations}`;
-    }
+    });
 
     // Add event listener to revervations form
     const reservationForm = modalReservations.querySelector(`#reserveFormBtn-${movie.id}`);
@@ -273,8 +280,47 @@ const myTypeItInstance = new TypeIt('.type-effect', {
   strings: 'Enjoy!',
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  myTypeItInstance.go();
-  renderMovies();
-  navbarHamburgerToggler();
+const searchBtn = document.querySelector('.searchBtn');
+searchBtn.addEventListener('click', async () => {
+  const searchInput = document.querySelector('.searchInput').value.toLowerCase();
+  const movieContainer = document.getElementById('movieContainer');
+  movieContainer.innerHTML = '';
+  const movies = await getMoviesData(showApiUrl);
+
+  const searchRegex = new RegExp(`.{2,4}${searchInput}.{2,4}`, 'i'); // 'i' flag makes it case-insensitive
+
+  const filteredMovies = movies.filter((movie) => (
+    searchRegex.test(movie.name)
+      || searchRegex.test(movie.genres.join(', '))
+  ));
+  if (filteredMovies.length === 0) {
+    console.log('search not found');
+    const movieContainer = document.getElementById('movieContainer');
+    const noResult = document.createElement('div');
+    noResult.style.color = 'white';
+    noResult.style.textAlign = 'center';
+    noResult.style.margin = 'auto';
+    noResult.classList.add('noResult');
+    noResult.innerHTML = "Search not found, try again!"
+    movieContainer.appendChild(noResult);
+  }
+
+  renderMovies(filteredMovies);
 });
+const loader = () => {
+  const load = document.getElementById('loader');
+  const body = document.querySelector('.screenOverlay');
+  body.style.backgroundImage = 'radial-gradient(circle farthest-corner at center, #3C4B57 0%, #1C262B 100%)';
+  load.style.display = 'block';
+};
+
+setTimeout(async () => {
+  myTypeItInstance.go();
+  ScrollReveal().reveal('.custom-card', { delay: 700 });
+  const moviesFromAPI = await getMoviesData(showApiUrl);
+  renderMovies(moviesFromAPI);
+  navbarHamburgerToggler();
+  const load = document.getElementById('loader');
+  load.style.display = 'none';
+}, 7000);
+loader();

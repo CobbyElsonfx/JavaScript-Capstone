@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovizHub</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+</head> 
 <body>
     <header id="hero-section">
       <div class="navbar-container nav-bar-home">
@@ -16,7 +18,7 @@
             <img
                 id="hamburger-image"
                 class="header-toggle"
-                src="./images/button-menu.png"
+                src="./images/button-menu.svg"
                 alt="Menu icon on the mobile version"
               />
           </button>
@@ -33,7 +35,7 @@
           <h1 class=" welcomeTitle type-effect"> <span class="welcomeTitleWelc">Welcome</span> to <span class="our">Our</span> <br> Movies Hub <span id="countsMovie"></span></h1>
           <div class="col-lg-6 mx-auto">
             <div class="d-grid gap-4 d-sm-flex justify-content-sm-center">
-              <input type="text" name="search">
+              <input type="text" name="search"  class="searchInput input">
               <button class="searchBtn btn" type="submit">Search</button>
             </div>
           </div>
@@ -59,6 +61,17 @@
           </div>
         </div> 
       </footer>
+      <div class="loader" id="loader">
+        <div class="inner one"></div>
+        <div class="inner two"></div>
+        <div class="inner three"></div>
+      </div>
+      
     <script src="index.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+
 </body>
 </html>
