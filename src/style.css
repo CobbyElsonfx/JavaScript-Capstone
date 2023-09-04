@@ -46,6 +46,11 @@ button {
   border: none;
 }
 
+button:focus {
+  outline: 0px dotted; 
+  outline: 0px auto -webkit-focus-ring-color;
+}
+
 body {
   background-color: #000;
   color: var(--primary-color);
@@ -58,8 +63,8 @@ body {
 #hero-section {
   color: var(--red-color);
   width: 100vw;
-  height: 60vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)), url('../dist/images/bg-for-page.jpg');
+  height: 40vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url('../dist/images/bg-for-page.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -146,6 +151,10 @@ body {
   flex-direction: row;
   gap: 7px;
   align-items: center;
+}
+
+.card-img-top {
+  border-radius: 1rem;
 }
 
 .btn {
