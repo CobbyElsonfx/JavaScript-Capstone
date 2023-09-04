@@ -294,14 +294,13 @@ searchBtn.addEventListener('click', async () => {
       || searchRegex.test(movie.genres.join(', '))
   ));
   if (filteredMovies.length === 0) {
-    console.log('search not found');
     const movieContainer = document.getElementById('movieContainer');
     const noResult = document.createElement('div');
     noResult.style.color = 'white';
     noResult.style.textAlign = 'center';
     noResult.style.margin = 'auto';
     noResult.classList.add('noResult');
-    noResult.innerHTML = "Search not found, try again!"
+    noResult.innerHTML = 'Search not found, try again!';
     movieContainer.appendChild(noResult);
   }
 
