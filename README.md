@@ -56,7 +56,7 @@
 🚀 Live Demo
 Link to our deployed project (project is not deployed yet).
 
--[Live Link](https://cobbyelsonfx.github.io/JavaScript-Capstone/dist/)
+-[Live Link](https://cobbyelsonfx.github.io/JavaScript-Capstone/dist)
 
 🚀Live Preview
 ![Screenshot for preview](movie.JPG)
