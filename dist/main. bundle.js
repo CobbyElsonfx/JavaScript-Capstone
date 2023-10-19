@@ -11879,7 +11879,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 li {
@@ -11903,6 +11903,11 @@ button {
   border: none;
 }
 
+button:focus {
+  outline: 0px dotted; 
+  outline: 0px auto -webkit-focus-ring-color;
+}
+
 body {
   background-color: #000;
   color: var(--primary-color);
@@ -11915,8 +11920,8 @@ body {
 #hero-section {
   color: var(--red-color);
   width: 100vw;
-  height: 60vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)), url(${___CSS_LOADER_URL_REPLACEMENT_0___});
+  height: 40vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url(${___CSS_LOADER_URL_REPLACEMENT_0___});
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -11979,7 +11984,7 @@ body {
 /* cards stylings */
 .card {
   border-radius: 14px;
-   width: 80%;   
+  width: 80%;
 }
 
 .card img:hover {
@@ -12005,6 +12010,9 @@ body {
   align-items: center;
 }
 
+.card-img-top {
+  border-radius: 1rem;
+}
 
 .btn {
   background-color: var(--red-color);
@@ -12014,7 +12022,6 @@ body {
   font-weight: 600;
   font-style: normal;
 }
-
 
 .btn:hover {
   background-color: white;
@@ -12043,8 +12050,9 @@ body {
 }
 
 .like {
-  font-size:10px;
+  font-size: 10px;
 }
+
 /* modal styling */
 
 .modal {
@@ -12158,15 +12166,15 @@ fieldset {
     display: none;
   }
 
-.movieImg {
-  max-width: 20rem;
-  height: 100%;
-}
+  .movieImg {
+    max-width: 20rem;
+    height: 100%;
+  }
 
-.card-button .btn {
-  max-width: 5rem;
-  font-size: 10px;
-}
+  .card-button .btn {
+    max-width: 5rem;
+    font-size: 10px;
+  }
 
   /* nav end  */
 }
@@ -12175,6 +12183,7 @@ fieldset {
   .nav-bar-home {
     background-color: rgba(0, 0, 0, 0.9);
   }
+
   .welcomeTitle {
     font-weight: 800;
     font-size: 15px;
@@ -12269,8 +12278,8 @@ fieldset {
   }
 
   .card {
-    width: 70%;     
-    margin:auto;  
+    width: 70%;
+    margin: auto;
   }
 
   .custom-card {
@@ -12282,9 +12291,7 @@ fieldset {
     max-width: 4rem;
     font-size: 6px;
   }
-  
 }
-
 
 .footer-copyright {
   background-color: var(--red-color);
@@ -12297,6 +12304,7 @@ fieldset {
   position: static;
   bottom: 0;
 }
+
 html {
   height: 100%;
 }
@@ -12309,7 +12317,6 @@ html {
   height: 64px;
   border-radius: 50%;
   perspective: 800px;
-
 }
 
 .inner {
@@ -12317,34 +12324,35 @@ html {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  border-radius: 50%;  
+  border-radius: 50%;
 }
 
 .inner.one {
   left: 0%;
   top: 0%;
   animation: rotate-one 1s linear infinite;
-  border-bottom: 3px solid #EFEFFA;
+  border-bottom: 3px solid #efeffa;
 }
 
 .inner.two {
   right: 0%;
   top: 0%;
   animation: rotate-two 1s linear infinite;
-  border-right: 3px solid #EFEFFA;
+  border-right: 3px solid #efeffa;
 }
 
 .inner.three {
   right: 0%;
   bottom: 0%;
   animation: rotate-three 1s linear infinite;
-  border-top: 3px solid #EFEFFA;
+  border-top: 3px solid #efeffa;
 }
 
 @keyframes rotate-one {
   0% {
     transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
   }
+
   100% {
     transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
   }
@@ -12354,6 +12362,7 @@ html {
   0% {
     transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
   }
+
   100% {
     transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
   }
@@ -12363,12 +12372,12 @@ html {
   0% {
     transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
   }
+
   100% {
     transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
   }
 }
-
-`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":";AACA;EACE,qBAAqB;EACrB,6CAA6C;EAC7C,4CAA4C;EAC5C,qBAAqB;EACrB,0BAA0B;EAC1B,qBAAqB;EACrB,sBAAsB;EACtB,2BAA2B;EAC3B,mBAAmB;EACnB,uBAAuB;EACvB,qBAAqB;EACrB,sBAAsB;EACtB,mBAAmB;EACnB,qBAAqB;EACrB,2BAA2B;EAC3B,0BAA0B;AAC5B;;AAEA;EACE,SAAS;EACT,UAAU;EACV,sBAAsB;EACtB,oGAAoG;AACtG;;AAEA;EACE,gBAAgB;AAClB;;AAEA;EACE,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,oCAAoC;AACtC;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,eAAe;EACf,aAAa;EACb,YAAY;AACd;;AAEA;EACE,sBAAsB;EACtB,2BAA2B;EAC3B,kBAAkB;EAClB,SAAS;EACT,UAAU;EACV,kBAAkB;AACpB;;AAEA;EACE,uBAAuB;EACvB,YAAY;EACZ,YAAY;EACZ,qHAAmH;EACnH,2BAA2B;EAC3B,sBAAsB;EACtB,4BAA4B;EAC5B,SAAS;EACT,UAAU;EACV,sBAAsB;AACxB;;AAEA;EACE,gBAAgB;EAChB,YAAY;AACd;;AAEA,iBAAiB;AACjB;EACE,eAAe;EACf,gBAAgB;EAChB,uBAAuB;EACvB,6BAA6B;AAC/B;;AAEA;EACE,2BAA2B;EAC3B,eAAe;EACf,gBAAgB;EAChB,gCAAgC;AAClC;;AAEA;;EAEE,uBAAuB;AACzB;;AAEA;EACE,gBAAgB;EAChB,eAAe;EACf,YAAY;AACd;;AAEA;EACE,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,0BAA0B;AAC5B;;AAEA;EACE,kCAAkC;EAClC,YAAY;EACZ,YAAY;EACZ,gBAAgB;EAChB,eAAe;EACf,gCAAgC;EAChC,yBAAyB;AAC3B;;AAEA,mBAAmB;AACnB;EACE,mBAAmB;GAClB,UAAU;AACb;;AAEA;EACE,kDAAkD;EAClD,sBAAsB;EACtB,gCAAgC;EAChC,uBAAuB;AACzB;;AAEA;EACE,6BAA6B;EAC7B,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,QAAQ;EACR,mBAAmB;AACrB;;;AAGA;EACE,kCAAkC;EAClC,YAAY;EACZ,gCAAgC;EAChC,yBAAyB;EACzB,gBAAgB;EAChB,kBAAkB;AACpB;;;AAGA;EACE,uBAAuB;EACvB,uBAAuB;AACzB;;AAEA;EACE,YAAY;EACZ,eAAe;EACf,kBAAkB;EAClB,qBAAqB;AACvB;;AAEA;EACE,UAAU;EACV,uBAAuB;AACzB;;AAEA;EACE,aAAa;EACb,8BAA8B;AAChC;;AAEA;EACE,aAAa;AACf;;AAEA;EACE,cAAc;AAChB;AACA,kBAAkB;;AAElB;EACE,WAAW;EACX,8EAA8E;AAChF;;AAEA;EACE,aAAa;EACb,sBAAsB;EACtB,mBAAmB;EACnB,uBAAuB;AACzB;;AAEA;EACE,UAAU;EACV,iBAAiB;EACjB,eAAe;EACf,kCAAkC;AACpC;;AAEA;EACE,6BAA6B;EAC7B,YAAY;AACd;;AAEA;EACE,aAAa;EACb,mBAAmB;EACnB,6BAA6B;EAC7B,SAAS;AACX;;AAEA,UAAU;AACV;EACE,gBAAgB;EAChB,iBAAiB;EACjB,iBAAiB;EACjB,uBAAuB;EACvB,kBAAkB;AACpB;;AAEA;EACE,kBAAkB;EAClB,eAAe;EACf,gBAAgB;EAChB,kBAAkB;AACpB;;AAEA;;EAEE,uBAAuB;EACvB,eAAe;EACf,YAAY;EACZ,SAAS;EACT,UAAU;EACV,YAAY;EACZ,WAAW;EACX,gBAAgB;EAChB,cAAc;EACd,mBAAmB;EACnB,kBAAkB;AACpB;;AAEA;EACE,mBAAmB;EACnB,YAAY;EACZ,aAAa;EACb,sBAAsB;EACtB,uBAAuB;EACvB,mBAAmB;AACrB;;AAEA;EACE,WAAW;EACX,mBAAmB;AACrB;;AAEA;EACE;IACE,gBAAgB;EAClB;AACF;;AAEA;EACE,eAAe;EACf;IACE,aAAa;IACb,mBAAmB;IACnB,8BAA8B;IAC9B,mBAAmB;IACnB,cAAc;IACd,YAAY;IACZ,aAAa;EACf;;EAEA;IACE,cAAc;IACd,aAAa;IACb,mBAAmB;IACnB,mBAAmB;IACnB,uBAAuB;IACvB,SAAS;EACX;;EAEA;IACE,oCAAoC;EACtC;;EAEA;IACE,aAAa;EACf;;AAEF;EACE,gBAAgB;EAChB,YAAY;AACd;;AAEA;EACE,eAAe;EACf,eAAe;AACjB;;EAEE,aAAa;AACf;;AAEA;EACE;IACE,oCAAoC;EACtC;EACA;IACE,gBAAgB;IAChB,eAAe;EACjB;;EAEA;IACE,YAAY;IACZ,eAAe;IACf,0BAA0B;EAC5B;;EAEA;IACE,aAAa;EACf;;EAEA;IACE,kBAAkB;IAClB,YAAY;IACZ,aAAa;IACb,2BAA2B;IAC3B,mBAAmB;IACnB,yBAAyB;IACzB,QAAQ;EACV;;EAEA;IACE,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,MAAM;IACN,OAAO;IACP,QAAQ;IACR,SAAS;IACT,eAAe;IACf,gCAAgC;IAChC,2BAA2B;IAC3B,aAAa;IACb,aAAa;IACb,kBAAkB;IAClB,gBAAgB;IAChB,yBAAyB;IACzB,gCAAgC;EAClC;;EAEA;IACE,gBAAgB;EAClB;;EAEA;IACE,mBAAmB;IACnB,eAAe;IACf,gBAAgB;IAChB,kBAAkB;IAClB,kBAAkB;EACpB;;EAEA;IACE,mBAAmB;EACrB;;EAEA;IACE,gBAAgB;IAChB,YAAY;IACZ,aAAa;IACb,kBAAkB;IAClB,aAAa;IACb,iBAAiB;IACjB,eAAe;IACf,aAAa;IACb,cAAc;IACd,aAAa;IACb,YAAY;IACZ,kBAAkB;IAClB,YAAY;EACd;;EAEA;IACE,WAAW;IACX,YAAY;EACd;;EAEA;IACE,kBAAkB;IAClB,aAAa;IACb,SAAS;EACX;;EAEA;IACE,eAAe;IACf,YAAY;IACZ,gBAAgB;EAClB;;EAEA;IACE,UAAU;IACV,WAAW;EACb;;EAEA;IACE,eAAe;IACf,YAAY;EACd;;EAEA;IACE,eAAe;IACf,cAAc;EAChB;;AAEF;;;AAGA;EACE,kCAAkC;EAClC,2BAA2B;EAC3B,eAAe;EACf,gBAAgB;EAChB,kBAAkB;EAClB,aAAa;EACb,gBAAgB;EAChB,gBAAgB;EAChB,SAAS;AACX;AACA;EACE,YAAY;AACd;;AAEA;EACE,kBAAkB;EAClB,qBAAqB;EACrB,sBAAsB;EACtB,WAAW;EACX,YAAY;EACZ,kBAAkB;EAClB,kBAAkB;;AAEpB;;AAEA;EACE,kBAAkB;EAClB,sBAAsB;EACtB,WAAW;EACX,YAAY;EACZ,kBAAkB;AACpB;;AAEA;EACE,QAAQ;EACR,OAAO;EACP,wCAAwC;EACxC,gCAAgC;AAClC;;AAEA;EACE,SAAS;EACT,OAAO;EACP,wCAAwC;EACxC,+BAA+B;AACjC;;AAEA;EACE,SAAS;EACT,UAAU;EACV,0CAA0C;EAC1C,6BAA6B;AAC/B;;AAEA;EACE;IACE,uDAAuD;EACzD;EACA;IACE,yDAAyD;EAC3D;AACF;;AAEA;EACE;IACE,sDAAsD;EACxD;EACA;IACE,wDAAwD;EAC1D;AACF;;AAEA;EACE;IACE,sDAAsD;EACxD;EACA;IACE,wDAAwD;EAC1D;AACF","sourcesContent":["\r\n:root {\r\n  --header-height: 4rem;\r\n  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\r\n  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);\r\n  --primary-color: #fff;\r\n  --secondary-color: #cf7c0f;\r\n  --dark-color: #181717;\r\n  --light-color: #f4f4f4;\r\n  --red-color: rgb(216, 0, 0);\r\n  --green-color: #0f0;\r\n  --orange-color: #ffa500;\r\n  --pink-color: #ffc0cb;\r\n  --brown-color: #a52a2a;\r\n  --black-color: #000;\r\n  --gray-color: #808080;\r\n  --light-gray-color: #d3d3d3;\r\n  --dark-gray-color: #a9a9a9;\r\n}\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;\r\n}\r\n\r\nli {\r\n  list-style: none;\r\n}\r\n\r\nh4 {\r\n  font-size: 13px;\r\n  font-weight: 800;\r\n  color: rgb(250, 17, 17);\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nspan {\r\n  color: white;\r\n}\r\n\r\nbutton {\r\n  cursor: pointer;\r\n  outline: none;\r\n  border: none;\r\n}\r\n\r\nbody {\r\n  background-color: #000;\r\n  color: var(--primary-color);\r\n  overflow-x: hidden;\r\n  margin: 0;\r\n  padding: 0;\r\n  position: relative;\r\n}\r\n\r\n#hero-section {\r\n  color: var(--red-color);\r\n  width: 100vw;\r\n  height: 60vh;\r\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 1)), url('../dist/images/bg-for-page.jpg');\r\n  background-position: center;\r\n  background-size: cover;\r\n  background-repeat: no-repeat;\r\n  margin: 0;\r\n  padding: 0;\r\n  background-color: #000;\r\n}\r\n\r\n#movieContainer {\r\n  min-height: 60vh;\r\n  margin: auto;\r\n}\r\n\r\n/* nav stylings */\r\n.navbar-brand {\r\n  font-size: 20px;\r\n  font-weight: 800;\r\n  color: var(--red-color);\r\n  text-shadow: #000 1px 1px 1px;\r\n}\r\n\r\n.nav-link {\r\n  color: var(--primary-color);\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  transition: all 0.4s ease-in-out;\r\n}\r\n\r\n.nav-link:hover,\r\n.navbar-brand:hover {\r\n  color: var(--red-color);\r\n}\r\n\r\n.welcomeTitle {\r\n  font-weight: 800;\r\n  font-size: 18px;\r\n  color: white;\r\n}\r\n\r\n.our {\r\n  color: var(--red-color);\r\n}\r\n\r\n.welcomeTitleWelc {\r\n  color: white;\r\n  font-size: 24px;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.searchBtn {\r\n  background-color: var(--red-color);\r\n  border: none;\r\n  color: white;\r\n  font-weight: 800;\r\n  font-size: 14px;\r\n  transition: all 0.4s ease-in-out;\r\n  outline: var(--red-color);\r\n}\r\n\r\n/* cards stylings */\r\n.card {\r\n  border-radius: 14px;\r\n   width: 80%;   \r\n}\r\n\r\n.card img:hover {\r\n  box-shadow: 6px 6px 6px 0.5px rgba(255, 7, 7, 0.5);\r\n  transform: scale(1.06);\r\n  transition: all 0.3s ease-in-out;\r\n  background-color: white;\r\n}\r\n\r\n.custom-card {\r\n  background-color: transparent;\r\n  border: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.card-button {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 7px;\r\n  align-items: center;\r\n}\r\n\r\n\r\n.btn {\r\n  background-color: var(--red-color);\r\n  border: none;\r\n  transition: all 0.4s ease-in-out;\r\n  color: rgb(255, 255, 255);\r\n  font-weight: 600;\r\n  font-style: normal;\r\n}\r\n\r\n\r\n.btn:hover {\r\n  background-color: white;\r\n  color: var(--red-color);\r\n}\r\n\r\n.commentFormBtn {\r\n  color: white;\r\n  padding: 0.4rem;\r\n  border-radius: 5px;\r\n  background-color: red;\r\n}\r\n\r\n.commentFormBtn:hover {\r\n  color: red;\r\n  background-color: white;\r\n}\r\n\r\n.name-like-button {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\n.likeBtnContainer {\r\n  display: flex;\r\n}\r\n\r\n.like {\r\n  font-size:10px;\r\n}\r\n/* modal styling */\r\n\r\n.modal {\r\n  width: 95vw;\r\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));\r\n}\r\n\r\n.modal-body {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.modal-title {\r\n  width: 93%;\r\n  font-weight: bold;\r\n  font-size: 40px;\r\n  font-family: 'cursive', sans-serif;\r\n}\r\n\r\n.modal-content {\r\n  background-color: transparent;\r\n  border: none;\r\n}\r\n\r\n.afterSummary {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-evenly;\r\n  gap: 10px;\r\n}\r\n\r\n/* forms */\r\nform {\r\n  max-width: 300px;\r\n  margin: 10px auto;\r\n  padding: 5px 10px;\r\n  background: transparent;\r\n  border-radius: 8px;\r\n}\r\n\r\nh1 {\r\n  margin: 0 0 20px 0;\r\n  font-size: 20px;\r\n  font-weight: 800;\r\n  text-align: center;\r\n}\r\n\r\n.modal input,\r\ntextarea {\r\n  border: 1px solid black;\r\n  font-size: 13px;\r\n  height: auto;\r\n  margin: 0;\r\n  outline: 0;\r\n  padding: 5px;\r\n  width: 100%;\r\n  background: #fff;\r\n  color: #000305;\r\n  margin-bottom: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\nfieldset {\r\n  margin-bottom: 30px;\r\n  border: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.reservation input {\r\n  width: 100%;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n@media screen and (min-width: 480px) {\r\n  form {\r\n    max-width: 480px;\r\n  }\r\n}\r\n\r\n@media (width > 765px) {\r\n  /* nav  start */\r\n  .navbar {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    align-self: stretch;\r\n    flex-shrink: 0;\r\n    height: 75px;\r\n    z-index: 1000;\r\n  }\r\n\r\n  .navbar .nav-items {\r\n    display: block;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 15px;\r\n  }\r\n\r\n  .nav-bar-home {\r\n    background-color: rgba(0, 0, 0, 0.7);\r\n  }\r\n\r\n  .navbar .hamburger-btn {\r\n    display: none;\r\n  }\r\n\r\n.movieImg {\r\n  max-width: 20rem;\r\n  height: 100%;\r\n}\r\n\r\n.card-button .btn {\r\n  max-width: 5rem;\r\n  font-size: 10px;\r\n}\r\n\r\n  /* nav end  */\r\n}\r\n\r\n@media (width <= 765px) {\r\n  .nav-bar-home {\r\n    background-color: rgba(0, 0, 0, 0.9);\r\n  }\r\n  .welcomeTitle {\r\n    font-weight: 800;\r\n    font-size: 15px;\r\n  }\r\n\r\n  .welcomeTitleWelc {\r\n    color: white;\r\n    font-size: 19px;\r\n    text-transform: capitalize;\r\n  }\r\n\r\n  .navbar-brand {\r\n    display: none;\r\n  }\r\n\r\n  .navbar {\r\n    padding-left: 10px;\r\n    height: 100%;\r\n    display: flex;\r\n    flex-direction: row-reverse;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    gap: 30%;\r\n  }\r\n\r\n  .nav-items {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    position: fixed;\r\n    background: rgba(8, 0, 0, 0.415);\r\n    backdrop-filter: blur(10px);\r\n    z-index: 1000;\r\n    height: 100vh;\r\n    visibility: hidden;\r\n    overflow: hidden;\r\n    align-content: flex-start;\r\n    transition: all 0.4s ease-in-out;\r\n  }\r\n\r\n  #latestShowsLink {\r\n    padding-top: 9vh;\r\n  }\r\n\r\n  .nav-items li a {\r\n    padding-top: 0.5rem;\r\n    font-size: 30px;\r\n    font-weight: 700;\r\n    align-self: center;\r\n    text-align: center;\r\n  }\r\n\r\n  .header-nav-active {\r\n    visibility: visible;\r\n  }\r\n\r\n  .hamburger-btn {\r\n    background: none;\r\n    border: none;\r\n    outline: none;\r\n    border-style: none;\r\n    padding: 1rem;\r\n    padding-right: 6%;\r\n    cursor: pointer;\r\n    z-index: 1001;\r\n    display: block;\r\n    display: flex;\r\n    margin: auto;\r\n    align-self: center;\r\n    color: white;\r\n  }\r\n\r\n  .header-toggle {\r\n    width: 31px;\r\n    height: 23px;\r\n  }\r\n\r\n  .header-list {\r\n    padding: 32px 16px;\r\n    display: grid;\r\n    gap: 14px;\r\n  }\r\n\r\n  .header-list-item {\r\n    font-size: 32px;\r\n    color: white;\r\n    font-weight: 600;\r\n  }\r\n\r\n  .card {\r\n    width: 70%;     \r\n    margin:auto;  \r\n  }\r\n\r\n  .custom-card {\r\n    max-width: 9rem;\r\n    height: 100%;\r\n  }\r\n\r\n  .card-button .btn {\r\n    max-width: 4rem;\r\n    font-size: 6px;\r\n  }\r\n  \r\n}\r\n\r\n\r\n.footer-copyright {\r\n  background-color: var(--red-color);\r\n  color: var(--primary-color);\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  text-align: center;\r\n  padding: 1rem;\r\n  margin-top: 1rem;\r\n  position: static;\r\n  bottom: 0;\r\n}\r\nhtml {\r\n  height: 100%;\r\n}\r\n\r\n.loader {\r\n  position: absolute;\r\n  top: calc(50% - 32px);\r\n  left: calc(50% - 32px);\r\n  width: 64px;\r\n  height: 64px;\r\n  border-radius: 50%;\r\n  perspective: 800px;\r\n\r\n}\r\n\r\n.inner {\r\n  position: absolute;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 50%;  \r\n}\r\n\r\n.inner.one {\r\n  left: 0%;\r\n  top: 0%;\r\n  animation: rotate-one 1s linear infinite;\r\n  border-bottom: 3px solid #EFEFFA;\r\n}\r\n\r\n.inner.two {\r\n  right: 0%;\r\n  top: 0%;\r\n  animation: rotate-two 1s linear infinite;\r\n  border-right: 3px solid #EFEFFA;\r\n}\r\n\r\n.inner.three {\r\n  right: 0%;\r\n  bottom: 0%;\r\n  animation: rotate-three 1s linear infinite;\r\n  border-top: 3px solid #EFEFFA;\r\n}\r\n\r\n@keyframes rotate-one {\r\n  0% {\r\n    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);\r\n  }\r\n  100% {\r\n    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);\r\n  }\r\n}\r\n\r\n@keyframes rotate-two {\r\n  0% {\r\n    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);\r\n  }\r\n  100% {\r\n    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);\r\n  }\r\n}\r\n\r\n@keyframes rotate-three {\r\n  0% {\r\n    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);\r\n  }\r\n  100% {\r\n    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);\r\n  }\r\n}\r\n\r\n"],"sourceRoot":""}]);
+`, "",{"version":3,"sources":["webpack://./src/style.css"],"names":[],"mappings":"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","sourcesContent":["\r\n:root {\r\n  --header-height: 4rem;\r\n  --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);\r\n  --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);\r\n  --primary-color: #fff;\r\n  --secondary-color: #cf7c0f;\r\n  --dark-color: #181717;\r\n  --light-color: #f4f4f4;\r\n  --red-color: rgb(216, 0, 0);\r\n  --green-color: #0f0;\r\n  --orange-color: #ffa500;\r\n  --pink-color: #ffc0cb;\r\n  --brown-color: #a52a2a;\r\n  --black-color: #000;\r\n  --gray-color: #808080;\r\n  --light-gray-color: #d3d3d3;\r\n  --dark-gray-color: #a9a9a9;\r\n}\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;\r\n}\r\n\r\nli {\r\n  list-style: none;\r\n}\r\n\r\nh4 {\r\n  font-size: 13px;\r\n  font-weight: 800;\r\n  color: rgb(250, 17, 17);\r\n  background-color: rgba(0, 0, 0, 0.1);\r\n}\r\n\r\nspan {\r\n  color: white;\r\n}\r\n\r\nbutton {\r\n  cursor: pointer;\r\n  outline: none;\r\n  border: none;\r\n}\r\n\r\nbutton:focus {\r\n  outline: 0px dotted; \r\n  outline: 0px auto -webkit-focus-ring-color;\r\n}\r\n\r\nbody {\r\n  background-color: #000;\r\n  color: var(--primary-color);\r\n  overflow-x: hidden;\r\n  margin: 0;\r\n  padding: 0;\r\n  position: relative;\r\n}\r\n\r\n#hero-section {\r\n  color: var(--red-color);\r\n  width: 100vw;\r\n  height: 40vh;\r\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 1)), url('../dist/images/bg-for-page.jpg');\r\n  background-position: center;\r\n  background-size: cover;\r\n  background-repeat: no-repeat;\r\n  margin: 0;\r\n  padding: 0;\r\n  background-color: #000;\r\n}\r\n\r\n#movieContainer {\r\n  min-height: 60vh;\r\n  margin: auto;\r\n}\r\n\r\n/* nav stylings */\r\n.navbar-brand {\r\n  font-size: 20px;\r\n  font-weight: 800;\r\n  color: var(--red-color);\r\n  text-shadow: #000 1px 1px 1px;\r\n}\r\n\r\n.nav-link {\r\n  color: var(--primary-color);\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  transition: all 0.4s ease-in-out;\r\n}\r\n\r\n.nav-link:hover,\r\n.navbar-brand:hover {\r\n  color: var(--red-color);\r\n}\r\n\r\n.welcomeTitle {\r\n  font-weight: 800;\r\n  font-size: 18px;\r\n  color: white;\r\n}\r\n\r\n.our {\r\n  color: var(--red-color);\r\n}\r\n\r\n.welcomeTitleWelc {\r\n  color: white;\r\n  font-size: 24px;\r\n  text-transform: capitalize;\r\n}\r\n\r\n.searchBtn {\r\n  background-color: var(--red-color);\r\n  border: none;\r\n  color: white;\r\n  font-weight: 800;\r\n  font-size: 14px;\r\n  transition: all 0.4s ease-in-out;\r\n  outline: var(--red-color);\r\n}\r\n\r\n/* cards stylings */\r\n.card {\r\n  border-radius: 14px;\r\n  width: 80%;\r\n}\r\n\r\n.card img:hover {\r\n  box-shadow: 6px 6px 6px 0.5px rgba(255, 7, 7, 0.5);\r\n  transform: scale(1.06);\r\n  transition: all 0.3s ease-in-out;\r\n  background-color: white;\r\n}\r\n\r\n.custom-card {\r\n  background-color: transparent;\r\n  border: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.card-button {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 7px;\r\n  align-items: center;\r\n}\r\n\r\n.card-img-top {\r\n  border-radius: 1rem;\r\n}\r\n\r\n.btn {\r\n  background-color: var(--red-color);\r\n  border: none;\r\n  transition: all 0.4s ease-in-out;\r\n  color: rgb(255, 255, 255);\r\n  font-weight: 600;\r\n  font-style: normal;\r\n}\r\n\r\n.btn:hover {\r\n  background-color: white;\r\n  color: var(--red-color);\r\n}\r\n\r\n.commentFormBtn {\r\n  color: white;\r\n  padding: 0.4rem;\r\n  border-radius: 5px;\r\n  background-color: red;\r\n}\r\n\r\n.commentFormBtn:hover {\r\n  color: red;\r\n  background-color: white;\r\n}\r\n\r\n.name-like-button {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\n.likeBtnContainer {\r\n  display: flex;\r\n}\r\n\r\n.like {\r\n  font-size: 10px;\r\n}\r\n\r\n/* modal styling */\r\n\r\n.modal {\r\n  width: 95vw;\r\n  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9));\r\n}\r\n\r\n.modal-body {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\n.modal-title {\r\n  width: 93%;\r\n  font-weight: bold;\r\n  font-size: 40px;\r\n  font-family: 'cursive', sans-serif;\r\n}\r\n\r\n.modal-content {\r\n  background-color: transparent;\r\n  border: none;\r\n}\r\n\r\n.afterSummary {\r\n  display: flex;\r\n  flex-direction: row;\r\n  justify-content: space-evenly;\r\n  gap: 10px;\r\n}\r\n\r\n/* forms */\r\nform {\r\n  max-width: 300px;\r\n  margin: 10px auto;\r\n  padding: 5px 10px;\r\n  background: transparent;\r\n  border-radius: 8px;\r\n}\r\n\r\nh1 {\r\n  margin: 0 0 20px 0;\r\n  font-size: 20px;\r\n  font-weight: 800;\r\n  text-align: center;\r\n}\r\n\r\n.modal input,\r\ntextarea {\r\n  border: 1px solid black;\r\n  font-size: 13px;\r\n  height: auto;\r\n  margin: 0;\r\n  outline: 0;\r\n  padding: 5px;\r\n  width: 100%;\r\n  background: #fff;\r\n  color: #000305;\r\n  margin-bottom: 15px;\r\n  border-radius: 4px;\r\n}\r\n\r\nfieldset {\r\n  margin-bottom: 30px;\r\n  border: none;\r\n  display: flex;\r\n  flex-direction: column;\r\n  justify-content: center;\r\n  align-items: center;\r\n}\r\n\r\n.reservation input {\r\n  width: 100%;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n@media screen and (min-width: 480px) {\r\n  form {\r\n    max-width: 480px;\r\n  }\r\n}\r\n\r\n@media (width > 765px) {\r\n  /* nav  start */\r\n  .navbar {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    align-self: stretch;\r\n    flex-shrink: 0;\r\n    height: 75px;\r\n    z-index: 1000;\r\n  }\r\n\r\n  .navbar .nav-items {\r\n    display: block;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: center;\r\n    gap: 15px;\r\n  }\r\n\r\n  .nav-bar-home {\r\n    background-color: rgba(0, 0, 0, 0.7);\r\n  }\r\n\r\n  .navbar .hamburger-btn {\r\n    display: none;\r\n  }\r\n\r\n  .movieImg {\r\n    max-width: 20rem;\r\n    height: 100%;\r\n  }\r\n\r\n  .card-button .btn {\r\n    max-width: 5rem;\r\n    font-size: 10px;\r\n  }\r\n\r\n  /* nav end  */\r\n}\r\n\r\n@media (width <= 765px) {\r\n  .nav-bar-home {\r\n    background-color: rgba(0, 0, 0, 0.9);\r\n  }\r\n\r\n  .welcomeTitle {\r\n    font-weight: 800;\r\n    font-size: 15px;\r\n  }\r\n\r\n  .welcomeTitleWelc {\r\n    color: white;\r\n    font-size: 19px;\r\n    text-transform: capitalize;\r\n  }\r\n\r\n  .navbar-brand {\r\n    display: none;\r\n  }\r\n\r\n  .navbar {\r\n    padding-left: 10px;\r\n    height: 100%;\r\n    display: flex;\r\n    flex-direction: row-reverse;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    gap: 30%;\r\n  }\r\n\r\n  .nav-items {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    position: fixed;\r\n    background: rgba(8, 0, 0, 0.415);\r\n    backdrop-filter: blur(10px);\r\n    z-index: 1000;\r\n    height: 100vh;\r\n    visibility: hidden;\r\n    overflow: hidden;\r\n    align-content: flex-start;\r\n    transition: all 0.4s ease-in-out;\r\n  }\r\n\r\n  #latestShowsLink {\r\n    padding-top: 9vh;\r\n  }\r\n\r\n  .nav-items li a {\r\n    padding-top: 0.5rem;\r\n    font-size: 30px;\r\n    font-weight: 700;\r\n    align-self: center;\r\n    text-align: center;\r\n  }\r\n\r\n  .header-nav-active {\r\n    visibility: visible;\r\n  }\r\n\r\n  .hamburger-btn {\r\n    background: none;\r\n    border: none;\r\n    outline: none;\r\n    border-style: none;\r\n    padding: 1rem;\r\n    padding-right: 6%;\r\n    cursor: pointer;\r\n    z-index: 1001;\r\n    display: block;\r\n    display: flex;\r\n    margin: auto;\r\n    align-self: center;\r\n    color: white;\r\n  }\r\n\r\n  .header-toggle {\r\n    width: 31px;\r\n    height: 23px;\r\n  }\r\n\r\n  .header-list {\r\n    padding: 32px 16px;\r\n    display: grid;\r\n    gap: 14px;\r\n  }\r\n\r\n  .header-list-item {\r\n    font-size: 32px;\r\n    color: white;\r\n    font-weight: 600;\r\n  }\r\n\r\n  .card {\r\n    width: 70%;\r\n    margin: auto;\r\n  }\r\n\r\n  .custom-card {\r\n    max-width: 9rem;\r\n    height: 100%;\r\n  }\r\n\r\n  .card-button .btn {\r\n    max-width: 4rem;\r\n    font-size: 6px;\r\n  }\r\n}\r\n\r\n.footer-copyright {\r\n  background-color: var(--red-color);\r\n  color: var(--primary-color);\r\n  font-size: 14px;\r\n  font-weight: 800;\r\n  text-align: center;\r\n  padding: 1rem;\r\n  margin-top: 1rem;\r\n  position: static;\r\n  bottom: 0;\r\n}\r\n\r\nhtml {\r\n  height: 100%;\r\n}\r\n\r\n.loader {\r\n  position: absolute;\r\n  top: calc(50% - 32px);\r\n  left: calc(50% - 32px);\r\n  width: 64px;\r\n  height: 64px;\r\n  border-radius: 50%;\r\n  perspective: 800px;\r\n}\r\n\r\n.inner {\r\n  position: absolute;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 50%;\r\n}\r\n\r\n.inner.one {\r\n  left: 0%;\r\n  top: 0%;\r\n  animation: rotate-one 1s linear infinite;\r\n  border-bottom: 3px solid #efeffa;\r\n}\r\n\r\n.inner.two {\r\n  right: 0%;\r\n  top: 0%;\r\n  animation: rotate-two 1s linear infinite;\r\n  border-right: 3px solid #efeffa;\r\n}\r\n\r\n.inner.three {\r\n  right: 0%;\r\n  bottom: 0%;\r\n  animation: rotate-three 1s linear infinite;\r\n  border-top: 3px solid #efeffa;\r\n}\r\n\r\n@keyframes rotate-one {\r\n  0% {\r\n    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);\r\n  }\r\n\r\n  100% {\r\n    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);\r\n  }\r\n}\r\n\r\n@keyframes rotate-two {\r\n  0% {\r\n    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);\r\n  }\r\n\r\n  100% {\r\n    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);\r\n  }\r\n}\r\n\r\n@keyframes rotate-three {\r\n  0% {\r\n    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);\r\n  }\r\n\r\n  100% {\r\n    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -13140,14 +13149,13 @@ searchBtn.addEventListener('click', /*#__PURE__*/_asyncToGenerator( /*#__PURE__*
           return searchRegex.test(movie.name) || searchRegex.test(movie.genres.join(', '));
         });
         if (filteredMovies.length === 0) {
-          console.log('search not found');
           _movieContainer = document.getElementById('movieContainer');
           noResult = document.createElement('div');
           noResult.style.color = 'white';
           noResult.style.textAlign = 'center';
           noResult.style.margin = 'auto';
           noResult.classList.add('noResult');
-          noResult.innerHTML = "Search not found, try again!";
+          noResult.innerHTML = 'Search not found, try again!';
           _movieContainer.appendChild(noResult);
         }
         renderMovies(filteredMovies);
@@ -13185,7 +13193,7 @@ setTimeout( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().m
         return _context9.stop();
     }
   }, _callee9);
-})), 7000);
+})), 6000);
 loader();
 })();
 

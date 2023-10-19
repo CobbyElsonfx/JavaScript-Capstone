@@ -321,5 +321,5 @@ setTimeout(async () => {
   navbarHamburgerToggler();
   const load = document.getElementById('loader');
   load.style.display = 'none';
-}, 7000);
+}, 6000);
 loader();
