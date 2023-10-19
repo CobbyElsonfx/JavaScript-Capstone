@@ -47,16 +47,16 @@ button {
 }
 
 button:focus {
-  outline: 0px dotted; 
-  outline: 0px auto -webkit-focus-ring-color;
+  outline: 0 dotted; 
+  outline: 0 auto -webkit-focus-ring-color;
 }
 
 body {
   background-color: #000;
   color: var(--primary-color);
   overflow-x: hidden;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   position: relative;
 }
 
