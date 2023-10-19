@@ -54,9 +54,9 @@
 ### Live Demo <a name="live-demo"></a>
 
 🚀 Live Demo
-Link to our deployed project.
+Link to the deployed project [MovizHub](https://cobbyelsonfx.github.io/JavaScript-Capstone/dist)
+.
 
--[Live Link](https://cobbyelsonfx.github.io/JavaScript-Capstone/dist)
 
 🚀Live Preview
 ![Screenshot for preview](movie.JPG)
