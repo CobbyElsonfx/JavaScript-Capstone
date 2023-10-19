@@ -54,7 +54,7 @@
 ### Live Demo <a name="live-demo"></a>
 
 🚀 Live Demo
-Link to our deployed project (project is not deployed yet).
+Link to our deployed project.
 
 -[Live Link](https://cobbyelsonfx.github.io/JavaScript-Capstone/dist)
 
